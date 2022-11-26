@@ -1,39 +1,26 @@
 package com.app.teamproject;
 
-import android.app.Activity;
-import android.content.Context;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class RoadActivity extends AppCompatActivity implements View.OnClickListener{
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
-    ImageView option, search;
-    TextView search_et;
+
     Boolean isAllFabsVisible;
-    private static Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MainActivity.context = getApplicationContext();
-        setContentView(R.layout.activity_main);
-
-
-        option = findViewById(R.id.main_option);
-        search = findViewById(R.id.main_search);
-        search_et = findViewById(R.id.main_search_et);
+        setContentView(R.layout.activity_road);
 
         btnSubway = findViewById(R.id.fab_subway);
 
@@ -83,6 +70,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (view.getId()){
             case R.id.fab_home:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.fab_setting:
                 this.registerForContextMenu(btnSetting);
@@ -92,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.fab_search:
                 intent = new Intent(this, SearchActivity.class);
                 startActivity(intent);
+                finish();
                 break;
             case R.id.fab_star:
                 break;
@@ -104,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void onCreateContextMenu(ContextMenu menu, View v,ContextMenu.ContextMenuInfo menuInfo){
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater mi = getMenuInflater();
         mi.inflate(R.menu.menu, menu);
@@ -129,7 +120,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-    public static Context ApplicationContext(){
-        return MainActivity.context;
-    }
 }
