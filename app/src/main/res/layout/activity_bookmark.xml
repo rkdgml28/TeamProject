@@ -64,7 +64,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="즐겨찾기 1"
+        android:text="102"
         android:textSize="20dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="189dp" />
@@ -80,7 +80,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="즐겨찾기 2"
+        android:text="203"
         android:textSize="20dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="249dp" />
@@ -96,7 +96,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="즐겨찾기 3"
+        android:text="306"
         android:textSize="20dp"
         tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="308dp" />
@@ -112,7 +112,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="즐겨찾기 4"
+        android:text="603"
         android:textSize="20dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="364dp" />
