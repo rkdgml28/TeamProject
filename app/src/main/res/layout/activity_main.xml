@@ -73,7 +73,9 @@
         android:src="@drawable/fab_subway"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/main_color"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_setting"
@@ -84,7 +86,8 @@
         app:layout_constraintBottom_toTopOf="@+id/fab_subway"
         app:layout_constraintEnd_toEndOf="@+id/fab_subway"
         app:layout_constraintStart_toStartOf="@+id/fab_subway"
-        app:srcCompat="@drawable/fab_setting" />
+        app:srcCompat="@drawable/fab_setting"
+        android:backgroundTint="@color/main_color"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_home"
@@ -95,7 +98,8 @@
         app:layout_constraintBottom_toTopOf="@+id/fab_setting"
         app:layout_constraintEnd_toEndOf="@+id/fab_setting"
         app:layout_constraintStart_toStartOf="@+id/fab_setting"
-        app:srcCompat="@drawable/fab_home" />
+        app:srcCompat="@drawable/fab_home"
+        android:backgroundTint="@color/main_color"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_star"
@@ -106,7 +110,8 @@
         app:layout_constraintBottom_toTopOf="@+id/fab_home"
         app:layout_constraintEnd_toEndOf="@+id/fab_home"
         app:layout_constraintStart_toStartOf="@+id/fab_home"
-        app:srcCompat="@drawable/fab_star" />
+        app:srcCompat="@drawable/fab_star"
+        android:backgroundTint="@color/main_color"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_road"
@@ -117,7 +122,8 @@
         app:layout_constraintBottom_toTopOf="@+id/fab_star"
         app:layout_constraintEnd_toEndOf="@+id/fab_star"
         app:layout_constraintStart_toStartOf="@+id/fab_star"
-        app:srcCompat="@drawable/fab_road" />
+        app:srcCompat="@drawable/fab_road"
+        android:backgroundTint="@color/main_color"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_search"
@@ -129,6 +135,7 @@
         app:layout_constraintEnd_toEndOf="@+id/fab_road"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/fab_road"
-        app:srcCompat="@drawable/fab_seach" />
+        app:srcCompat="@drawable/fab_seach"
+        android:backgroundTint="@color/main_color"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
