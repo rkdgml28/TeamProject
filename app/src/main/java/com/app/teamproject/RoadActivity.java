@@ -9,18 +9,35 @@ import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class RoadActivity extends AppCompatActivity implements View.OnClickListener{
+public class RoadActivity extends AppCompatActivity implements View.OnClickListener {
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
-
+    TextView btn_line1, btn_line2, btn_line3, btn_line4, btn_line5, btn_line6, btn_line7, btn_line8, btn_line9;
+    ImageView iv_road;
     Boolean isAllFabsVisible;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_road);
+
+        btn_line1 = findViewById(R.id.btn_line1);
+        btn_line2 = findViewById(R.id.btn_line2);
+        btn_line3 = findViewById(R.id.btn_line3);
+        btn_line4 = findViewById(R.id.btn_line4);
+        btn_line5 = findViewById(R.id.btn_line5);
+        btn_line6 = findViewById(R.id.btn_line6);
+        btn_line7 = findViewById(R.id.btn_line7);
+        btn_line8 = findViewById(R.id.btn_line8);
+        btn_line9 = findViewById(R.id.btn_line9);
+
+        iv_road = findViewById(R.id.iv_road);
+        iv_road.setVisibility(View.INVISIBLE);
 
         btnSubway = findViewById(R.id.fab_subway);
 
@@ -58,17 +75,28 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
                 isAllFabsVisible = false;
             }
         });
+
         btnHome.setOnClickListener(this);
         btnSetting.setOnClickListener(this);
         btnSearch.setOnClickListener(this);
         btnStar.setOnClickListener(this);
         btnRoad.setOnClickListener(this);
+
+        btn_line1.setOnClickListener(this);
+        btn_line2.setOnClickListener(this);
+        btn_line3.setOnClickListener(this);
+        btn_line4.setOnClickListener(this);
+        btn_line5.setOnClickListener(this);
+        btn_line6.setOnClickListener(this);
+        btn_line7.setOnClickListener(this);
+        btn_line8.setOnClickListener(this);
+        btn_line9.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         Intent intent;
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.fab_home:
                 intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
@@ -89,13 +117,49 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.fab_road:
                 intent = new Intent(this, RoadActivity.class);
                 startActivity(intent);
+                finish();
                 break;
-            case R.id.main_option:
+
+            case R.id.btn_line1:
+                iv_road.setImageResource(R.drawable.line1);
+                iv_road.setVisibility(View.VISIBLE);
                 break;
+            case R.id.btn_line2:
+                iv_road.setImageResource(R.drawable.line2);
+                iv_road.setVisibility(View.VISIBLE);
+                break;
+            case R.id.btn_line3:
+                iv_road.setImageResource(R.drawable.line3);
+                iv_road.setVisibility(View.VISIBLE);
+                break;
+            case R.id.btn_line4:
+                iv_road.setImageResource(R.drawable.line4);
+                iv_road.setVisibility(View.VISIBLE);
+                break;
+            case R.id.btn_line5:
+                iv_road.setImageResource(R.drawable.line5);
+                iv_road.setVisibility(View.VISIBLE);
+                break;
+            case R.id.btn_line6:
+                iv_road.setImageResource(R.drawable.line6);
+                break;
+            case R.id.btn_line7:
+                iv_road.setImageResource(R.drawable.line7);
+                iv_road.setVisibility(View.VISIBLE);
+                break;
+            case R.id.btn_line8:
+                iv_road.setImageResource(R.drawable.line8);
+                iv_road.setVisibility(View.VISIBLE);
+                break;
+            case R.id.btn_line9:
+                iv_road.setImageResource(R.drawable.line9);
+                iv_road.setVisibility(View.VISIBLE);
+                break;
+
         }
     }
 
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater mi = getMenuInflater();
         mi.inflate(R.menu.menu, menu);
@@ -103,7 +167,7 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public boolean onContextItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.itemLanguage:
                 Toast.makeText(this, "language", Toast.LENGTH_SHORT).show();
                 return true;

@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     app:layout_constraintHorizontal_chainStyle="spread"
+    tools:context=".MainActivity"
     tools:ignore="HardcodedText">
 
     <LinearLayout
+        android:id="@+id/linear_topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/main_color"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        android:weightSum="10"
         android:paddingVertical="10dp"
-        android:background="@color/main_color">
+        android:weightSum="10"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/main_option"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="2"
+            android:clickable="true"
             android:src="@drawable/ic_list"
-            app:tint="@color/black"
-            android:clickable="true"/>
+            app:tint="@color/sub_color3"
+            android:focusable="true" />
 
         <EditText
             android:id="@+id/main_search_et"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="6"
+            android:background="@drawable/box_search"
             android:padding="10dp"
-            android:background="@drawable/search_box"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
 
         <ImageView
             android:id="@+id/main_search"
@@ -42,26 +43,27 @@
             android:layout_height="50dp"
             android:layout_weight="2"
             android:src="@drawable/ic_search"
-            android:tint="@color/black"/>
+            android:tint="@color/sub_color3" />
 
 
     </LinearLayout>
 
+    <!--    <com.github.chrisbanes.photoview.PhotoView>-->
+
+    <!--    </com.github.chrisbanes.photoview.PhotoView>-->
+
     <ImageView
+        android:id="@+id/iv_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/main_search_et"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/iv_main"
-        android:src="@drawable/main"
         android:focusable="true"
-        android:focusableInTouchMode="true"/>
-
-<!--    <com.github.chrisbanes.photoview.PhotoView>-->
-
-<!--    </com.github.chrisbanes.photoview.PhotoView>-->
+        android:focusableInTouchMode="true"
+        android:src="@drawable/main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_topBar" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_subway"
@@ -70,16 +72,19 @@
         android:layout_gravity="end"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/sub_color1"
         android:src="@drawable/fab_subway"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
         app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@+id/fab_subway"
         app:layout_constraintEnd_toEndOf="@+id/fab_subway"
@@ -91,6 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
         app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@+id/fab_setting"
         app:layout_constraintEnd_toEndOf="@+id/fab_setting"
@@ -102,6 +108,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
         app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@+id/fab_home"
         app:layout_constraintEnd_toEndOf="@+id/fab_home"
@@ -113,6 +120,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
         app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@+id/fab_star"
         app:layout_constraintEnd_toEndOf="@+id/fab_star"
@@ -124,11 +132,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
         app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@+id/fab_road"
         app:layout_constraintEnd_toEndOf="@+id/fab_road"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/fab_road"
-        app:srcCompat="@drawable/fab_seach" />
+        app:srcCompat="@drawable/fab_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
