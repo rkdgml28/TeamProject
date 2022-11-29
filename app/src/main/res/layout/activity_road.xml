@@ -18,14 +18,20 @@
         android:paddingVertical="10dp"
         android:background="@color/main_color">
 
-
+        <ImageView
+            android:id="@+id/main_option"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:src="@drawable/ic_list"
+            app:tint="@color/black"
+            android:clickable="true"/>
 
         <EditText
             android:id="@+id/main_search_et"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="8"
-            android:layout_marginLeft="60dp"
+            android:layout_weight="6"
             android:padding="10dp"
             android:background="@drawable/search_box"
             android:textColor="@color/black"/>
@@ -36,7 +42,7 @@
             android:layout_height="50dp"
             android:layout_weight="2"
             android:src="@drawable/ic_search"
-            app:tint="@color/black" />
+            android:tint="@color/black"/>
     </LinearLayout>
 
 

@@ -10,6 +10,7 @@
     tools:ignore="HardcodedText">
 
     <LinearLayout
+        android:id="@+id/linear_topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -18,14 +19,20 @@
         android:paddingVertical="10dp"
         android:background="@color/main_color">
 
-
+        <ImageView
+            android:id="@+id/main_option"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:src="@drawable/ic_list"
+            app:tint="@color/black"
+            android:clickable="true"/>
 
         <EditText
             android:id="@+id/main_search_et"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="8"
-            android:layout_marginLeft="60dp"
+            android:layout_weight="6"
             android:padding="10dp"
             android:background="@drawable/search_box"
             android:textColor="@color/black"/>
@@ -36,26 +43,23 @@
             android:layout_height="50dp"
             android:layout_weight="2"
             android:src="@drawable/ic_search"
-            app:tint="@color/black" />
+            android:tint="@color/black"/>
 
 
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/iv_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/main_search_et"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/iv_main"
-        android:src="@drawable/main"
         android:focusable="true"
-        android:focusableInTouchMode="true"/>
-
-<!--    <com.github.chrisbanes.photoview.PhotoView>-->
-
-<!--    </com.github.chrisbanes.photoview.PhotoView>-->
+        android:focusableInTouchMode="true"
+        android:src="@drawable/main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_topBar" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_subway"
@@ -64,6 +68,7 @@
         android:layout_gravity="end"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/sub_color1"
         android:src="@drawable/fab_subway"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -74,6 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
         app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@+id/fab_subway"
         app:layout_constraintEnd_toEndOf="@+id/fab_subway"
@@ -85,6 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
         app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@+id/fab_setting"
         app:layout_constraintEnd_toEndOf="@+id/fab_setting"
@@ -96,6 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
         app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@+id/fab_home"
         app:layout_constraintEnd_toEndOf="@+id/fab_home"
@@ -107,6 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
         app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@+id/fab_star"
         app:layout_constraintEnd_toEndOf="@+id/fab_star"
@@ -118,6 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
         app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@+id/fab_road"
         app:layout_constraintEnd_toEndOf="@+id/fab_road"
