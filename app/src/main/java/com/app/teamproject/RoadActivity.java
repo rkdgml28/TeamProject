@@ -35,11 +35,11 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
         btn_line7 = findViewById(R.id.btn_line7);
         btn_line8 = findViewById(R.id.btn_line8);
         btn_line9 = findViewById(R.id.btn_line9);
-
+        btnSubway = findViewById(R.id.fab_subway);
         iv_road = findViewById(R.id.iv_road);
         iv_road.setVisibility(View.INVISIBLE);
 
-        btnSubway = findViewById(R.id.fab_subway);
+
 
         // FAB button
         btnSetting = findViewById(R.id.fab_setting);

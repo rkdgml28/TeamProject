@@ -32,10 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         MainActivity.context = getApplicationContext();
         setContentView(R.layout.activity_main);
 
-
+        search_et = findViewById(R.id.main_search_et);
         option = findViewById(R.id.main_option);
         search = findViewById(R.id.main_search);
-        search_et = findViewById(R.id.main_search_et);
 
         btnSubway = findViewById(R.id.fab_subway);
 
