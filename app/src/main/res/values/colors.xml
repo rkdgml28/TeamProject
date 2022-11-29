@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yello">#FFFFFF00</color>
     <color name="main_color">#E6E6A6</color>
+    <color name="light_gray">#CCCCCC</color>
+    <color name="skyblue">#CCFFFF</color>
 </resources>
