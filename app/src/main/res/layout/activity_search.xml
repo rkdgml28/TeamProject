@@ -302,7 +302,6 @@
             android:text="상세경로"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:background=""
             app:layout_constraintBottom_toTopOf="@+id/tv_test_route"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
