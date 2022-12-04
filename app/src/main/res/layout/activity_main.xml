@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:layout_weight="6"
             android:padding="10dp"
-            android:background="@drawable/search_box"
+            android:background="@drawable/box_search"
             android:textColor="@color/black"/>
 
         <ImageView
@@ -135,7 +135,7 @@
         app:layout_constraintEnd_toEndOf="@+id/fab_road"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/fab_road"
-        app:srcCompat="@drawable/fab_seach"
+        app:srcCompat="@drawable/fab_search"
         android:backgroundTint="@color/main_color"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
