@@ -20,6 +20,9 @@
             android:name=".RoadActivity"
             android:exported="true" />
         <activity
+            android:name=".BookmarkActivity"
+            android:exported="true" />
+        <activity
             android:name=".SearchActivity"
             android:exported="true" />
         <activity

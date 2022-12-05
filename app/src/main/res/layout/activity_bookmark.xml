@@ -30,7 +30,7 @@
             android:textColor="@color/black" />
 
         <ImageView
-            android:id="@+id/main_search"
+            android:id="@+id/bookmark_search"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="2"
@@ -70,110 +70,129 @@
     </LinearLayout>
 
 
+<!--        <LinearLayout-->
+<!--        android:id="@+id/linearLayout3"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/linearLayout2"-->
+<!--        >-->
 
+
+<!--        <TextView-->
+<!--            android:id="@+id/textview"-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="102"-->
+<!--            android:textSize="40dp" />-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/ImageBtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:backgroundTint="@color/white"-->
+<!--            android:src="@drawable/minus" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <View-->
+<!--        android:id="@+id/view2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"-->
+<!--        android:background="@color/black"-->
+<!--        />-->
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout4"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/linearLayout3"-->
+<!--        >-->
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/textview2"-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="405"-->
+<!--            android:textSize="40dp" />-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/ImageBtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:backgroundTint="@color/white"-->
+<!--            android:src="@drawable/minus" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <View-->
+<!--        android:id="@+id/view3"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"-->
+<!--        android:background="@color/black"-->
+<!--        />-->
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout5"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/linearLayout4"-->
+<!--        >-->
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/textview3"-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="102"-->
+<!--            android:textSize="40dp" />-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/ImageBtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:backgroundTint="@color/white"-->
+<!--            android:src="@drawable/minus" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <View-->
+<!--        android:id="@+id/view4"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"-->
+<!--        android:background="@color/black"-->
+<!--        />-->
 
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout2"
-        >
 
+        android:id="@+id/linearl"
+        android:layout_width="410dp"
+        android:layout_height="550dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="194dp"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/textview"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:text="102"
-            android:textSize="40dp" />
-
-        <ImageButton
-            android:id="@+id/ImageBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/minus" />
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recyclerview"
+            app:layout_constraintTop_toBottomOf="@id/view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </LinearLayout>
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        android:background="@color/black"
-        />
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout3"
-        >
-
-
-        <TextView
-            android:id="@+id/textview2"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:text="405"
-            android:textSize="40dp" />
-
-        <ImageButton
-            android:id="@+id/ImageBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/minus" />
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/view3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-        android:background="@color/black"
-        />
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout4"
-        >
-
-
-        <TextView
-            android:id="@+id/textview3"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:text="102"
-            android:textSize="40dp" />
-
-        <ImageButton
-            android:id="@+id/ImageBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/minus" />
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/view4"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        android:background="@color/black"
-        />
-
 
 
 
