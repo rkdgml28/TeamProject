@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener{
@@ -22,13 +24,23 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     Boolean isAllFabsVisible;
     EditText edit_start, edit_stopover, edit_finish;
     ImageView btn_search, btn_change;
-    Button btnArrivetime;
+    Button btnArrivetime , btnMintime, btnMincost, btnMintran;
     CheckBox cb_stopover;
-    TextView tv_stop;
+    TextView tv_stop, tv_route, auto_time, auto_cost, auto_tran, startText, arriveText;
 
     long mNow;
     Date mDate;
     SimpleDateFormat mFormat = new SimpleDateFormat("hh:mm:ss");
+
+    Driver driver = new Driver();
+    int [] index;
+
+    String start;
+    String arrive;
+    String layover;
+
+    String[] reverse;
+    int[] time;
 
 
     private String getTime(){
@@ -50,7 +62,22 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         btn_search = findViewById(R.id.btn_search);
         cb_stopover = findViewById(R.id.cb_stopover);
         btn_change = findViewById(R.id.search_change);
+
+        btnMincost = findViewById(R.id.btnMinCost);
+        btnMintime = findViewById(R.id.btnMinTime);
+        btnMintran = findViewById(R.id.btnMinTran);
+
+        startText = findViewById(R.id.startText);
+        arriveText = findViewById(R.id.arriveText);
+
         tv_stop = findViewById(R.id.tv_stop);
+        tv_route = findViewById(R.id.tv_test_route);
+
+        auto_cost = findViewById(R.id.auto_cost);
+        auto_time = findViewById(R.id.auto_time);
+        auto_tran = findViewById(R.id.auto_transfer);
+
+
 
         // FAB button
         btnSubway = findViewById(R.id.fab_subway);
@@ -87,11 +114,16 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 isAllFabsVisible = false;
             }
         });
+
         btnHome.setOnClickListener(this);
         btnSetting.setOnClickListener(this);
         btnSearch.setOnClickListener(this);
         btnStar.setOnClickListener(this);
         btnRoad.setOnClickListener(this);
+
+        btnMincost.setOnClickListener(this);
+        btnMintime.setOnClickListener(this);
+        btnMintran.setOnClickListener(this);
 
         btn_change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,19 +141,44 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
 
+        // 검색 버튼 클릭
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String start = edit_start.getText().toString();
-                String stopover = edit_start.getText().toString();
-                String finish = edit_start.getText().toString();
+                String stopover = edit_stopover.getText().toString();
+                String finish = edit_finish.getText().toString();
 
                 if(start.length() == 0){
                     Toast.makeText(getApplicationContext(), "출발역을 입력하세요.", Toast.LENGTH_SHORT).show();
                 }
-                else if (finish.length() == 0){
+                if (finish.length() == 0){
                     Toast.makeText(getApplicationContext(), "도착역을 입력하세요.", Toast.LENGTH_SHORT).show();
                 }
+
+                startText.setText(start);
+                arriveText.setText(finish);
+                driver.setFromTo(start, finish);
+
+                TransferDij.test.createList();
+                TransferDij.test.addLines();
+                TransferDij.test.addStatons();
+                index = TransferDij.bfs();
+
+                driver.inputTimeInfor();
+                if (stopover.equals("")){
+                    time = driver.d.convertTime(driver.d.getLowCost(start,finish));
+                    auto_time.setText(Integer.toString(time[0])+"시간 "+Integer.toString(time[1])+"분 "+Integer.toString(time[0])+"초 ");
+
+                    reverse = driver.d.getLowCostRoute(start, finish);
+                    tv_route.setText(Arrays.toString(reverse));
+                    driver.inputPriceInfor();
+                    auto_cost.setText(Integer.toString(driver.d.getCost_minTimeRoute(reverse)));
+                }
+                else{
+
+                }
+
             }
         });
 
@@ -160,6 +217,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         Intent intent;
+        driver.setFromTo(start,arrive);
+
         switch (view.getId()) {
             case R.id.fab_home:
                 intent = new Intent(this, MainActivity.class);
@@ -185,6 +244,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.main_option:
                 break;
+
         }
     }
 }
