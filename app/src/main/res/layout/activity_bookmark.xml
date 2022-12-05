@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -35,98 +35,149 @@
             android:layout_height="50dp"
             android:layout_weight="2"
             android:src="@drawable/ic_search"
-            android:tint="@color/black" />
+            app:tint="@color/black" />
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="vertical"
+        android:layout_marginTop="30sp"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="즐겨찾는 역"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="4dp"
+            tools:layout_editor_absoluteY="107dp"
+
+            />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="9dp"
+            android:background="@color/main_color"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="138dp" />
 
     </LinearLayout>
 
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="즐겨찾는 역"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="111dp"
 
-            />
 
-    <View
-        android:id="@+id/view"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="9dp"
-        android:background="@color/main_color"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="138dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="102"
-        android:textSize="20dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="189dp"/>
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout2"
+        >
 
 
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:text="102"
+            android:textSize="40dp" />
 
+        <ImageButton
+            android:id="@+id/ImageBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/minus" />
+
+    </LinearLayout>
 
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         android:background="@color/black"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="229dp" />
+        />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="203"
-        android:textSize="20dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="249dp" />
 
-    <View
-        android:id="@+id/view2"
+    <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="289dp" />
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout3"
+        >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="306"
-        android:textSize="20dp"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="308dp" />
+
+        <TextView
+            android:id="@+id/textview2"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:text="405"
+            android:textSize="40dp" />
+
+        <ImageButton
+            android:id="@+id/ImageBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/minus" />
+
+    </LinearLayout>
 
     <View
         android:id="@+id/view3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
         android:background="@color/black"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="348dp" />
+        />
 
-    <TextView
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="603"
-        android:textSize="20dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="364dp" />
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout4"
+        >
+
+
+        <TextView
+            android:id="@+id/textview3"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:text="102"
+            android:textSize="40dp" />
+
+        <ImageButton
+            android:id="@+id/ImageBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/minus" />
+
+    </LinearLayout>
 
     <View
         android:id="@+id/view4"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
         android:background="@color/black"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="404dp" />
+        />
+
+
+
+
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_subway"
@@ -138,7 +189,9 @@
         android:src="@drawable/fab_subway"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/main_color"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_setting"
@@ -149,7 +202,8 @@
         app:layout_constraintBottom_toTopOf="@+id/fab_subway"
         app:layout_constraintEnd_toEndOf="@+id/fab_subway"
         app:layout_constraintStart_toStartOf="@+id/fab_subway"
-        app:srcCompat="@drawable/fab_setting" />
+        app:srcCompat="@drawable/fab_setting"
+        android:backgroundTint="@color/main_color"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_home"
@@ -160,7 +214,8 @@
         app:layout_constraintBottom_toTopOf="@+id/fab_setting"
         app:layout_constraintEnd_toEndOf="@+id/fab_setting"
         app:layout_constraintStart_toStartOf="@+id/fab_setting"
-        app:srcCompat="@drawable/fab_home" />
+        app:srcCompat="@drawable/fab_home"
+        android:backgroundTint="@color/main_color"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_star"
@@ -171,7 +226,8 @@
         app:layout_constraintBottom_toTopOf="@+id/fab_home"
         app:layout_constraintEnd_toEndOf="@+id/fab_home"
         app:layout_constraintStart_toStartOf="@+id/fab_home"
-        app:srcCompat="@drawable/fab_star" />
+        app:srcCompat="@drawable/fab_star"
+        android:backgroundTint="@color/main_color"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_road"
@@ -182,7 +238,8 @@
         app:layout_constraintBottom_toTopOf="@+id/fab_star"
         app:layout_constraintEnd_toEndOf="@+id/fab_star"
         app:layout_constraintStart_toStartOf="@+id/fab_star"
-        app:srcCompat="@drawable/fab_road" />
+        app:srcCompat="@drawable/fab_road"
+        android:backgroundTint="@color/main_color"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_search"
@@ -194,8 +251,11 @@
         app:layout_constraintEnd_toEndOf="@+id/fab_road"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/fab_road"
-        app:srcCompat="@drawable/fab_search" />
+        app:srcCompat="@drawable/fab_search"
+        android:backgroundTint="@color/main_color"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
