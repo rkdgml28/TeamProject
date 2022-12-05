@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,7 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements View.OnClickListener{
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
     Boolean isAllFabsVisible;
     EditText edit_start, edit_stopover, edit_finish;
@@ -48,7 +49,9 @@ public class SearchActivity extends AppCompatActivity {
         btn_search = findViewById(R.id.btn_search);
         cb_stopover = findViewById(R.id.cb_stopover);
         btn_change = findViewById(R.id.search_change);
+
         // FAB button
+        btnSubway = findViewById(R.id.fab_subway);
         btnSetting = findViewById(R.id.fab_setting);
         btnHome = findViewById(R.id.fab_home);
         btnRoad = findViewById(R.id.fab_road);
@@ -82,6 +85,11 @@ public class SearchActivity extends AppCompatActivity {
                 isAllFabsVisible = false;
             }
         });
+        btnHome.setOnClickListener(this);
+        btnSetting.setOnClickListener(this);
+        btnSearch.setOnClickListener(this);
+        btnStar.setOnClickListener(this);
+        btnRoad.setOnClickListener(this);
 
         btn_change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,8 +149,36 @@ public class SearchActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
-
-
+    @Override
+    public void onClick(View view) {
+        Intent intent;
+        switch (view.getId()) {
+            case R.id.fab_home:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.fab_setting:
+                this.registerForContextMenu(btnSetting);
+                openContextMenu(btnSetting);
+                unregisterForContextMenu(btnSetting);
+                break;
+            case R.id.fab_search:
+                intent = new Intent(this, SearchActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.fab_star:
+                break;
+            case R.id.fab_road:
+                intent = new Intent(this, RoadActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.main_option:
+                break;
+        }
     }
 }
