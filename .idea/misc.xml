@@ -3,37 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Androidstudio/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/box_line.xml" value="0.241" />
+        <entry key="..\:/Androidstudio/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/box_search.xml" value="0.241" />
         <entry key="..\:/Androidstudio/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/ic_search.xml" value="0.1905" />
         <entry key="..\:/Androidstudio/AndroidStudioProjects/TeamProject/app/src/main/res/layout/activity_bookmark.xml" value="0.29010416666666666" />
         <entry key="..\:/Androidstudio/AndroidStudioProjects/TeamProject/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/Androidstudio/AndroidStudioProjects/TeamProject/app/src/main/res/layout/activity_road.xml" value="0.19746376811594202" />
         <entry key="..\:/Androidstudio/AndroidStudioProjects/TeamProject/app/src/main/res/layout/activity_route.xml" value="0.29010416666666666" />
-        <entry key="..\:/Androidstudio/AndroidStudioProjects/TeamProject/app/src/main/res/layout/activity_search.xml" value="0.29010416666666666" />
+        <entry key="..\:/Androidstudio/AndroidStudioProjects/TeamProject/app/src/main/res/layout/activity_search.xml" value="0.16666666666666666" />
+        <entry key="..\:/Androidstudio/AndroidStudioProjects/TeamProject/app/src/main/res/layout/activity_station.xml" value="0.19746376811594202" />
         <entry key="..\:/Androidstudio/AndroidStudioProjects/TeamProject/app/src/main/res/layout/menu.xml" value="0.1328125" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/box_line.xml" value="0.1235" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/box_search.xml" value="0.1355" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/ic_baseline_remove_24.xml" value="0.1995" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/ic_change.xml" value="0.1" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/ic_green_circle.xml" value="0.1" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/ic_list.xml" value="0.1" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/ic_main_circle.xml" value="0.1995" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/ic_next.xml" value="0.1" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/ic_prev.xml" value="0.1" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/ic_sky_circle.xml" value="0.1" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/ic_yellow_circle.xml" value="0.1" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/drawable/search_box.xml" value="0.1335" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/layout/activity_bookmark.xml" value="0.2" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/layout/activity_load.xml" value="0.2" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/layout/activity_road.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/layout/activity_route.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/layout/activity_search.xml" value="0.264" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/layout/activity_station.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/menu/menu.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/mipmap-anydpi-v26/ic_easyway_round.xml" value="0.1235" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.157" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TeamProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.12" />
         <entry key="..\:/Users/Administrator/Desktop/TeamProject/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>

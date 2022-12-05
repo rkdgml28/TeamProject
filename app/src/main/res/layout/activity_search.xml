@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,50 +17,78 @@
         <ImageView
             android:id="@+id/search_change"
             android:layout_width="50dp"
-            android:layout_height="match_parent"
+            android:layout_height="60dp"
             android:layout_weight="2"
-            android:src="@drawable/ic_change" />
+            android:src="@drawable/ic_change"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <LinearLayout
-            android:layout_width="300dp"
+            android:id="@+id/layout_search1"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginVertical="10dp"
             android:layout_weight="6"
-            android:layout_marginVertical="10dp">
+            android:orientation="vertical"
+            android:weightSum="3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/search_change"
+            app:layout_constraintTop_toTopOf="parent">
 
             <EditText
                 android:id="@+id/edit_start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="출발지 입력"
-                android:padding="7dp"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/box_search"/>
+                android:layout_weight="1"
+                android:background="@drawable/box_search"
+                android:padding="7dp"
+                android:text="출발지 입력" />
+
             <EditText
                 android:id="@+id/edit_stopover"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="경유지 입력"
-                android:padding="7dp"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/box_search"/>
+                android:visibility="invisible"
+                android:background="@drawable/box_search"
+                android:padding="7dp"
+                android:text="경유지 입력" />
+
             <EditText
                 android:id="@+id/edit_finish"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="도착지 입력"
-                android:padding="7dp"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/box_search"/>
+                android:layout_weight="1"
+                android:background="@drawable/box_search"
+                android:padding="7dp"
+                android:text="도착지 입력" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/btn_search"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_weight="2"
             android:src="@drawable/ic_search"
-            app:layout_constraintLeft_toRightOf="@+id/layout_search" />
-    </LinearLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/layout_search1"
+            app:layout_constraintStart_toEndOf="@+id/layout_search1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/cb_stopover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="경유지"
+            app:layout_constraintBottom_toTopOf="@+id/btn_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/layout_search1"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/block1"
@@ -111,6 +139,7 @@
             android:text="환승횟수: "  />
 
         <Button
+            android:id="@+id/btnArrivetime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
@@ -237,11 +266,12 @@
                 </FrameLayout>
 
                 <ImageView
-                    android:id="@+id/layoverImage"
+                    android:id="@+id/circle_stopover"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/ic_green_circle"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center_vertical"
+                    android:visibility="invisible"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -265,11 +295,12 @@
 
 
                     <TextView
-                        android:id="@+id/layoverText"
+                        android:id="@+id/tv_stopover"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="90dp"
                         android:gravity="center"
+                        android:visibility="invisible"
                         android:text="경유역"
                         android:textStyle="bold"
                         android:textSize="15sp"
@@ -320,6 +351,79 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_subway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/sub_color1"
+        android:src="@drawable/fab_subway"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fab_subway"
+        app:layout_constraintEnd_toEndOf="@+id/fab_subway"
+        app:layout_constraintStart_toStartOf="@+id/fab_subway"
+        app:srcCompat="@drawable/fab_setting" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fab_setting"
+        app:layout_constraintEnd_toEndOf="@+id/fab_setting"
+        app:layout_constraintStart_toStartOf="@+id/fab_setting"
+        app:srcCompat="@drawable/fab_home" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fab_home"
+        app:layout_constraintEnd_toEndOf="@+id/fab_home"
+        app:layout_constraintStart_toStartOf="@+id/fab_home"
+        app:srcCompat="@drawable/fab_star" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_road"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fab_star"
+        app:layout_constraintEnd_toEndOf="@+id/fab_star"
+        app:layout_constraintStart_toStartOf="@+id/fab_star"
+        app:srcCompat="@drawable/fab_road" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/sub_color1"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fab_road"
+        app:layout_constraintEnd_toEndOf="@+id/fab_road"
+        app:layout_constraintStart_toStartOf="@+id/fab_road"
+        app:srcCompat="@drawable/fab_search" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_subway"
