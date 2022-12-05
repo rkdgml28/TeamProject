@@ -1,9 +1,7 @@
 package com.app.teamproject;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -94,6 +92,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.fab_star:
+                intent = new Intent(this, BookmarkActivity.class);
+                startActivity(intent);
                 break;
             case R.id.fab_road:
                 intent = new Intent(this, RoadActivity.class);

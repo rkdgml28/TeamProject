@@ -4,12 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -24,6 +24,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     ImageView btn_search, btn_change;
     Button btnArrivetime;
     CheckBox cb_stopover;
+    TextView tv_stop;
 
     long mNow;
     Date mDate;
@@ -49,6 +50,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         btn_search = findViewById(R.id.btn_search);
         cb_stopover = findViewById(R.id.cb_stopover);
         btn_change = findViewById(R.id.search_change);
+        tv_stop = findViewById(R.id.tv_stop);
 
         // FAB button
         btnSubway = findViewById(R.id.fab_subway);
@@ -133,8 +135,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
                         if (checked){
                             edit_stopover.setVisibility(View.VISIBLE);
+                            tv_stop.setVisibility(View.VISIBLE);
                         }else{
                             edit_stopover.setVisibility(View.INVISIBLE);
+                            tv_stop.setVisibility(View.INVISIBLE);
                         }
                 }
             }
@@ -149,6 +153,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 }
             }
         });
+
+
     }
 
     @Override
