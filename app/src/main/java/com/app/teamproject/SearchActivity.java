@@ -142,13 +142,14 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
 
+        String start = edit_start.getText().toString();
+        String stopover = edit_stopover.getText().toString();
+        String finish = edit_finish.getText().toString();
+
         // 검색 버튼 클릭
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String start = edit_start.getText().toString();
-                String stopover = edit_stopover.getText().toString();
-                String finish = edit_finish.getText().toString();
 
                 if(start.length() == 0){
                     Toast.makeText(getApplicationContext(), "출발역을 입력하세요.", Toast.LENGTH_SHORT).show();
@@ -201,6 +202,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
 
+
+
         //경유지 선택
         cb_stopover.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,6 +220,80 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                             edit_stopover.setVisibility(View.INVISIBLE);
                             tv_stop.setVisibility(View.INVISIBLE);
                         }
+                }
+            }
+        });
+
+        btnMincost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (stopover.equals("")){
+                    time = driver.d.convertTime(driver.d.getLowCost(start,finish));
+                    auto_time.setText(Integer.toString(time[0])+"시간 "+Integer.toString(time[1])+"분 "+Integer.toString(time[0])+"초 ");
+
+                    reverse = driver.d.getLowCostRoute(start, finish);
+                    tv_route.setText(Arrays.toString(reverse));
+                    driver.inputPriceInfor();
+                    auto_cost.setText(Integer.toString(driver.d.getCost_minTimeRoute(reverse)));
+                }
+                else{
+                    int time_temp = driver.d.getLowCost(start,stopover)+ driver.d.getLowCost(stopover,finish);
+                    time = driver.d.convertTime(time_temp);
+                    auto_time.setText(Integer.toString(time[0])+"시간 "+Integer.toString(time[1])+"분 "+Integer.toString(time[0])+"초 ");
+                    reverse = driver.d.getLowCostRoute(start,stopover);
+                    String route_temp =Arrays.toString(reverse)+"\n";
+                    driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
+
+                    int cost = driver.d.getCost_minTimeRoute(reverse);
+                    driver.inputTimeInfor();
+                    reverse = driver.d.getLowCostRoute(stopover,finish);
+                    route_temp += Arrays.toString(Arrays.copyOfRange(reverse, 1, reverse.length));
+
+                    driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
+                    cost += driver.d.getCost_minTimeRoute(reverse);
+                    auto_cost.setText(Integer.toString(cost));
+                    // 비용 부분
+                    tv_route.setText(route_temp);
+                    stopoverText.setText(stopover);
+                    stopoverText.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        //최소 시간
+        btnMintime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (stopover.equals("")){
+                    auto_cost.setText(Integer.toString(driver.d.getLowCost(start, finish)));
+                    reverse = driver.d.getLowCostRoute(start, finish);
+                    tv_route.setText(Arrays.toString(reverse));
+
+                    driver.inputTimeInfor(); // 최소비용 경로의 시간을 구해야 하므로 가중치로 시간을 입력한다.
+                    time = driver.d.convertTime(driver.d.getTime_minPriceRoute(reverse));
+                    auto_time.setText(Integer.toString(time[0])+"시간 "+Integer.toString(time[1])+"분 "+Integer.toString(time[0])+"초 ");
+
+                }
+                else{
+                    reverse = driver.d.getLowCostRoute(start, finish);
+
+                    int t = driver.d.getLowCost(start, stopover) +  driver.d.getLowCost(stopover, finish);
+                    String temp1 = Integer.toString(t);
+                    auto_cost.setText(temp1);
+
+                    reverse = driver.d.getLowCostRoute(start,stopover);
+                    String route_temp =Arrays.toString(reverse)+"\n";
+                    reverse = driver.d.getLowCostRoute(stopover,finish);
+                    route_temp += Arrays.toString(reverse);
+                    tv_route.setText(route_temp);
+
+                    driver.inputTimeInfor(); // 최소비용 경로의 시간을 구해야 하므로 가중치로 시간을 입력한다.
+                    reverse = driver.d.getLowCostRoute(start,stopover);
+                    time = driver.d.convertTime(driver.d.getTime_minPriceRoute(reverse)+ driver.d.getTime_minPriceRoute(driver.d.getLowCostRoute(stopover,finish)));
+                    auto_time.setText(Integer.toString(time[0])+"시간 "+Integer.toString(time[1])+"분 "+Integer.toString(time[0])+"초 ");
+
+                    stopoverText.setText(stopover);
+                    stopoverText.setVisibility(View.VISIBLE);
                 }
             }
         });
