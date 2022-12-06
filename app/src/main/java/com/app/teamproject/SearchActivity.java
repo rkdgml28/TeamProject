@@ -26,7 +26,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     ImageView btn_search, btn_change;
     Button btnArrivetime , btnMintime, btnMincost, btnMintran;
     CheckBox cb_stopover;
-    TextView tv_stop, tv_route, auto_time, auto_cost, auto_tran, startText, arriveText;
+    TextView tv_stop, tv_route, auto_time, auto_cost, auto_tran, startText, stopoverText, arriveText;
 
     long mNow;
     Date mDate;
@@ -68,6 +68,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         btnMintran = findViewById(R.id.btnMinTran);
 
         startText = findViewById(R.id.startText);
+        stopoverText = findViewById(R.id.stopoverText);
         arriveText = findViewById(R.id.arriveText);
 
         tv_stop = findViewById(R.id.tv_stop);
@@ -176,7 +177,25 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     auto_cost.setText(Integer.toString(driver.d.getCost_minTimeRoute(reverse)));
                 }
                 else{
+                    int time_temp = driver.d.getLowCost(start,stopover)+ driver.d.getLowCost(stopover,finish);
+                    time = driver.d.convertTime(time_temp);
+                    auto_time.setText(Integer.toString(time[0])+"시간 "+Integer.toString(time[1])+"분 "+Integer.toString(time[0])+"초 ");
+                    reverse = driver.d.getLowCostRoute(start,stopover);
+                    String route_temp =Arrays.toString(reverse)+"\n";
+                    driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
 
+                    int cost = driver.d.getCost_minTimeRoute(reverse);
+                    driver.inputTimeInfor();
+                    reverse = driver.d.getLowCostRoute(stopover,finish);
+                    route_temp += Arrays.toString(Arrays.copyOfRange(reverse, 1, reverse.length));
+
+                    driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
+                    cost += driver.d.getCost_minTimeRoute(reverse);
+                    auto_cost.setText(Integer.toString(cost));
+                    // 비용 부분
+                    tv_route.setText(route_temp);
+                    stopoverText.setText(stopover);
+                    stopoverText.setVisibility(View.VISIBLE);
                 }
 
             }
