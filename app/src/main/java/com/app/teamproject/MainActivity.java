@@ -131,6 +131,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.fab_star:
+                intent = new Intent(this, BookmarkActivity.class);
+                startActivity(intent);
                 break;
             case R.id.fab_road:
                 intent = new Intent(this, RoadActivity.class);

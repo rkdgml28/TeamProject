@@ -113,6 +113,9 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.fab_star:
+                intent = new Intent(this, BookmarkActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.fab_road:
                 intent = new Intent(this, RoadActivity.class);

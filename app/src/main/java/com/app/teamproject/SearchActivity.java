@@ -182,6 +182,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
 
+        //경유지 선택
         cb_stopover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -236,13 +237,14 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.fab_star:
+                intent = new Intent(this, BookmarkActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.fab_road:
                 intent = new Intent(this, RoadActivity.class);
                 startActivity(intent);
                 finish();
-                break;
-            case R.id.main_option:
                 break;
         }
     }
