@@ -15,10 +15,9 @@ public class Driver {
 		start = from; end = to;
 		TransferDij.from = from; TransferDij.to = to;
 	}
-	
-	// ���� ����ġ: �ð�(��)
+
 	public void inputTimeInfor() {
-		d.input("101","102",200); //101 -> 102�� �ð�:200
+		d.input("101","102",200); //101 -> 102    ð :200
 		d.input("102","103",300);
 		d.input("103","104",1000);
 		d.input("104","105",500);
@@ -27,7 +26,7 @@ public class Driver {
 		d.input("107","108",400);
 		d.input("108","109",800);
 		d.input("109","110",900);
-		d.input("110","111",500); 
+		d.input("110","111",500);
 		//line11
 		d.input("111","112",1000);
 		d.input("112","113",2000);
@@ -167,15 +166,15 @@ public class Driver {
 		d.input("902","119",430);
 		d.input("119","903",1000);
 		d.input("903","702",150);
-		d.input("702","904",590);
+		d.input("702","904",500);
 		d.input("904","621",250);
 		d.input("621","211",300);
 		//line140
 	}
- 	
-	// ���� ����ġ: ���(��)
+
+	//          ġ:    (  )
 	public void inputPriceInfor() {
-		d.input("101","102",200); //101 -> 102�� ��� : 200
+		d.input("101","102",200); //101 -> 102       : 200
 		d.input("102","103",300);
 		d.input("103","104",500);
 		d.input("104","105",340);
@@ -184,7 +183,7 @@ public class Driver {
 		d.input("107","108",650);
 		d.input("108","109",200);
 		d.input("109","110",430);
-		d.input("110","111",120); 
+		d.input("110","111",120);
 		//line11
 		d.input("111","112",890);
 		d.input("112","113",800);
@@ -291,7 +290,7 @@ public class Driver {
 		d.input("620","621",280);
 		d.input("621","622",800);
 		d.input("622","601",1000);
-		d.input("202","303",200);
+		d.input("202","303",2000);
 		d.input("303","503",700);
 		d.input("503","601",650);
 		d.input("601","701",440);
