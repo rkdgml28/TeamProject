@@ -39,7 +39,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     String mode = "";
     public static Context mContext;
     View layout_inform;
-    String mode = "MinTime";
 
 
 
@@ -68,11 +67,18 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     //현재시간 불러오기 함수
     private String getTime() {
-        mNow = System.currentTimeMillis();
-        mDate = new Date(mNow);
-        return mFormat.format(mDate);
-    }
+        String today = null;
 
+        Date date = new Date();
+        // 포맷변경 ( 년월일 시분초)
+        SimpleDateFormat sdformat = new SimpleDateFormat("HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        today = sdformat.format(cal.getTime());
+
+        return today;
+    }
+    //도착시간 더하기 함수
     private String getCTime() {
         String today = null;
 
