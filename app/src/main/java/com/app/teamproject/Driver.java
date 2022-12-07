@@ -15,10 +15,9 @@ public class Driver {
 		start = from; end = to;
 		TransferDij.from = from; TransferDij.to = to;
 	}
-	
-	// ���� ����ġ: �ð�(��)
+
 	public void inputTimeInfor() {
-		d.input("101","102",200); //101 -> 102�� �ð�:200
+		d.input("101","102",200); //101 -> 102    ð :200
 		d.input("102","103",300);
 		d.input("103","104",1000);
 		d.input("104","105",500);
@@ -27,7 +26,7 @@ public class Driver {
 		d.input("107","108",400);
 		d.input("108","109",800);
 		d.input("109","110",900);
-		d.input("110","111",500); 
+		d.input("110","111",500);
 		//line11
 		d.input("111","112",1000);
 		d.input("112","113",2000);
@@ -172,10 +171,10 @@ public class Driver {
 		d.input("621","211",300);
 		//line140
 	}
- 	
-	// ���� ����ġ: ���(��)
+
+	//          ġ:    (  )
 	public void inputPriceInfor() {
-		d.input("101","102",200); //101 -> 102�� ��� : 200
+		d.input("101","102",200); //101 -> 102       : 200
 		d.input("102","103",300);
 		d.input("103","104",500);
 		d.input("104","105",340);
@@ -184,7 +183,7 @@ public class Driver {
 		d.input("107","108",650);
 		d.input("108","109",200);
 		d.input("109","110",430);
-		d.input("110","111",120); 
+		d.input("110","111",120);
 		//line11
 		d.input("111","112",890);
 		d.input("112","113",800);
