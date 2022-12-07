@@ -1,5 +1,7 @@
 package com.app.teamproject;
 
+import android.util.Log;
+
 import java.util.*;
 
 public class TransferDij { //2021 ���� , �迭�� ������ �Ѿ�� ���� �߻� ArrayIndexOutOfBoundsException
@@ -119,21 +121,28 @@ public class TransferDij { //2021 ���� , �迭�� ������
 				 temp1.add(j);
 			}
 		}
-		
+		Log.v("temp", temp.toString());
+		Log.v("temp1", temp1.toString());
+
+
 		//������ ��ġ �� ������� ������ ���� ���̰� ����� ��
-		int index = 0;
-		int index1 = 1;
+		int index = temp.get(0);
+		int index1 = temp1.get(0);
+		int degree = Math.abs(temp.get(0)- temp1.get(0));
 		
 		for(int n = 0; n < temp.size(); n++) {
 			for(int m = 0; m < temp1.size(); m++) {
 				//-1�� �ڲ� ���ԵǸ� ��˻� �ϵ��� ���� ��;
-				if(Math.abs(temp.get(n)- temp1.get(m)) <27){
+				if(Math.abs(temp.get(n)- temp1.get(m)) < degree){
 					index = temp.get(n); index1 = temp1.get(m);
+					degree = Math.abs(temp.get(n)- temp1.get(m));
 					break;
 				}
 			}
 		}
-				
+		Log.v("index", String.valueOf(index));
+		Log.v("index1", String.valueOf(index1));
+
 		if(index > index1) {
 			for(int k = index; k >= index1; k--) {
 				transferRoute.add(vertex_lines[k]);
