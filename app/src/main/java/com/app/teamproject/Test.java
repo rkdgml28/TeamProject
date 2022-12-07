@@ -328,8 +328,8 @@ class Test {
 		int temp = getIndex(arrival);
 		int[] distance = getDistance(departure);
 
-		toast = Toast.makeText(MainActivity.ApplicationContext(), "도착하면 알람이 울립니다.\n알람은 5초 뒤에 자동으로 꺼집니다.",Toast.LENGTH_LONG);
-		toast.show();
+//		toast = Toast.makeText(MainActivity.ApplicationContext(), "도착하면 알람이 울립니다.\n알람은 5초 뒤에 자동으로 꺼집니다.",Toast.LENGTH_LONG);
+//		toast.show();
 		//timer run
 		TimerTask startTimerTask = new TimerTask() {
 			@Override
