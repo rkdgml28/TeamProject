@@ -3,6 +3,7 @@ package com.app.teamproject;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,12 +37,14 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview,parent,false);
-        return new ViewHolder(view);
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.onBind(favstation.get(position));
+        holder.name.setText(favstation.get(position).getName());
     }
 
     public void setFavStationList(ArrayList<BookmarkStation> list){
@@ -65,6 +68,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
             this.name = (TextView) itemView.findViewById(R.id.textview);
             this.btn_remove=(ImageButton) itemView.findViewById(R.id.imageButton);
 
+            itemView.setOnCreateContextMenuListener(this);
         }
 
         @Override
@@ -78,28 +82,27 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
 
         public void onBind(BookmarkStation s) {
             fav.setImageResource(s.getResourceId());
-            name.setText(s.getName());
         }
 
         private final MenuItem.OnMenuItemClickListener onEditMenu = new MenuItem.OnMenuItemClickListener() {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-
                 switch (item.getItemId()) {
                     // 상세정보
                     case 1001:
-                        Intent intent = new Intent(context, MainActivity.class);
+                        Intent intent = new Intent(context, StationActivity.class);
+//                        intent.putExtra("name", String.valueOf(name));
+//                        Log.v("putextra", String.valueOf(name));
                         context.startActivity(intent);
                         break;
 
                     // 삭제
                     case 1002:
-                        stations.remove(getAdapterPosition());
+                        favstation.remove(getAdapterPosition());
                         notifyItemRemoved(getAdapterPosition());
-                        notifyItemRangeChanged(getAdapterPosition(), stations.size());
+                        notifyItemRangeChanged(getAdapterPosition(), favstation.size());
                         break;
-
                 }
                 return true;
             }

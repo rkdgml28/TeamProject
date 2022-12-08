@@ -37,7 +37,8 @@
             android:layout_height="50dp"
             android:layout_weight="2"
             android:src="@drawable/ic_search"
-            android:tint="@color/black" />
+            android:clickable="true"
+            app:tint="@color/sub_color3" />
 
 
     </LinearLayout>
