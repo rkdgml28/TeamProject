@@ -26,6 +26,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
     ImageView search, iv_main;
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             "701", "702", "703", "704", "705", "706", "707",
             "801", "802", "803", "804", "805", "806",
             "901", "902", "903", "904"};
+
+    ArrayList<String> arr = new ArrayList<>();
 
     private static Context context;
     private ScaleGestureDetector mScaleGestureDetector;
@@ -73,6 +77,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         matrix = new Matrix();
         savedMatrix = new Matrix();
+
+        for (int i = 0; i < 111; i++){
+            arr.add(stations[i]);
+        }
 
         linear_main = findViewById(R.id.linear_main);
         search_et = findViewById(R.id.main_search_et);
@@ -128,6 +136,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         iv_main.setOnTouchListener(onTouch);
         iv_main.setScaleType(ImageView.ScaleType.MATRIX);
 //        mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
+
+        search.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                if (search_et.getText().toString().equals("")){
+                    Toast.makeText(context, "역을 입력하세요.", Toast.LENGTH_SHORT).show();
+                }
+                else if(!arr.contains(search_et.getText().toString())){
+                    Toast.makeText(context, "없는 역입니다.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    String s = search_et.getText().toString();
+                    Intent intent = new Intent(context, StationActivity.class);
+                    startActivity(intent);
+                }
+
+            }
+        });
     }
 
     @Override
