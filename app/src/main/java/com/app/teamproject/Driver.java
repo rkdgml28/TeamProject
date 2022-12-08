@@ -3,11 +3,13 @@ package com.app.teamproject;
 public class Driver {
 	
 	Test d;
+	Stations s;
 	static String start;
 	static String end;
 	
 	public Driver() {
-		d = new Test(111);
+		d = new Test(111); // ��尡 111���� �׷���
+		s = new Stations(111);
 	}
 	
 	//출발, 도착 설정
@@ -15,7 +17,7 @@ public class Driver {
 		start = from; end = to;
 		TransferDij.from = from; TransferDij.to = to;
 	}
-
+	// 시간
 	public void inputTimeInfor() {
 		d.input("101","102",200); //101 -> 102   시간:200
 		d.input("102","103",300);
@@ -172,7 +174,7 @@ public class Driver {
 		//line140
 	}
 
-
+	// 비용
 	public void inputPriceInfor() {
 		d.input("101","102",200); //101 -> 102  비용:200
 		d.input("102","103",300);
@@ -328,7 +330,19 @@ public class Driver {
 		d.input("621","211",440);
 		//line140
 	}
-	
+
+	public void inputStationInfo(){
+		s.input("101", "1호선, 2호선");
+		s.input("102", "1호선");
+		s.input("103", "1호선");
+
+
+
+
+	}
+
+
+
 	public static void main(String[] args) {
 		Driver driver = new Driver();
 

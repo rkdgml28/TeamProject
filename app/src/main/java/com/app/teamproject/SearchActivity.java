@@ -257,7 +257,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     index = TransferDij.bfs();
 
                     // 경유지 없을 때
-                    if (stopover.equals("")) {
+                    if (!isStopOverVisible) {
+                        stopoverText.setVisibility(View.INVISIBLE);
                         driver.inputTimeInfor();
                         time = driver.d.convertTime(driver.d.getLowCost(start, finish));
                         auto_time.setText(time[0] + "시간 " + time[1] + "분 " + time[2] + "초 ");
@@ -269,19 +270,20 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     }
                     // 경유지 있을 때
                     else {
+                        stopoverText.setVisibility(View.VISIBLE);
+                        driver.inputTimeInfor();
                         int time_temp = driver.d.getLowCost(start, stopover) + driver.d.getLowCost(stopover, finish);
                         time = driver.d.convertTime(time_temp);
                         auto_time.setText(time[0] + "시간 " + time[1] + "분 " + time[2] + "초 ");
                         reverse = driver.d.getLowCostRoute(start, stopover);
                         String route_temp = Arrays.toString(reverse) + "\n";
                         driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
-
+                        Log.v("reverse", Arrays.toString(reverse));
                         int cost = driver.d.getCost_minTimeRoute(reverse);
 
                         driver.inputTimeInfor();
                         reverse = driver.d.getLowCostRoute(stopover, finish);
-                        route_temp += Arrays.toString(Arrays.copyOfRange(reverse, 1, reverse.length));
-
+                        route_temp += Arrays.toString(reverse);
                         driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
                         cost += driver.d.getCost_minTimeRoute(reverse);
                         auto_cost.setText(Integer.toString(cost));
@@ -309,13 +311,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                             edit_stopover.setVisibility(View.VISIBLE);
                             tv_stop.setVisibility(View.VISIBLE);
                             edit_stopover.setText("");
-                            stopoverText.setVisibility(View.VISIBLE);
                             isStopOverVisible = true;
                         } else {
                             edit_stopover.setVisibility(View.INVISIBLE);
                             tv_stop.setVisibility(View.INVISIBLE);
-                            stopoverText.setVisibility(View.INVISIBLE);
-                            stopoverText.setText("");
+                            edit_stopover.setText("");
                             isStopOverVisible = false;
                         }
                 }
@@ -338,6 +338,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     driver.inputTimeInfor();
                     // 경유지 없을 때
                     if (stopover.equals("")) {
+                        stopoverText.setVisibility(View.INVISIBLE);
                         time = driver.d.convertTime(driver.d.getLowCost(start, finish));
                         auto_time.setText(time[0] + "시간 " + time[1] + "분 " + time[2] + "초 ");
 
@@ -390,6 +391,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     driver.inputPriceInfor();
                     // 경유지 없을 때
                     if (stopover.equals("")) {
+                        stopoverText.setVisibility(View.INVISIBLE);
                         auto_cost.setText(Integer.toString(driver.d.getLowCost(start, finish)));
                         reverse = driver.d.getLowCostRoute(start, finish);
                         tv_route.setText(Arrays.toString(reverse));
@@ -566,6 +568,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                             //System.out.println("경로 비용: " + driver.d.getCost_minTimeRoute(route) + "원");
                             cost += driver.d.getCost_minTimeRoute(route);
                             auto_cost.setText(Integer.toString(cost));
+                            auto_tran.setText("2");
                         }
                     }
                     // 경유지 있을 때
@@ -601,8 +604,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                         TransferDij.test.createList();
                         TransferDij.test.addLines();
                         TransferDij.test.addStatons();
-
-
                         int[] index2 = TransferDij.bfs();
 
                         // 환승 횟수
@@ -625,6 +626,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                             String temp2 = Arrays.asList(TransferDij.test.getTransStation(TransferDij.transferStation.get(index2[0]), TransferDij.transferStation.get(index2[1]))).toString();
                             String temp3 = Arrays.asList(TransferDij.test.getTransStation(TransferDij.transferStation.get(index2[1]), finish)).toString();
                             //detail_route.setText(temp1 + "\n"+ temp2 + "\n" + temp3);
+                            Log.v("route temp", temp1);
                             routeSum += temp1 + "\n" + temp2 + "\n" + temp3 + "\n";
                             transSum += 2;
 
