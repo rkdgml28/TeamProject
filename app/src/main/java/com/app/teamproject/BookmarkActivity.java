@@ -1,6 +1,7 @@
 package com.app.teamproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,6 +25,9 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
     Boolean isAllFabsVisible;
     ImageView bookmark_search;
+
+    SharedPreferences spref;
+    SharedPreferences.Editor editor;
 
     private List<String> stations = Arrays.asList("101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123",
             "201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217",
@@ -89,6 +93,8 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         btnStar.setOnClickListener(this);
         btnRoad.setOnClickListener(this);
 
+        spref = getSharedPreferences("gref", MODE_PRIVATE);
+        editor = spref.edit();
 
 
         final AutoCompleteTextView autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
@@ -121,12 +127,9 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
             public void onClick(View view) {
                 mfavStations.add(new BookmarkStation(R.drawable.favorite,target,R.drawable.minus));
                 mRecyclerAdapter.notifyDataSetChanged();
-
                 autoCompleteTextView.setText("");
             }
         });
-
-
     }
     @Override
     public void onClick(View view) {
