@@ -53,12 +53,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 "901", "902", "903", "904"};
 
 
-
-
-    long mNow;
-    Date mDate;
-    SimpleDateFormat mFormat = new SimpleDateFormat("hh:mm:ss");
-
     Driver driver = new Driver();
     int[] index;
 

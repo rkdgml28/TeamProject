@@ -17,20 +17,14 @@
         android:weightSum="10"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/main_option"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="2"
-            android:clickable="true"
-            android:src="@drawable/ic_list"
-            app:tint="@color/black" />
+
 
         <EditText
             android:id="@+id/main_search_et"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="6"
+            android:layout_weight="8"
+            android:layout_marginLeft="40dp"
             android:background="@drawable/box_search"
             android:padding="10dp"
             android:textColor="@color/black" />

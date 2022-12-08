@@ -34,6 +34,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
             "701","702","703","704","705","706","707",
             "801","802","803","804","805","806",
             "901","902","903","904");
+
     RecyclerView mRecyclerView;
     BookmarkAdapter mRecyclerAdapter;
     ArrayList mfavStations = new ArrayList<>();
@@ -160,8 +161,6 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
                 intent = new Intent(this, RoadActivity.class);
                 startActivity(intent);
                 finish();
-                break;
-            case R.id.main_option:
                 break;
         }
     }
