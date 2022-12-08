@@ -20,6 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 public class BookmarkActivity extends AppCompatActivity implements View.OnClickListener{
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
@@ -41,7 +42,8 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
 
     RecyclerView mRecyclerView;
     BookmarkAdapter mRecyclerAdapter;
-    ArrayList mfavStations = new ArrayList<>();
+    ArrayList<BookmarkStation> mfavStations = new ArrayList<>();
+    //Set<String> myStations = new Set<>();
     String target = "";
 
     @Override
@@ -126,8 +128,12 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View view) {
                 mfavStations.add(new BookmarkStation(R.drawable.favorite,target,R.drawable.minus));
-                mRecyclerAdapter.notifyDataSetChanged();
-                autoCompleteTextView.setText("");
+//                myStations.add(target);
+//                mRecyclerAdapter.notifyDataSetChanged();
+//                autoCompleteTextView.setText("");
+//                editor.putStringSet("bookmark", myStations);
+//                editor.apply();
+//                editor.commit();
             }
         });
     }
