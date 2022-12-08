@@ -415,9 +415,10 @@
             android:id="@+id/tv_test_route"
             android:layout_width="350dp"
             android:layout_height="100dp"
+
             android:background="@color/white"
             android:fontFamily="@font/suncheon_r"
-            android:gravity="center"
+            android:gravity="center|left"
             android:text="경로결과 \n 101 - 303 - 304 - 305 (경로예시)"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"

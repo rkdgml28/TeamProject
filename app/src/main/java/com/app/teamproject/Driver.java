@@ -7,17 +7,17 @@ public class Driver {
 	static String end;
 	
 	public Driver() {
-		d = new Test(111); // ��尡 111���� �׷���	
+		d = new Test(111);
 	}
 	
-	//���, ���� ����
+	//출발, 도착 설정
 	public void setFromTo(String from, String to) {
 		start = from; end = to;
 		TransferDij.from = from; TransferDij.to = to;
 	}
 
 	public void inputTimeInfor() {
-		d.input("101","102",200); //101 -> 102    ð :200
+		d.input("101","102",200); //101 -> 102   시간:200
 		d.input("102","103",300);
 		d.input("103","104",1000);
 		d.input("104","105",500);
@@ -172,9 +172,9 @@ public class Driver {
 		//line140
 	}
 
-	//          ġ:    (  )
+
 	public void inputPriceInfor() {
-		d.input("101","102",200); //101 -> 102       : 200
+		d.input("101","102",200); //101 -> 102  비용:200
 		d.input("102","103",300);
 		d.input("103","104",500);
 		d.input("104","105",340);
@@ -331,241 +331,196 @@ public class Driver {
 	
 	public static void main(String[] args) {
 		Driver driver = new Driver();
-		
-		//ȯ�� ������Ʈ
-		//305->620 
-		//505->610 
-		
+
+		//환승 블랙리스트
+		//305->620
+		//505->610
+
 		driver.setFromTo("505", "803");
-		
-		// 1. �ּҽð� ���
-		System.out.println("----------�ּҽð� ���----------");
-		
-		// 1) ����ġ�� �ð� �Է��ϱ�
+
+		// 1. 최소시간 경로
+		System.out.println("----------최소시간 경로----------");
+
+		// 1) 가중치로 시간 입력하기
 		driver.inputTimeInfor();
 		System.out.println(start + " -> " + end);
-		
-		// 2). �ּҽð� ���
+
+		// 2). 최소시간 출력
 		int[] time = driver.d.convertTime(driver.d.getLowCost(start, end));
-		System.out.println("�ּҽð�: " + time[0] + "�ð� " + time[1] + "�� " + time[2] + "��");
-		
-		// 3). �ּҽð� ��� ���
-		System.out.print("�ּҽð� ���: ");
+		System.out.println("최소시간: " + time[0] + "시간 " + time[1] + "분 " + time[2] + "초");
+
+		// 3). 최소시간 경로 출력
+		System.out.print("최소시간 경로: ");
 		String[] reverse = driver.d.getLowCostRoute(start, end);
 		driver.d.printArray(reverse);
-		
-		// 4) �ּҽð� ����� ��� ���
-		driver.inputPriceInfor(); // �ּҽð� ����� ����� ���ؾ� �ϹǷ� ����ġ�� ����� �Է��Ѵ�. 
-		int cost = driver.d.getCost_minTimeRoute(reverse);
-		System.out.println("�ּҽð� ��� ���: " + cost + "��");
-		
-		System.out.println();
-		
-		// 2. �ּҺ�� ���
-		System.out.println("----------�ּҺ�� ���----------");
 
-		// 1) ����ġ�� ��� �Է��ϱ�
+		// 4) 최소시간 경로의 비용 출력
+		driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
+		int cost = driver.d.getCost_minTimeRoute(reverse);
+		System.out.println("최소시간 경로 비용: " + cost + "원");
+
+		System.out.println();
+
+		// 2. 최소비용 경로
+		System.out.println("----------최소비용 경로----------");
+
+		// 1) 가중치로 비용 입력하기
 		driver.inputPriceInfor();
 		System.out.println(start + " -> " + end);
-		
-		// 2) �ּ� ��� ���
-		System.out.println("�ּҺ��: " + driver.d.getLowCost(start, end) + " ��");
-		
-		// 3) �ּҺ�� ��� ���
-		System.out.print("�ּҺ�� ���: ");
+
+		// 2) 최소 비용 출력
+		System.out.println("최소비용: " + driver.d.getLowCost(start, end) + " 원");
+
+		// 3) 최소비용 경로 출력
+		System.out.print("최소비용 경로: ");
 		reverse = driver.d.getLowCostRoute(start, end);
 		driver.d.printArray(reverse);
 
-		// 4) �ּҺ�� ����� �ð� ���
-		driver.inputTimeInfor(); // �ּҺ�� ����� �ð��� ���ؾ� �ϹǷ� ����ġ�� �ð��� �Է��Ѵ�.
+		// 4) 최소비용 경로의 시간 출력
+		driver.inputTimeInfor(); // 최소비용 경로의 시간을 구해야 하므로 가중치로 시간을 입력한다.
 		time = driver.d.convertTime(driver.d.getTime_minPriceRoute(reverse));
-		System.out.println("�ּҺ�� ��� �ð�: " + time[0] + "�ð� " + time[1] + "�� " + time[2] + "��");
+		System.out.println("최소비용 경로 시간: " + time[0] + "시간 " + time[1] + "분 " + time[2] + "초");
 
 		System.out.println();
-		
-		// 3. �߰����� ���(�ð��� �������� �߰������� ����)
-		System.out.println("----------�߰����� ���----------");
 
-		// 1) ����ġ�� �ð� �Է��ϱ�
-		driver.inputTimeInfor();
-		System.out.println(start + " -> " + end);
-		
-		// 2) �߰��� ���
-		String middle = driver.d.middlePoint(start, end);
-		System.out.println("�߰�����: " + middle + "\n");
-		
-		// 3) ��߿� ~ �߰��� ������ �ּҽð� ���
-		System.out.println(start + " -> " + middle);
-		time = driver.d.convertTime(driver.d.getLowCost(start, middle));
-		System.out.println("�ּҽð�: " + time[0] + "�ð� " + time[1] + "�� " + time[2] + "��");
-		
-		// 4) ��߿� ~ �߰��� ������ �ּҽð� ��� ���
-		System.out.print("�ּҽð� ���: ");
-		reverse = driver.d.getLowCostRoute(start, middle);
-		driver.d.printArray(reverse);
-		
-		// ��߿� ~ �߰��� ������ �ּҽð� ����� ��� ���
-		driver.inputPriceInfor(); // �ּҽð� ����� ����� ���ؾ� �ϹǷ� ����ġ�� ����� �Է��Ѵ�. 
-		cost = driver.d.getCost_minTimeRoute(reverse);
-		System.out.println("�ּҽð� ��� ���: " + cost + "��");
-		
-		System.out.println();
-		
-		// 5) �߰��� ~ ������������ �ּҽð� ���
-		driver.inputTimeInfor();
-		System.out.println(middle + " -> " + end);
-		time = driver.d.convertTime(driver.d.getLowCost(middle, end));
-		System.out.println("�ּҽð�: " + time[0] + "�ð� " + time[1] + "�� " + time[2] + "��");
-		
-		// 6) �߰��� ~ ������������ �ּҽð� ��� ���
-		System.out.print("�ּҽð� ���: ");
-		reverse = driver.d.getLowCostRoute(middle, end);		
-		driver.d.printArray(reverse);
-		
-		// �߰��� ~ ������ ������ �ּҽð� ����� ��� ���
-		driver.inputPriceInfor(); // �ּҽð� ����� ����� ���ؾ� �ϹǷ� ����ġ�� ����� �Է��Ѵ�. 
-		cost = driver.d.getCost_minTimeRoute(reverse);
-		System.out.println("�ּҽð� ��� ���: " + cost + "��");
-		
-		System.out.println();
-		
-		// 4. �ּ�ȯ�� ��� 
-		System.out.println("----------�ּ�ȯ�� ���----------");
 
-		// 1) �뼱�� ���� ����Ʈ ����
+		// 4. 최소환승 경로
+		System.out.println("----------최소환승 경로----------");
+
+		// 1) 노선도 저장 리스트 생성
 		TransferDij.test.createList();
 		TransferDij.test.addLines();
 		TransferDij.test.addStatons();
-		
+
 		int[] index = TransferDij.bfs();
-		
-		// 2) ȯ�¿� ���
+
+		// 2) 환승역 출력
 		if(TransferDij.answer == 1) {
-			System.out.println("ù��° ȯ�¿�: " + (index[0]+1) + "ȣ�� " + TransferDij.test.getStation(index[1]));
+			System.out.println("첫번째 환승역: " + (index[0]+1) + "호선 " + TransferDij.test.getStation(index[1]));
 		} else if(TransferDij.answer > 1){
-			System.out.println("��߿�: " + start + " " + "������: " + end);
-			// ù��° ȯ�¿� ����
+			System.out.println("출발역: " + start + " " + "도착역: " + end);
+			// 첫번째 환승역 라인
 			int first_inter_line = TransferDij.stations[driver.d.getIndex(TransferDij.transferStation.get(index[0]))].get(0);
-			// ù��° ȯ�¿�
+			// 첫번째 환승역
 			String first_inter_station = TransferDij.transferStation.get(index[0]);
-			// �ι�° ȯ�¿� ����
+			// 두번째 환승역 라인
 			int sec_inter_line = TransferDij.stations[driver.d.getIndex(TransferDij.transferStation.get(index[1]))].get(0);
-			// �ι�° ȯ�¿�
+			// 두번째 환승역
 			String sec_inter_station = TransferDij.transferStation.get(index[1]);
-			
-			System.out.println("ù��° ȯ�¿�: " + (first_inter_line+1) + "ȣ�� " + first_inter_station + "\n" 
-							 + "�ι�° ȯ�¿�: " + (sec_inter_line+1) + "ȣ�� " + sec_inter_station);
+
+			System.out.println("첫번째 환승역: " + (first_inter_line+1) + "호선 " + first_inter_station + "\n"
+					+ "두번째 환승역: " + (sec_inter_line+1) + "호선 " + sec_inter_station);
 		}
-		
-		// 3) �ּ�ȯ�� Ƚ�� ���
+
+		// 3) 최소환승 횟수 출력
 		if(TransferDij.answer == Integer.MAX_VALUE)
 			System.out.println(-1);
 		else{
-			System.out.println("ȯ�� ȸ��: " + TransferDij.answer + "\n");
+			System.out.println("환승 회수: " + TransferDij.answer + "\n");
 		}
-		
-		// 4) �ּ�ȯ�� ��� ���
-		if(TransferDij.answer == 0) { //ȯ������ ���� ��
-			System.out.print("���: ");
+
+		// 4) 최소환승 경로 출력
+		if(TransferDij.answer == 0) { //환승하지 않을 때
+			System.out.print("경로: ");
 			driver.d.printList(TransferDij.test.getTransStation(start, end));
-			
-			// ��� �ð�
-			driver.inputTimeInfor(); //����ġ�� �ð� �Է�
-			int routeListSize = TransferDij.test.getTransStation(start, end).size(); 
+
+			// 경로 시간
+			driver.inputTimeInfor(); //가중치로 시간 입력
+			int routeListSize = TransferDij.test.getTransStation(start, end).size();
 			String route[] = TransferDij.test.getTransStation(start, end).toArray(new String[routeListSize]);
 			time = driver.d.convertTime(driver.d.getTime_minPriceRoute(route));
-			System.out.println("��� �ð�: " + time[0] + "�ð� " + time[1] + "�� " + time[2] + "��");
-			
-			// ��� ���
-			driver.inputPriceInfor(); //��� ���� �Է�
-			System.out.println("��� ���: " + driver.d.getCost_minTimeRoute(route) + "��");
+			System.out.println("경로 시간: " + time[0] + "시간 " + time[1] + "분 " + time[2] + "초");
+
+			// 경로 비용
+			driver.inputPriceInfor(); //비용 정보 입력
+			System.out.println("경로 비용: " + driver.d.getCost_minTimeRoute(route) + "원");
 		}
-		else if(TransferDij.answer == 1) { //ȯ�� 1�� �� ��
-			String transfer = TransferDij.test.getStation(index[1]); // ȯ�¿�
-			
+		else if(TransferDij.answer == 1) { //환승 1번 할 때
+			String transfer = TransferDij.test.getStation(index[1]); // 환승역
+
 			System.out.println(start + " -> " + transfer);
-			System.out.print("��������� ù��° ȯ���������� ���: ");
+			System.out.print("출발지에서 첫번째 환승지까지의 경로: ");
 			driver.d.printList(TransferDij.test.getTransStation(start, transfer));
-			
-			// ����� ~ ȯ�¿�1������ �ð�
-			driver.inputTimeInfor(); //����ġ�� �ð� �Է�
-			int routeListSize = TransferDij.test.getTransStation(start, transfer).size(); 
-			String route[] = TransferDij.test.getTransStation(start, transfer).toArray(new String[routeListSize]);// �����~ȯ�¿�1 ������ ��ΰ� ����� ����Ʈ�� �迭�� ��ȯ 
+
+			// 출발지 ~ 환승역1까지의 시간
+			driver.inputTimeInfor(); //가중치로 시간 입력
+			int routeListSize = TransferDij.test.getTransStation(start, transfer).size();
+			String route[] = TransferDij.test.getTransStation(start, transfer).toArray(new String[routeListSize]);// 출발지~환승역1 까지의 경로가 저장된 리스트를 배열로 변환
 			time = driver.d.convertTime(driver.d.getTime_minPriceRoute(route));
-			System.out.println("��� �ð�: " + time[0] + "�ð� " + time[1] + "�� " + time[2] + "��");
-			
-			// �����~ȯ����1������ ��� ���
-			driver.inputPriceInfor(); //��� ���� �Է�
-			System.out.println("��� ���: " + driver.d.getCost_minTimeRoute(route) + "��");
-			
+			System.out.println("경로 시간: " + time[0] + "시간 " + time[1] + "분 " + time[2] + "초");
+
+			// 출발지~환승지1까지의 비용 출력
+			driver.inputPriceInfor(); //비용 정보 입력
+			System.out.println("경로 비용: " + driver.d.getCost_minTimeRoute(route) + "원");
+
 			System.out.println();
-			
+
 			System.out.println(transfer + " -> " + end);
-			System.out.print("ȯ�������� ������ ������ ���: ");
+			System.out.print("환승지에서 목적지 까지의 경로: ");
 			driver.d.printList(TransferDij.test.getTransStation(transfer, end));
-			
-			// ȯ�¿�1 ~ ������������ �ð�
+
+			// 환승역1 ~ 도착지까지의 시간
 			driver.inputTimeInfor();
 			routeListSize = TransferDij.test.getTransStation(transfer, end).size();
 			route = TransferDij.test.getTransStation(transfer, end).toArray(new String[routeListSize]);
 			time = driver.d.convertTime(driver.d.getTime_minPriceRoute(route));
-			System.out.println("��� �ð�: " + time[0] + "�ð� " + time[1] + "�� " + time[2] + "��");
-			
-			// ȯ����1~������������ ��� ���
+			System.out.println("경로 시간: " + time[0] + "시간 " + time[1] + "분 " + time[2] + "초");
+
+			// 환승지1~도착지까지의 비용 출력
 			driver.inputPriceInfor();
-			System.out.println("��� ���: " + driver.d.getCost_minTimeRoute(route) + "��");
+			System.out.println("경로 비용: " + driver.d.getCost_minTimeRoute(route) + "원");
 
 		}
-		else if(TransferDij.answer == 2) { //ȯ�� 2�� �� ��
-			String first_transfer = TransferDij.transferStation.get(index[0]); // ù���� ȯ�¿�
-			String sec_transfer = TransferDij.transferStation.get(index[1]); // �ι�° ȯ�¿�
-			
+		else if(TransferDij.answer == 2) { //환승 2번 할 때
+			String first_transfer = TransferDij.transferStation.get(index[0]); // 첫번재 환승역
+			String sec_transfer = TransferDij.transferStation.get(index[1]); // 두번째 환승역
+
 			System.out.println(start + " -> " + first_transfer);
-			System.out.print("��������� ù��° ȯ���������� ���: ");
+			System.out.print("출발지에서 첫번째 환승지까지의 경로: ");
 			driver.d.printList(TransferDij.test.getTransStation(start, first_transfer));
-			// ����� ~ ȯ�¿�1������ �ð�
-			driver.inputTimeInfor(); //����ġ�� �ð� �Է�
-			int routeListSize = TransferDij.test.getTransStation(start, first_transfer).size(); 
-			String route[] = TransferDij.test.getTransStation(start, first_transfer).toArray(new String[routeListSize]);// �����~ȯ�¿�1 ������ ��ΰ� ����� ����Ʈ�� �迭�� ��ȯ 
+			// 출발지 ~ 환승역1까지의 시간
+			driver.inputTimeInfor(); //가중치로 시간 입력
+			int routeListSize = TransferDij.test.getTransStation(start, first_transfer).size();
+			String route[] = TransferDij.test.getTransStation(start, first_transfer).toArray(new String[routeListSize]);// 출발지~환승역1 까지의 경로가 저장된 리스트를 배열로 변환
 			time = driver.d.convertTime(driver.d.getTime_minPriceRoute(route));
-			System.out.println("��� �ð�: " + time[0] + "�ð� " + time[1] + "�� " + time[2] + "��");
-			
-			// ����� ~ ȯ�¿�1 ������ ��� ���
+			System.out.println("경로 시간: " + time[0] + "시간 " + time[1] + "분 " + time[2] + "초");
+
+			// 출발지 ~ 환승역1 까지의 비용 출력
 			driver.inputPriceInfor();
-			System.out.println("��� ���: " + driver.d.getCost_minTimeRoute(route) + "��");
-			
+			System.out.println("경로 비용: " + driver.d.getCost_minTimeRoute(route) + "원");
+
 			System.out.println();
 
 			System.out.println(first_transfer + " -> " + sec_transfer);
-			System.out.print("ù��° ȯ�������� �ι�° ȯ���������� ���: ");
+			System.out.print("첫번째 환승지에서 두번째 환승지까지의 경로: ");
 			driver.d.printList(TransferDij.test.getTransStation(first_transfer, sec_transfer));
-			// ȯ�¿�1 ~ ȯ�¿�2������ �ð�
-			driver.inputTimeInfor(); //����ġ�� �ð� �Է�
-			routeListSize = TransferDij.test.getTransStation(first_transfer, sec_transfer).size(); 
-			route = TransferDij.test.getTransStation(first_transfer, sec_transfer).toArray(new String[routeListSize]);// �����~ȯ�¿�1 ������ ��ΰ� ����� ����Ʈ�� �迭�� ��ȯ 
+			// 환승역1 ~ 환승역2까지의 시간
+			driver.inputTimeInfor(); //가중치로 시간 입력
+			routeListSize = TransferDij.test.getTransStation(first_transfer, sec_transfer).size();
+			route = TransferDij.test.getTransStation(first_transfer, sec_transfer).toArray(new String[routeListSize]);// 출발지~환승역1 까지의 경로가 저장된 리스트를 배열로 변환
 			time = driver.d.convertTime(driver.d.getTime_minPriceRoute(route));
-			System.out.println("��� �ð�: " + time[0] + "�ð� " + time[1] + "�� " + time[2] + "��");
-			
-			// ȯ�¿�1 ~ ȯ�¿�2 ������ ��� ���
+			System.out.println("경로 시간: " + time[0] + "시간 " + time[1] + "분 " + time[2] + "초");
+
+			// 환승역1 ~ 환승역2 까지의 비용 출력
 			driver.inputPriceInfor();
-			System.out.println("��� ���: " + driver.d.getCost_minTimeRoute(route) + "��");
-						
+			System.out.println("경로 비용: " + driver.d.getCost_minTimeRoute(route) + "원");
+
 			System.out.println();
 
 			System.out.println(sec_transfer + " -> " + end);
-			System.out.print("�ι�° ȯ�������� ������������ ���: ");
+			System.out.print("두번째 환승지에서 목적지까지의 경로: ");
 			driver.d.printList(TransferDij.test.getTransStation(sec_transfer, end));
-			// ȯ�¿�1 ~ ȯ�¿�2������ �ð�
-			driver.inputTimeInfor(); //����ġ�� �ð� �Է�
-			routeListSize = TransferDij.test.getTransStation(sec_transfer, end).size(); 
-			route = TransferDij.test.getTransStation(sec_transfer, end).toArray(new String[routeListSize]);// �����~ȯ�¿�1 ������ ��ΰ� ����� ����Ʈ�� �迭�� ��ȯ 
+			// 환승역1 ~ 환승역2까지의 시간
+			driver.inputTimeInfor(); //가중치로 시간 입력
+			routeListSize = TransferDij.test.getTransStation(sec_transfer, end).size();
+			route = TransferDij.test.getTransStation(sec_transfer, end).toArray(new String[routeListSize]);// 출발지~환승역1 까지의 경로가 저장된 리스트를 배열로 변환
 			time = driver.d.convertTime(driver.d.getTime_minPriceRoute(route));
-			System.out.println("��� �ð�: " + time[0] + "�ð� " + time[1] + "�� " + time[2] + "��");
-			
-			// ȯ����2 ~ ������������ ��� ���
+			System.out.println("경로 시간: " + time[0] + "시간 " + time[1] + "분 " + time[2] + "초");
+
+			// 환승지2 ~ 도착지까지의 비용 출력
 			driver.inputPriceInfor();
-			System.out.println("��� ���: " + driver.d.getCost_minTimeRoute(route) + "��");
-						
-		}			
-	}		
+			System.out.println("경로 비용: " + driver.d.getCost_minTimeRoute(route) + "원");
+
+		}
+	}
 }	

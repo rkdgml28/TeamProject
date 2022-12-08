@@ -24,7 +24,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="2"
-            android:src="@drawable/ic_list"
+            android:src="@drawable/subwayload"
             app:tint="@color/black"
             android:clickable="true"/>
 
