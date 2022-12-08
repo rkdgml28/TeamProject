@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else{
                     String s = search_et.getText().toString();
                     Intent intent = new Intent(context, StationActivity.class);
+                    intent.putExtra("station", s);
                     startActivity(intent);
                 }
 
