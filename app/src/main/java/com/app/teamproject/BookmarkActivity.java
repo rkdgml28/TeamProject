@@ -1,14 +1,18 @@
 package com.app.teamproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,40 +21,52 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-public class BookmarkActivity extends AppCompatActivity implements View.OnClickListener{
+public class BookmarkActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static final String BOOKMARK = "bookmark";
+    private static final String BOOKMARK_JSON = "bookmark_json";
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
     Boolean isAllFabsVisible;
     ImageView bookmark_search;
+    AutoCompleteTextView autoCompleteTextView;
+    private static Context context;
 
-    SharedPreferences spref;
-    SharedPreferences.Editor editor;
+//    SharedPreferences spref;
+//    SharedPreferences.Editor editor;
+//    JSONArray arr = new JSONArray();
 
-    private List<String> stations = Arrays.asList("101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123",
-            "201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217",
-            "301","302","303","304","305","305","307","308",
-            "401","402","403","404","405","406","407","408","409","410","411","412","413","414","415","416","417",
-            "501","502","503","504","505","506","507",
-            "601","602","603","604","605","606","607","608","609","610","611","612","613","614","615","616","617","618","619","620","621","622",
-            "701","702","703","704","705","706","707",
-            "801","802","803","804","805","806",
-            "901","902","903","904");
+    private List<String> stations = Arrays.asList("101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123",
+            "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217",
+            "301", "302", "303", "304", "305", "305", "307", "308",
+            "401", "402", "403", "404", "405", "406", "407", "408", "409", "410", "411", "412", "413", "414", "415", "416", "417",
+            "501", "502", "503", "504", "505", "506", "507",
+            "601", "602", "603", "604", "605", "606", "607", "608", "609", "610", "611", "612", "613", "614", "615", "616", "617", "618", "619", "620", "621", "622",
+            "701", "702", "703", "704", "705", "706", "707",
+            "801", "802", "803", "804", "805", "806",
+            "901", "902", "903", "904");
 
     RecyclerView mRecyclerView;
+    private RecyclerView.LayoutManager layoutManager;
     BookmarkAdapter mRecyclerAdapter;
     ArrayList<BookmarkStation> mfavStations = new ArrayList<>();
-    //Set<String> myStations = new Set<>();
+    ArrayList<String> myStations = new ArrayList<>();
+
     String target = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookmark);
-
+        BookmarkActivity.context = getApplicationContext();
 
         bookmark_search = findViewById(R.id.bookmark_search);
         btnSubway = findViewById(R.id.fab_subway);
@@ -95,28 +111,27 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         btnStar.setOnClickListener(this);
         btnRoad.setOnClickListener(this);
 
-        spref = getSharedPreferences("gref", MODE_PRIVATE);
-        editor = spref.edit();
+//        spref = getSharedPreferences("gref", MODE_PRIVATE);
+//        editor = spref.edit();
 
 
-        final AutoCompleteTextView autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
-        autoCompleteTextView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,stations));
+        autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
+        autoCompleteTextView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, stations));
 
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View clickedView, int position, long id) {
-                autoCompleteTextView.setText(((TextView)clickedView).getText().toString());
-                target = ((TextView)clickedView).getText().toString();
-//                mfavStations.add(new BookmarkStation(R.drawable.favorite,((TextView)clickedView).getText().toString(),R.drawable.minus));
-//                mRecyclerAdapter.notifyDataSetChanged();
-                autoCompleteTextView.setText("");
+                autoCompleteTextView.setText(((TextView) clickedView).getText().toString());
+                //target = ((TextView) clickedView).getText().toString();
             }
         });
 
         mRecyclerView = findViewById(R.id.recyclerview);
+        layoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
 
         /* initiate adapter */
-        mRecyclerAdapter= new BookmarkAdapter(stations, this);
+        mRecyclerAdapter = new BookmarkAdapter(myStations, this);
 
         /* initiate recyclerview */
         mRecyclerView.setAdapter(mRecyclerAdapter);
@@ -127,20 +142,38 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         bookmark_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mfavStations.add(new BookmarkStation(R.drawable.favorite,target,R.drawable.minus));
-//                myStations.add(target);
-//                mRecyclerAdapter.notifyDataSetChanged();
-//                autoCompleteTextView.setText("");
-//                editor.putStringSet("bookmark", myStations);
-//                editor.apply();
-//                editor.commit();
+                target = autoCompleteTextView.getText().toString();
+                if (!myStations.contains(target)) {
+                    mfavStations.add(new BookmarkStation(R.drawable.favorite, target, R.drawable.minus));
+                    myStations.add(target);
+                    mRecyclerAdapter.notifyDataSetChanged();
+                    if (myStations != null) {
+                        for (String value : myStations) {
+                            Log.v("Get json : ", value);
+                        }
+                    }
+                } else {
+                    Toast.makeText(context, "이미 즐겨찾기에 추가되어 있습니다.", Toast.LENGTH_SHORT).show();
+//                ArrayList<String> list = getStringArrayPref(BOOKMARK_JSON);
+//                ArrayList<String> l = new ArrayList<>();
+//                if (list != null) {
+//                    for (String value : list) {
+//                        Log.v("Get json : ", value);
+//                        l.add(value);
+//                    }
+//                }
+//                l.add(target);
+//                Log.v("target", target);
+//                setStringArrayPref(context, BOOKMARK_JSON, l);
+                }
             }
         });
     }
+
     @Override
     public void onClick(View view) {
         Intent intent;
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.fab_home:
                 intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
@@ -164,6 +197,39 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
                 finish();
                 break;
         }
+    }
+
+    private void setStringArrayPref(Context context, String key, ArrayList<String> values) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        JSONArray a = new JSONArray();
+        for (int i = 0; i < values.size(); i++) {
+            a.put(values.get(i));
+        }
+        if (!values.isEmpty()) {
+            editor.putString(key, a.toString());
+        } else {
+            editor.putString(key, null);
+        }
+        editor.apply();
+    }
+
+    public ArrayList<String> getStringArrayPref(String key) {
+        SharedPreferences prefs = getSharedPreferences(BOOKMARK, MODE_PRIVATE);
+        String json = prefs.getString(key, null);
+        ArrayList<String> urls = new ArrayList<String>();
+        if (json != null) {
+            try {
+                JSONArray a = new JSONArray(json);
+                for (int i = 0; i < a.length(); i++) {
+                    String url = a.optString(i);
+                    urls.add(url);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return urls;
     }
 }
 
