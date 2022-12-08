@@ -136,6 +136,9 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         Intent intent;
         switch (view.getId()){
             case R.id.fab_home:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.fab_setting:
                 this.registerForContextMenu(btnSetting);
@@ -145,12 +148,14 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
             case R.id.fab_search:
                 intent = new Intent(this, SearchActivity.class);
                 startActivity(intent);
+                finish();
                 break;
             case R.id.fab_star:
                 break;
             case R.id.fab_road:
                 intent = new Intent(this, RoadActivity.class);
                 startActivity(intent);
+                finish();
                 break;
         }
     }
