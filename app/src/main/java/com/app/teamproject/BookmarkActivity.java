@@ -107,7 +107,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         mRecyclerView = findViewById(R.id.recyclerview);
 
         /* initiate adapter */
-        mRecyclerAdapter= new BookmarkAdapter();
+        mRecyclerAdapter= new BookmarkAdapter(stations, this);
 
         /* initiate recyclerview */
         mRecyclerView.setAdapter(mRecyclerAdapter);
@@ -115,20 +115,12 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        mRecyclerAdapter.setOnItemClickListener(new BookmarkAdapter.OnItemClickListener(){
-
-            @Override
-            public void onRemoveClick(View v, int position) {
-                mfavStations.remove(position);
-                mRecyclerAdapter.notifyItemRemoved(position);
-            }
-        });
-
         bookmark_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mfavStations.add(new BookmarkStation(R.drawable.favorite,target,R.drawable.minus));
                 mRecyclerAdapter.notifyDataSetChanged();
+
                 autoCompleteTextView.setText("");
             }
         });
