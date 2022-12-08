@@ -408,22 +408,21 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/tv_test_route"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_img" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tv_test_route"
-            android:layout_width="350dp"
-            android:layout_height="100dp"
-
+            android:layout_width="290dp"
+            android:layout_height="120dp"
             android:background="@color/white"
             android:fontFamily="@font/suncheon_r"
-            android:gravity="center|left"
+            android:gravity="center"
             android:text="경로결과 \n 101 - 303 - 304 - 305 (경로예시)"
             android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/auto_time"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_path" />
+            app:layout_constraintTop_toBottomOf="@+id/layout_img" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
