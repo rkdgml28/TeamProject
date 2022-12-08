@@ -157,7 +157,7 @@
         android:id="@+id/currentTime"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="현재시간이 표시됩니다"
+        android:hint="현재시간이 표시됩니다"
         android:textSize="20dp"
         app:layout_constraintLeft_toRightOf="@+id/tv_inform_finish"
         app:layout_constraintRight_toLeftOf="@+id/refresh"
@@ -217,7 +217,7 @@
             android:layout_height="100dp"
             android:gravity="center"
             android:layout_gravity="center_vertical"
-            android:text="예상시간"
+            android:hint="예상시간"
             android:textSize="30sp"/>
     </LinearLayout>
 
@@ -252,7 +252,7 @@
             android:layout_height="100dp"
             android:gravity="center"
             android:layout_gravity="center_vertical"
-            android:text="예상시간"
+            android:hint="예상시간"
             android:textSize="30sp"/>
 
     </LinearLayout>

@@ -138,7 +138,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, RoadActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.main_option:
+            case R.id.main_search:
+                intent = new Intent(this, StationActivity.class);
+                startActivity(intent);
                 break;
         }
     }
