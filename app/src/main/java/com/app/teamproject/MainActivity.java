@@ -1267,9 +1267,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.fab_home:
                 break;
             case R.id.fab_setting:
-                this.registerForContextMenu(btnSetting);
-                openContextMenu(btnSetting);
-                unregisterForContextMenu(btnSetting);
+                intent = new Intent(this, InquiryActivity.class);
+                startActivity(intent);
                 break;
             case R.id.fab_search:
                 intent = new Intent(this, SearchActivity.class);
@@ -1281,10 +1280,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.fab_road:
                 intent = new Intent(this, RoadActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.zoom:
-                intent = new Intent(this, Zoominout.class);
                 startActivity(intent);
                 break;
         }

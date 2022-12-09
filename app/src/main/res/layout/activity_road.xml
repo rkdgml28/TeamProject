@@ -20,6 +20,7 @@
 
 
         <AutoCompleteTextView
+
             android:id="@+id/road_search_et"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -27,6 +28,7 @@
             android:layout_marginLeft="40dp"
             android:background="@drawable/box_search"
             android:padding="10dp"
+            android:hint = "역을 입력하세요"
             android:textColor="@color/black" />
 
         <ImageView
@@ -34,8 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="2"
-            android:src="@drawable/ic_search"
-            android:tint="@color/black" />
+            android:src="@drawable/ic_search" />
     </LinearLayout>
 
 

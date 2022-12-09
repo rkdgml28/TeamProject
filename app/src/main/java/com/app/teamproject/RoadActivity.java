@@ -161,9 +161,9 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.fab_setting:
-                this.registerForContextMenu(btnSetting);
-                openContextMenu(btnSetting);
-                unregisterForContextMenu(btnSetting);
+                intent = new Intent(this, InquiryActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.fab_search:
                 intent = new Intent(this, SearchActivity.class);
