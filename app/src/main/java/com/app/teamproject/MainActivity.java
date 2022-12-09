@@ -1243,6 +1243,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, RoadActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.zoom:
+                intent = new Intent(this, Zoominout.class);
+                startActivity(intent);
+                break;
         }
     }
 
