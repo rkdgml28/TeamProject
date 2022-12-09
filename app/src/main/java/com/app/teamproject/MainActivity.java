@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,6 +31,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
+    Button btn101, btn102, btn103, btn104, btn105, btn106, btn107, btn108, btn109, btn110, btn111, btn112, btn113, btn114, btn115, btn116, btn117, btn118, btn119, btn120, btn121, btn122, btn123,
+    btn201, btn202, btn203, btn204, btn205, btn206, btn207, btn208, btn209, btn210, btn211, btn212, btn213, btn214, btn215, btn216, btn217,
+    btn301, btn302, btn303, btn304, btn305, btn306, btn307, btn308,
+    btn401, btn402, btn403, btn404, btn405, btn406, btn407, btn408, btn409, btn410, btn411, btn412, btn413, btn414, btn415, btn416, btn417,
+    btn501, btn502, btn503, btn504, btn505, btn506, btn507,
+    btn601, btn602, btn603, btn604, btn605, btn606, btn607, btn608, btn609, btn610, btn611, btn612, btn613, btn614, btn615, btn616, btn617, btn618, btn619, btn620, btn621, btn622,
+    btn701, btn702, btn703, btn704, btn705, btn706, btn707,
+    btn801, btn802, btn803, btn804, btn805, btn806,
+    btn901, btn902, btn903, btn904;
     ImageView search, iv_main;
     TextView search_et;
     Boolean isAllFabsVisible;
@@ -81,6 +91,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (int i = 0; i < 111; i++){
             arr.add(stations[i]);
         }
+
+        btn101 = findViewById(R.id.btn101);btn102 = findViewById(R.id.btn102);btn103 = findViewById(R.id.btn104);btn104 = findViewById(R.id.btn104);
+        btn105 = findViewById(R.id.btn105);btn106 = findViewById(R.id.btn106);btn107 = findViewById(R.id.btn108);btn108 = findViewById(R.id.btn108);
+        btn109 = findViewById(R.id.btn109);btn110 = findViewById(R.id.btn110);btn111 = findViewById(R.id.btn111);btn112 = findViewById(R.id.btn112);
+        btn113 = findViewById(R.id.btn113);btn114 = findViewById(R.id.btn114);btn115 = findViewById(R.id.btn115);btn116 = findViewById(R.id.btn116);
+        btn117 = findViewById(R.id.btn117);btn118 = findViewById(R.id.btn118);btn119 = findViewById(R.id.btn119);btn120 = findViewById(R.id.btn120);
+        btn121 = findViewById(R.id.btn121);btn122 = findViewById(R.id.btn122);btn123 = findViewById(R.id.btn123);
+        btn201 = findViewById(R.id.btn201);btn202 = findViewById(R.id.btn202);btn203 = findViewById(R.id.btn203);btn204 = findViewById(R.id.btn204);
+        btn205 = findViewById(R.id.btn205);btn206 = findViewById(R.id.btn206);btn207 = findViewById(R.id.btn207);btn208 = findViewById(R.id.btn208);
+        btn209 = findViewById(R.id.btn209);btn210 = findViewById(R.id.btn210);btn211 = findViewById(R.id.btn211);btn212 = findViewById(R.id.btn212);
+        btn213 = findViewById(R.id.btn213);btn214 = findViewById(R.id.btn214);btn215 = findViewById(R.id.btn215);btn216 = findViewById(R.id.btn216);
+        btn217 = findViewById(R.id.btn217);
+        btn301 = findViewById(R.id.btn301); btn302 = findViewById(R.id.btn302); btn303 = findViewById(R.id.btn303); btn304 = findViewById(R.id.btn304);
+        btn305 = findViewById(R.id.btn305); btn306 = findViewById(R.id.btn306); btn307 = findViewById(R.id.btn307); btn308 = findViewById(R.id.btn308);
+        btn401 = findViewById(R.id.btn401);btn402 = findViewById(R.id.btn402);btn403 = findViewById(R.id.btn403);btn404 = findViewById(R.id.btn404);
+        btn405 = findViewById(R.id.btn405);btn406 = findViewById(R.id.btn406);btn407 = findViewById(R.id.btn407);btn408 = findViewById(R.id.btn408);
+        btn409 = findViewById(R.id.btn409);btn410 = findViewById(R.id.btn410);btn411 = findViewById(R.id.btn411);btn412 = findViewById(R.id.btn412);
+        btn413 = findViewById(R.id.btn413);btn414 = findViewById(R.id.btn414);btn415 = findViewById(R.id.btn415);btn416 = findViewById(R.id.btn416);
+        btn417 = findViewById(R.id.btn417);
+        btn501 = findViewById(R.id.btn501);btn502 = findViewById(R.id.btn502);btn503 = findViewById(R.id.btn503);btn504 = findViewById(R.id.btn504);
+        btn505 = findViewById(R.id.btn505);btn506 = findViewById(R.id.btn506);btn507 = findViewById(R.id.btn507);
+        btn601 = findViewById(R.id.btn601);btn602 = findViewById(R.id.btn602);btn603 = findViewById(R.id.btn603);btn604 = findViewById(R.id.btn604);
+        btn605 = findViewById(R.id.btn605);btn606 = findViewById(R.id.btn606);btn607 = findViewById(R.id.btn607);btn608 = findViewById(R.id.btn608);
+        btn609 = findViewById(R.id.btn609);btn610 = findViewById(R.id.btn610);btn611 = findViewById(R.id.btn611);btn612 = findViewById(R.id.btn612);
+        btn613 = findViewById(R.id.btn613);btn614 = findViewById(R.id.btn614);btn615 = findViewById(R.id.btn615);btn616 = findViewById(R.id.btn616);
+        btn617 = findViewById(R.id.btn617);btn618 = findViewById(R.id.btn618);btn619 = findViewById(R.id.btn619);btn620 = findViewById(R.id.btn620);
+        btn621 = findViewById(R.id.btn621);btn622 = findViewById(R.id.btn622);
+        btn701 = findViewById(R.id.btn701);btn702 = findViewById(R.id.btn702);btn703 = findViewById(R.id.btn703);btn704 = findViewById(R.id.btn704);
+        btn705 = findViewById(R.id.btn705);btn706 = findViewById(R.id.btn706);btn707 = findViewById(R.id.btn707);
+        btn801 = findViewById(R.id.btn801); btn802 = findViewById(R.id.btn802); btn803 = findViewById(R.id.btn803); btn804 = findViewById(R.id.btn804);
+        btn805 = findViewById(R.id.btn805); btn806 = findViewById(R.id.btn806);
+        btn901 = findViewById(R.id.btn901); btn902 = findViewById(R.id.btn902); btn903 = findViewById(R.id.btn903); btn904 = findViewById(R.id.btn904);
+
+        btn101.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(MainActivity.this, StationActivity.class);
+                startActivity(intent);
+            }
+        });
 
         linear_main = findViewById(R.id.linear_main);
         search_et = findViewById(R.id.main_search_et);

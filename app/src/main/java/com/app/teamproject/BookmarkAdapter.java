@@ -66,7 +66,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
 
             this.fav = (ImageView) itemView.findViewById(R.id.imageview);
             this.name = (TextView) itemView.findViewById(R.id.textview);
-            this.btn_remove=(ImageButton) itemView.findViewById(R.id.imageButton);
+
 
             itemView.setOnCreateContextMenuListener(this);
         }
