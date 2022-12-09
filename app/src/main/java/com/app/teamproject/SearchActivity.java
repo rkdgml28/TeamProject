@@ -31,7 +31,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
     Boolean isAllFabsVisible, isStopOverVisible, isInputComplete;
     EditText edit_start, edit_stopover, edit_finish;
-    ImageView btn_search, btn_change;
+    ImageView btn_search, btn_change, img_search_start, img_search_finish;
     Button btnArrivetime, btnMintime, btnMincost, btnMintran;
     CheckBox cb_stopover;
     TextView tv_stop, tv_route, auto_time, auto_cost, auto_tran, startText, stopoverText, arriveText;
@@ -114,6 +114,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         layout_img = findViewById(R.id.layout_img);
         layout_inform = findViewById(R.id.inform);
 
+        img_search_start = findViewById(R.id.img_search_start);
+        img_search_finish = findViewById(R.id.img_search_finish);
+
         startText = findViewById(R.id.startText);
         stopoverText = findViewById(R.id.stopoverText);
         arriveText = findViewById(R.id.arriveText);
@@ -190,6 +193,16 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         btnMintime.setOnClickListener(this);
         btnMintran.setOnClickListener(this);
 
+        int color1 = (this).getResources().getColor(R.color.line1);
+        int color2 = (this).getResources().getColor(R.color.line2);
+        int color3 = (this).getResources().getColor(R.color.line3);
+        int color4 = (this).getResources().getColor(R.color.line4);
+        int color5 = (this).getResources().getColor(R.color.line5);
+        int color6 = (this).getResources().getColor(R.color.line6);
+        int color7 = (this).getResources().getColor(R.color.line7);
+        int color8 = (this).getResources().getColor(R.color.line8);
+        int color9 = (this).getResources().getColor(R.color.line9);
+
         //출빌지 도착지 바꾸기 버튼
         btn_change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -240,8 +253,72 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 }
 
 
+
                 if (isInputComplete) {
 
+                    int line_start, line_finish;
+
+                    int numstart = Integer.parseInt(start);
+                    line_start = numstart/100;
+                    int numarrive = Integer.parseInt(finish);
+                    line_finish = numarrive/100;
+
+                    if (line_start == 1){
+                        img_search_start.setColorFilter(color1);
+                    }
+                    if (line_start == 2){
+                        img_search_start.setColorFilter(color2);
+                    }
+                    if (line_start == 3){
+                        img_search_start.setColorFilter(color3);
+                    }
+                    if (line_start == 4){
+                        img_search_start.setColorFilter(color4);
+                    }
+                    if (line_start == 5){
+                        img_search_start.setColorFilter(color5);
+                    }
+                    if (line_start == 6){
+                        img_search_start.setColorFilter(color6);
+                    }
+                    if (line_start == 7){
+                        img_search_start.setColorFilter(color7);
+                    }
+                    if (line_start == 8){
+                        img_search_start.setColorFilter(color8);
+                    }
+                    if (line_start == 9){
+                        img_search_start.setColorFilter(color9);
+                    }
+
+                    if (line_finish == 1){
+                        img_search_finish.setColorFilter(color1);
+                    }
+                    if (line_finish == 2){
+                        img_search_finish.setColorFilter(color2);
+                    }
+                    if (line_finish == 3){
+                        img_search_finish.setColorFilter(color3);
+                    }
+                    if (line_finish == 4){
+                        img_search_finish.setColorFilter(color4);
+                    }
+                    if (line_finish == 5){
+                        img_search_finish.setColorFilter(color5);
+                    }
+                    if (line_finish == 6){
+                        img_search_finish.setColorFilter(color6);
+                    }
+                    if (line_finish == 7){
+                        img_search_finish.setColorFilter(color7);
+                    }
+                    if (line_finish == 8){
+                        img_search_finish.setColorFilter(color8);
+                    }
+                    if (line_finish == 9){
+                        img_search_finish.setColorFilter(color9);
+                    }
+                    
                     startText.setText(start);
                     arriveText.setText(finish);
 
