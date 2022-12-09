@@ -95,7 +95,6 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
 //                        intent.putExtra("station", String.valueOf(name));
 //                        Log.v("putextra", String.valueOf(name));
 //                        context.startActivity(intent);
-
                         String s = name.getText().toString();
                         Intent intent = new Intent(context, StationActivity.class);
                         intent.putExtra("station", s);

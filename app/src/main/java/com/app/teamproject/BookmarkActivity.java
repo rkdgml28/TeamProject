@@ -1,5 +1,6 @@
 package com.app.teamproject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,10 +33,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+
 public class BookmarkActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String BOOKMARK = "bookmark";
     private static final String BOOKMARK_JSON = "bookmark_json";
+
+
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
     Boolean isAllFabsVisible;
     ImageView bookmark_search;
@@ -44,6 +49,8 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
 //    SharedPreferences spref;
 //    SharedPreferences.Editor editor;
 //    JSONArray arr = new JSONArray();
+
+
 
     private List<String> stations = Arrays.asList("101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123",
             "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217",
@@ -63,10 +70,19 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
 
     String target = "";
 
+
+
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
+
+    String saveStr;
+
+
 //    @Override
 //    protected void onSaveInstanceState(Bundle outState) {
 //        super.onSaveInstanceState(outState); // 반드시 호출해 주세요.
-//        String data = onSaveInstanceState(outState);
+//        String data = target;
+//        ArrayList<String> saveStations = myStations;
 //        // 추가로 자료를 저장하는 코드는 여기에 작성 하세요.
 //    }
 //    @Override
@@ -82,6 +98,8 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookmark);
         BookmarkActivity.context = getApplicationContext();
+
+
 
         bookmark_search = findViewById(R.id.bookmark_search);
         btnSubway = findViewById(R.id.fab_subway);
@@ -126,9 +144,6 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         btnStar.setOnClickListener(this);
         btnRoad.setOnClickListener(this);
 
-//        spref = getSharedPreferences("gref", MODE_PRIVATE);
-//        editor = spref.edit();
-
 
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
         autoCompleteTextView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, stations));
@@ -154,17 +169,32 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
+        // 1. Shared Preference 초기화
+        pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+        editor = pref.edit();
+
+        // 2. 저장해둔 값 불러오기 ("식별값", 초기값) -> 식별값과 초기값은 직접 원하는 이름과 값으로 작성.
+        saveStr = pref.getString("MyStr", "_");   // String 불러오기 (저장해둔 값 없으면 초기값인 _으로 불러옴)
+
         bookmark_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 target = autoCompleteTextView.getText().toString();
+
                 if (!myStations.contains(target)) {
                     mfavStations.add(new BookmarkStation(R.drawable.favorite, target, R.drawable.minus));
                     myStations.add(target);
                     mRecyclerAdapter.notifyDataSetChanged();
+                    mfavStations.add(new BookmarkStation(R.drawable.favorite, saveStr, R.drawable.minus));
+
+
                     if (myStations != null) {
                         for (String value : myStations) {
                             Log.v("Get json : ", value);
+
+                            editor.putString("MyStr", value);
+                            editor.apply(); // 저장
+                            System.out.println(saveStr);
                         }
                     }
                 } else {
@@ -213,7 +243,6 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
-
     private void setStringArrayPref(Context context, String key, ArrayList<String> values) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
@@ -230,7 +259,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public ArrayList<String> getStringArrayPref(String key) {
-        SharedPreferences prefs = getSharedPreferences(BOOKMARK, MODE_PRIVATE);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String json = prefs.getString(key, null);
         ArrayList<String> urls = new ArrayList<String>();
         if (json != null) {
