@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -59,22 +60,10 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
     private RecyclerView.LayoutManager layoutManager;
     BookmarkAdapter mRecyclerAdapter;
     ArrayList<BookmarkStation> mfavStations = new ArrayList<>();
-    ArrayList<String> myStations = new ArrayList<>();
+    static ArrayList<String> myStations;
 
     String target = "";
 
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState); // 반드시 호출해 주세요.
-//        String data = onSaveInstanceState(outState);
-//        // 추가로 자료를 저장하는 코드는 여기에 작성 하세요.
-//    }
-//    @Override
-//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-//        super.onRestoreInstanceState(savedInstanceState);
-//
-//        // 추가로 자료를 복원하는 코드는 여기에 작성하세요.
-//    }
 
 
     @Override
@@ -82,6 +71,17 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookmark);
         BookmarkActivity.context = getApplicationContext();
+
+        if (savedInstanceState == null){
+            Toast.makeText(this, "st null", Toast.LENGTH_SHORT).show();
+            myStations = new ArrayList<>();
+        }
+        else{
+            myStations = savedInstanceState.getStringArrayList( "myStations" );
+            target = savedInstanceState.getString("target");
+            Log.v("target", target);
+            //mfavStations = savedInstanceState.getParcelableArrayList("mfavStations");
+        }
 
         bookmark_search = findViewById(R.id.bookmark_search);
         btnSubway = findViewById(R.id.fab_subway);
@@ -146,11 +146,18 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         mRecyclerView.setLayoutManager(layoutManager);
 
         /* initiate adapter */
+        if (myStations != null) {
+            for (String value : myStations) {
+                Log.v("Get json : ", value);
+            }
+        }
+        else{
+            Log.v("myStations", "null");
+        }
         mRecyclerAdapter = new BookmarkAdapter(myStations, this);
 
         /* initiate recyclerview */
         mRecyclerView.setAdapter(mRecyclerAdapter);
-        mRecyclerAdapter.setFavStationList(mfavStations);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
@@ -158,28 +165,18 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View view) {
                 target = autoCompleteTextView.getText().toString();
+                //myStations = mRecyclerAdapter.getFavStationList();
                 if (!myStations.contains(target)) {
-                    mfavStations.add(new BookmarkStation(R.drawable.favorite, target, R.drawable.minus));
-                    myStations.add(target);
+                    //mfavStations.add(new BookmarkStation(R.drawable.favorite, target, R.drawable.minus));
+                    BookmarkActivity.myStations.add(target);
                     mRecyclerAdapter.notifyDataSetChanged();
-                    if (myStations != null) {
-                        for (String value : myStations) {
-                            Log.v("Get json : ", value);
-                        }
-                    }
+//                    if (myStations != null) {
+//                        for (String value : myStations) {
+//                            Log.v("Get json : ", value);
+//                        }
+//                    }
                 } else {
                     Toast.makeText(context, "이미 즐겨찾기에 추가되어 있습니다.", Toast.LENGTH_SHORT).show();
-//                ArrayList<String> list = getStringArrayPref(BOOKMARK_JSON);
-//                ArrayList<String> l = new ArrayList<>();
-//                if (list != null) {
-//                    for (String value : list) {
-//                        Log.v("Get json : ", value);
-//                        l.add(value);
-//                    }
-//                }
-//                l.add(target);
-//                Log.v("target", target);
-//                setStringArrayPref(context, BOOKMARK_JSON, l);
                 }
             }
         });
@@ -214,37 +211,39 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void setStringArrayPref(Context context, String key, ArrayList<String> values) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = prefs.edit();
-        JSONArray a = new JSONArray();
-        for (int i = 0; i < values.size(); i++) {
-            a.put(values.get(i));
-        }
-        if (!values.isEmpty()) {
-            editor.putString(key, a.toString());
-        } else {
-            editor.putString(key, null);
-        }
-        editor.apply();
-    }
 
-    public ArrayList<String> getStringArrayPref(String key) {
-        SharedPreferences prefs = getSharedPreferences(BOOKMARK, MODE_PRIVATE);
-        String json = prefs.getString(key, null);
-        ArrayList<String> urls = new ArrayList<String>();
-        if (json != null) {
-            try {
-                JSONArray a = new JSONArray(json);
-                for (int i = 0; i < a.length(); i++) {
-                    String url = a.optString(i);
-                    urls.add(url);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        if (myStations != null) {
+            for (String value : myStations) {
+                Log.v("Get json : ", value);
             }
         }
-        return urls;
+        else{
+            Toast.makeText(this, "station null", Toast.LENGTH_SHORT).show();
+        }
+
+
+        super.onSaveInstanceState(outState); // 반드시 호출해 주세요.
+        outState.putStringArrayList("myStations", myStations);
+        outState.putString("target", "target");
+
+
+        //outState.putParcelableArrayList("mfavStations", (ArrayList<? extends Parcelable>) mfavStations);
+        // 추가로 자료를 저장하는 코  드는 여기에 작성 하세요.
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        myStations = savedInstanceState.getStringArrayList("myStations");
+        mRecyclerAdapter.notifyDataSetChanged();
+        this.target = savedInstanceState.getString("target");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 }
 

@@ -238,7 +238,7 @@
             />
 
         <TextView
-            android:id="@+id/pretime"
+            android:id="@+id/preTime"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_gravity="center_vertical"
@@ -274,7 +274,7 @@
             />
 
         <TextView
-            android:id="@+id/nexttime"
+            android:id="@+id/nextTime"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_gravity="center_vertical"
