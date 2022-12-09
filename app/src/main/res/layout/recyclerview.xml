@@ -27,13 +27,6 @@
             android:textSize="30dp"
             android:fontFamily="@font/suncheon_r"/>
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="65dp"
-            android:layout_height="55dp"
-            android:scaleType="fitCenter"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/minus" />
 
 
     </LinearLayout>
