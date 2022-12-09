@@ -33,7 +33,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="30dp"
-        android:text="quince1208@naver.com"
+        android:text="rkdgml2728@gmail.com"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
