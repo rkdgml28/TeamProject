@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintHorizontal_chainStyle="spread"
+    tools:context=".InquiryActivity"
+    tools:ignore="HardcodedText">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginRight="100dp"
+        android:text="문의 메일 보내기"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/input_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="30dp"
+        android:text="quince1208@naver.com"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/check_email_result"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/question_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question_button" />
+
+    <Button
+        android:id="@+id/question_button"
+        android:layout_width="121dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:backgroundTint="@color/main_color"
+        android:text="문의 하기"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/check_email_result"
+        app:layout_constraintTop_toBottomOf="@+id/input_email" />
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+android:id="@+id/fab_subway"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="end"
+android:layout_marginEnd="16dp"
+android:layout_marginBottom="16dp"
+android:backgroundTint="@color/skyblue"
+android:src="@drawable/fab_subway"
+app:fabSize="normal"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginRight="16dp" />
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+android:id="@+id/fab_setting"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginBottom="4dp"
+android:backgroundTint="@color/skyblue"
+app:fabSize="normal"
+app:layout_constraintBottom_toTopOf="@+id/fab_subway"
+app:layout_constraintEnd_toEndOf="@+id/fab_subway"
+app:layout_constraintStart_toStartOf="@+id/fab_subway"
+app:srcCompat="@drawable/fab_setting" />
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+android:id="@+id/fab_home"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginBottom="4dp"
+android:backgroundTint="@color/skyblue"
+app:fabSize="normal"
+app:layout_constraintBottom_toTopOf="@+id/fab_setting"
+app:layout_constraintEnd_toEndOf="@+id/fab_setting"
+app:layout_constraintStart_toStartOf="@+id/fab_setting"
+app:srcCompat="@drawable/fab_home" />
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+android:id="@+id/fab_star"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginBottom="4dp"
+android:backgroundTint="@color/skyblue"
+app:fabSize="normal"
+app:layout_constraintBottom_toTopOf="@+id/fab_home"
+app:layout_constraintEnd_toEndOf="@+id/fab_home"
+app:layout_constraintStart_toStartOf="@+id/fab_home"
+app:srcCompat="@drawable/fab_star" />
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+android:id="@+id/fab_road"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginBottom="4dp"
+android:backgroundTint="@color/skyblue"
+app:fabSize="normal"
+app:layout_constraintBottom_toTopOf="@+id/fab_star"
+app:layout_constraintEnd_toEndOf="@+id/fab_star"
+app:layout_constraintStart_toStartOf="@+id/fab_star"
+app:srcCompat="@drawable/fab_road" />
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+android:id="@+id/fab_search"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginBottom="4dp"
+android:backgroundTint="@color/skyblue"
+app:fabSize="normal"
+app:layout_constraintBottom_toTopOf="@+id/fab_road"
+app:layout_constraintEnd_toEndOf="@+id/fab_road"
+app:layout_constraintStart_toStartOf="@+id/fab_road"
+app:srcCompat="@drawable/fab_search" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

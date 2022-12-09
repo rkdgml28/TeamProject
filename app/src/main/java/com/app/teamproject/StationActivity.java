@@ -328,7 +328,7 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
         }else if (numint == 705){
             tv_inform.setText("7호선, 8호선으로 환승 가능한 역");
         }else{
-            tv_inform.setText("몰랑");
+            tv_inform.setText("역정보 추가예정");
         }
 
         //호선별 색깔 설정

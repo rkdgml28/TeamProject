@@ -109,6 +109,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
                 isAllFabsVisible = false;
             }
         });
+
         btnHome.setOnClickListener(this);
         btnSetting.setOnClickListener(this);
         btnSearch.setOnClickListener(this);
@@ -185,9 +186,9 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
                 finish();
                 break;
             case R.id.fab_setting:
-                this.registerForContextMenu(btnSetting);
-                openContextMenu(btnSetting);
-                unregisterForContextMenu(btnSetting);
+                intent = new Intent(this, InquiryActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.fab_search:
                 intent = new Intent(this, SearchActivity.class);
