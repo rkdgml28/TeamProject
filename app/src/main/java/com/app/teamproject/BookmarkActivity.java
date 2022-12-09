@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -61,6 +62,20 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
     ArrayList<String> myStations = new ArrayList<>();
 
     String target = "";
+
+//    @Override
+//    protected void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState); // 반드시 호출해 주세요.
+//        String data = onSaveInstanceState(outState);
+//        // 추가로 자료를 저장하는 코드는 여기에 작성 하세요.
+//    }
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//
+//        // 추가로 자료를 복원하는 코드는 여기에 작성하세요.
+//    }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

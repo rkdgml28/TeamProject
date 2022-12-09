@@ -25,7 +25,6 @@
         <activity
             android:name=".BookmarkActivity"
             android:exported="true"
-
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".SearchActivity"
