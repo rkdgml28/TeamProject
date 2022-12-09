@@ -137,13 +137,15 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         auto_finish.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, stations));
 
         Intent intent = getIntent();
-        String start_station = intent.getExtras().getString("start_station");
-        String finish_station = intent.getExtras().getString("finish_station");
-        if (start_station != null) {
-            edit_start.setText(start_station);
-        }
-        if (finish_station != null) {
-            edit_finish.setText(finish_station);
+        if (intent.getExtras() != null) {
+            String start_station = intent.getExtras().getString("start_station");
+            String finish_station = intent.getExtras().getString("finish_station");
+            if (start_station != null) {
+                edit_start.setText(start_station);
+            }
+            if (finish_station != null) {
+                edit_finish.setText(finish_station);
+            }
         }
 
         isStopOverVisible = false;
