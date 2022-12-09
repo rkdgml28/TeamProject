@@ -41,16 +41,15 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     View layout_inform;
 
 
-
     String[] stations = {"101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123",
-                "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217",
-                "301", "302", "303", "304", "305", "305", "307", "308",
-                "401", "402", "403", "404", "405", "406", "407", "408", "409", "410", "411", "412", "413", "414", "415", "416", "417",
-                "501", "502", "503", "504", "505", "506", "507",
-                "601", "602", "603", "604", "605", "606", "607", "608", "609", "610", "611", "612", "613", "614", "615", "616", "617", "618", "619", "620", "621", "622",
-                "701", "702", "703", "704", "705", "706", "707",
-                "801", "802", "803", "804", "805", "806",
-                "901", "902", "903", "904"};
+            "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217",
+            "301", "302", "303", "304", "305", "305", "307", "308",
+            "401", "402", "403", "404", "405", "406", "407", "408", "409", "410", "411", "412", "413", "414", "415", "416", "417",
+            "501", "502", "503", "504", "505", "506", "507",
+            "601", "602", "603", "604", "605", "606", "607", "608", "609", "610", "611", "612", "613", "614", "615", "616", "617", "618", "619", "620", "621", "622",
+            "701", "702", "703", "704", "705", "706", "707",
+            "801", "802", "803", "804", "805", "806",
+            "901", "902", "903", "904"};
 
 
     Driver driver = new Driver();
@@ -72,6 +71,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         return today;
     }
+
     //도착시간 더하기 함수
     private String getCTime() {
         String today = null;
@@ -90,7 +90,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         return today;
     }
-
 
 
     @Override
@@ -136,6 +135,16 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         auto_start.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, stations));
         auto_stop.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, stations));
         auto_finish.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, stations));
+
+        Intent intent = getIntent();
+        String start_station = intent.getExtras().getString("start_station");
+        String finish_station = intent.getExtras().getString("finish_station");
+        if (start_station != null) {
+            edit_start.setText(start_station);
+        }
+        if (finish_station != null) {
+            edit_finish.setText(finish_station);
+        }
 
         isStopOverVisible = false;
         isInputComplete = false;
@@ -203,6 +212,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         int color8 = (this).getResources().getColor(R.color.line8);
         int color9 = (this).getResources().getColor(R.color.line9);
 
+
         //출빌지 도착지 바꾸기 버튼
         btn_change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -253,72 +263,71 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 }
 
 
-
                 if (isInputComplete) {
 
                     int line_start, line_finish;
 
                     int numstart = Integer.parseInt(start);
-                    line_start = numstart/100;
+                    line_start = numstart / 100;
                     int numarrive = Integer.parseInt(finish);
-                    line_finish = numarrive/100;
+                    line_finish = numarrive / 100;
 
-                    if (line_start == 1){
+                    if (line_start == 1) {
                         img_search_start.setColorFilter(color1);
                     }
-                    if (line_start == 2){
+                    if (line_start == 2) {
                         img_search_start.setColorFilter(color2);
                     }
-                    if (line_start == 3){
+                    if (line_start == 3) {
                         img_search_start.setColorFilter(color3);
                     }
-                    if (line_start == 4){
+                    if (line_start == 4) {
                         img_search_start.setColorFilter(color4);
                     }
-                    if (line_start == 5){
+                    if (line_start == 5) {
                         img_search_start.setColorFilter(color5);
                     }
-                    if (line_start == 6){
+                    if (line_start == 6) {
                         img_search_start.setColorFilter(color6);
                     }
-                    if (line_start == 7){
+                    if (line_start == 7) {
                         img_search_start.setColorFilter(color7);
                     }
-                    if (line_start == 8){
+                    if (line_start == 8) {
                         img_search_start.setColorFilter(color8);
                     }
-                    if (line_start == 9){
+                    if (line_start == 9) {
                         img_search_start.setColorFilter(color9);
                     }
 
-                    if (line_finish == 1){
+                    if (line_finish == 1) {
                         img_search_finish.setColorFilter(color1);
                     }
-                    if (line_finish == 2){
+                    if (line_finish == 2) {
                         img_search_finish.setColorFilter(color2);
                     }
-                    if (line_finish == 3){
+                    if (line_finish == 3) {
                         img_search_finish.setColorFilter(color3);
                     }
-                    if (line_finish == 4){
+                    if (line_finish == 4) {
                         img_search_finish.setColorFilter(color4);
                     }
-                    if (line_finish == 5){
+                    if (line_finish == 5) {
                         img_search_finish.setColorFilter(color5);
                     }
-                    if (line_finish == 6){
+                    if (line_finish == 6) {
                         img_search_finish.setColorFilter(color6);
                     }
-                    if (line_finish == 7){
+                    if (line_finish == 7) {
                         img_search_finish.setColorFilter(color7);
                     }
-                    if (line_finish == 8){
+                    if (line_finish == 8) {
                         img_search_finish.setColorFilter(color8);
                     }
-                    if (line_finish == 9){
+                    if (line_finish == 9) {
                         img_search_finish.setColorFilter(color9);
                     }
-                    
+
                     startText.setText(start);
                     arriveText.setText(finish);
 
