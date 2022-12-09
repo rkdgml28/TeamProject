@@ -21,7 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class RoadActivity extends AppCompatActivity implements View.OnClickListener {
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
     TextView btn_line1, btn_line2, btn_line3, btn_line4, btn_line5, btn_line6, btn_line7, btn_line8, btn_line9;
-    ImageView iv_road , main_search;
+    ImageView iv_road , road_search;
     Boolean isAllFabsVisible;
     AutoCompleteTextView road_search_et;
 
@@ -47,56 +47,6 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
         iv_road = findViewById(R.id.iv_road);
         iv_road.setVisibility(View.INVISIBLE);
 
-
-        main_search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String search = "";
-                search = road_search_et.getText().toString();
-                numint = Integer.parseInt(search);
-                int line = numint/100;
-
-                if (line == 1){
-                    iv_road.setImageResource(R.drawable.line1);
-                    iv_road.setVisibility(View.VISIBLE);
-                }
-                if (line == 2){
-                    iv_road.setImageResource(R.drawable.line2);
-                    iv_road.setVisibility(View.VISIBLE);
-                }
-                if (line == 3){
-                    iv_road.setImageResource(R.drawable.line3);
-                    iv_road.setVisibility(View.VISIBLE);
-                }
-                if (line == 4){
-                    iv_road.setImageResource(R.drawable.line4);
-                    iv_road.setVisibility(View.VISIBLE);
-                }
-                if (line == 5){
-                    iv_road.setImageResource(R.drawable.line5);
-                    iv_road.setVisibility(View.VISIBLE);
-                }
-                if (line == 6){
-                    iv_road.setImageResource(R.drawable.line6);
-                    iv_road.setVisibility(View.VISIBLE);
-                }
-                if (line == 7){
-                    iv_road.setImageResource(R.drawable.line7);
-                    iv_road.setVisibility(View.VISIBLE);
-                }
-                if (line == 8){
-                    iv_road.setImageResource(R.drawable.line8);
-                    iv_road.setVisibility(View.VISIBLE);
-                }
-                if (line == 9){
-                    iv_road.setImageResource(R.drawable.line9);
-                    iv_road.setVisibility(View.VISIBLE);
-                }
-
-
-
-            }
-        });
         // FAB button
         btnSetting = findViewById(R.id.fab_setting);
         btnHome = findViewById(R.id.fab_home);
@@ -104,7 +54,7 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
         btnSearch = findViewById(R.id.fab_search);
         btnStar = findViewById(R.id.fab_star);
 
-        main_search = findViewById(R.id.main_search);
+        road_search = findViewById(R.id.road_search);
         road_search_et = findViewById(R.id.road_search_et);
 
         btnSetting.setVisibility(View.GONE);
@@ -151,7 +101,55 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
         btn_line8.setOnClickListener(this);
         btn_line9.setOnClickListener(this);
 
+
+        road_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String search = road_search_et.getText().toString();
+                numint = Integer.parseInt(search);
+                int line = numint/100;
+
+                if (line == 1){
+                    iv_road.setImageResource(R.drawable.line1);
+                    iv_road.setVisibility(View.VISIBLE);
+                }
+                if (line == 2){
+                    iv_road.setImageResource(R.drawable.line2);
+                    iv_road.setVisibility(View.VISIBLE);
+                }
+                if (line == 3){
+                    iv_road.setImageResource(R.drawable.line3);
+                    iv_road.setVisibility(View.VISIBLE);
+                }
+                if (line == 4){
+                    iv_road.setImageResource(R.drawable.line4);
+                    iv_road.setVisibility(View.VISIBLE);
+                }
+                if (line == 5){
+                    iv_road.setImageResource(R.drawable.line5);
+                    iv_road.setVisibility(View.VISIBLE);
+                }
+                if (line == 6){
+                    iv_road.setImageResource(R.drawable.line6);
+                    iv_road.setVisibility(View.VISIBLE);
+                }
+                if (line == 7){
+                    iv_road.setImageResource(R.drawable.line7);
+                    iv_road.setVisibility(View.VISIBLE);
+                }
+                if (line == 8){
+                    iv_road.setImageResource(R.drawable.line8);
+                    iv_road.setVisibility(View.VISIBLE);
+                }
+                if (line == 9){
+                    iv_road.setImageResource(R.drawable.line9);
+                    iv_road.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
     }
+
 
     @Override
     public void onClick(View view) {

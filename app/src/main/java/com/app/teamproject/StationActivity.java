@@ -29,19 +29,6 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
     Driver driver = new Driver();
     int[] time;
 
-    //현재시간 불러오기 함수
-    private String getTime() {
-        String today = null;
-
-        Date date = new Date();
-        // 포맷변경 ( 년월일 시분초)
-        SimpleDateFormat sdformat = new SimpleDateFormat("HH:mm:ss");
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        today = sdformat.format(cal.getTime());
-
-        return today;
-    }
     //도착시간 더하기 함수
     private String getCTime() {
         String today = null;
