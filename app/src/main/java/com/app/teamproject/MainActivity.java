@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -40,9 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     btn701, btn702, btn703, btn704, btn705, btn706, btn707,
     btn801, btn802, btn803, btn804, btn805, btn806,
     btn901, btn902, btn903, btn904;
-    ImageView search, iv_main;
+    ImageView search, iv_main, zoom_main;
+    ImageButton zoom;
     TextView search_et;
-    Boolean isAllFabsVisible;
+    Boolean isAllFabsVisible, isImageZoom;
     LinearLayout linear_main;
 
     String[] stations = {"101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123",
@@ -1132,18 +1134,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
-
-
-
-
-
-
-
-
         linear_main = findViewById(R.id.linear_main);
         search_et = findViewById(R.id.main_search_et);
         search = findViewById(R.id.main_search);
         iv_main = findViewById(R.id.iv_main);
+        zoom_main = findViewById(R.id.zoom_main);
+        zoom = findViewById(R.id.zoom);
 
         btnSubway = findViewById(R.id.fab_subway);
 
@@ -1161,6 +1157,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnRoad.setVisibility(View.GONE);
 
         isAllFabsVisible = false;
+        isImageZoom = true;
 
         btnSubway.setOnClickListener(view -> {
             if (!isAllFabsVisible) {
@@ -1190,14 +1187,57 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AutoCompleteTextView main_search = findViewById(R.id.main_search_et);
         main_search.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, stations));
 
-        // 스케일제스쳐 디텍터 인스턴스
-//        iv_main.setOnTouchListener(onTouch);
-//        iv_main.setScaleType(ImageView.ScaleType.MATRIX);
+        zoom.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                if(isImageZoom) {
+                    // 스케일제스쳐 디텍터 인스턴스
+                    iv_main.setVisibility(View.INVISIBLE);
+                    btn101.setVisibility(View.INVISIBLE);
+                    btn102.setVisibility(View.INVISIBLE);
+                    btn103.setVisibility(View.INVISIBLE);
+                    btn104.setVisibility(View.INVISIBLE);
+                    btn105.setVisibility(View.INVISIBLE);
+                    // 노가다 하셈 ,,,
+//                    btn106, btn107, btn108, btn109, btn110, btn111, btn112, btn113, btn114, btn115, btn116, btn117, btn118, btn119, btn120, btn121, btn122, btn123,
+//                            btn201, btn202, btn203, btn204, btn205, btn206, btn207, btn208, btn209, btn210, btn211, btn212, btn213, btn214, btn215, btn216, btn217,
+//                            btn301, btn302, btn303, btn304, btn305, btn306, btn307, btn308,
+//                            btn401, btn402, btn403, btn404, btn405, btn406, btn407, btn408, btn409, btn410, btn411, btn412, btn413, btn414, btn415, btn416, btn417,
+//                            btn501, btn502, btn503, btn504, btn505, btn506, btn507,
+//                            btn601, btn602, btn603, btn604, btn605, btn606, btn607, btn608, btn609, btn610, btn611, btn612, btn613, btn614, btn615, btn616, btn617, btn618, btn619, btn620, btn621, btn622,
+//                            btn701, btn702, btn703, btn704, btn705, btn706, btn707,
+//                            btn801, btn802, btn803, btn804, btn805, btn806,
+//                            btn901, btn902, btn903, btn904
+                    zoom_main.setVisibility(View.VISIBLE);
+                    zoom_main.setOnTouchListener(onTouch);
+                    zoom_main.setScaleType(ImageView.ScaleType.MATRIX);
+                    //mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
+                    isImageZoom = false;
+                }
+                else{
+                    iv_main.setVisibility(View.VISIBLE);
 
+                    btn101.setVisibility(View.VISIBLE);
+                    btn102.setVisibility(View.VISIBLE);
+                    btn103.setVisibility(View.VISIBLE);
+                    btn104.setVisibility(View.VISIBLE);
+                    btn105.setVisibility(View.VISIBLE);
+                    // 여기도 노가다........
+                    //                    btn106, btn107, btn108, btn109, btn110, btn111, btn112, btn113, btn114, btn115, btn116, btn117, btn118, btn119, btn120, btn121, btn122, btn123,
+//                            btn201, btn202, btn203, btn204, btn205, btn206, btn207, btn208, btn209, btn210, btn211, btn212, btn213, btn214, btn215, btn216, btn217,
+//                            btn301, btn302, btn303, btn304, btn305, btn306, btn307, btn308,
+//                            btn401, btn402, btn403, btn404, btn405, btn406, btn407, btn408, btn409, btn410, btn411, btn412, btn413, btn414, btn415, btn416, btn417,
+//                            btn501, btn502, btn503, btn504, btn505, btn506, btn507,
+//                            btn601, btn602, btn603, btn604, btn605, btn606, btn607, btn608, btn609, btn610, btn611, btn612, btn613, btn614, btn615, btn616, btn617, btn618, btn619, btn620, btn621, btn622,
+//                            btn701, btn702, btn703, btn704, btn705, btn706, btn707,
+//                            btn801, btn802, btn803, btn804, btn805, btn806,
+//                            btn901, btn902, btn903, btn904
+                    zoom_main.setVisibility(View.INVISIBLE);
+                    isImageZoom = true;
+                }
+            }
+        });
 
-
-
-        //        mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
 
         search.setOnClickListener(new View.OnClickListener(){
 
@@ -1279,156 +1319,156 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return MainActivity.context;
     }
 
-//    float oldXvalue;
-//    float oldYvalue;
+    float oldXvalue;
+    float oldYvalue;
 
-//    public boolean onTouchEvent(View v, MotionEvent event) {
-//        //변수로 선언해 놓은 ScaleGestureDetector
-//        mScaleGestureDetector.onTouchEvent(event);
-//        return true;
-//    }
+    public boolean onTouchEvent(View v, MotionEvent event) {
+        //변수로 선언해 놓은 ScaleGestureDetector
+        mScaleGestureDetector.onTouchEvent(event);
+        return true;
+    }
 
-//    private View.OnTouchListener onTouch = new View.OnTouchListener() {
-//        @Override
-//        public boolean onTouch(View v, MotionEvent event) {
-//            int width = ((ViewGroup) v.getParent()).getWidth() - v.getWidth();
-//            int height = linear_main.getHeight() - v.getHeight();
-//            if (v.equals(iv_main)) {
-//                int action = event.getAction();
-//                switch (action & MotionEvent.ACTION_MASK) {
-//                    case MotionEvent.ACTION_DOWN:
-//                        touchMode = TOUCH_MODE.SINGLE;
-//
-//                        donwSingleEvent(event);
-//                        break;
-//                    case MotionEvent.ACTION_POINTER_DOWN:
-//                        if (event.getPointerCount() == 2) { // 두손가락 터치를 했을 때
-//                            touchMode = TOUCH_MODE.MULTI;
-//                            downMultiEvent(event);
-//                        }
-//                        break;
-//                    case MotionEvent.ACTION_MOVE:
-//                        if (touchMode == TOUCH_MODE.SINGLE) {
-//                            moveSingleEvent(v, event);
-//                            if ( v.getX() > 0 && v.getY() > 0 && v.getX() < width && v.getY() < height ) {
-//                                v.setX(0);
-//                                v.setY(0);
-//                            }
-//                        } else if (touchMode == TOUCH_MODE.MULTI) {
-//                            moveMultiEvent(event);
-//                        }
-//                        break;
-//
-//                    case MotionEvent.ACTION_UP:
-//                    case MotionEvent.ACTION_POINTER_UP:
-//                        touchMode = TOUCH_MODE.NONE;
-//                        break;
-//                }
+    private View.OnTouchListener onTouch = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            int width = ((ViewGroup) v.getParent()).getWidth() - v.getWidth();
+            int height = linear_main.getHeight() - v.getHeight();
+            if (v.equals(zoom_main)) {
+                int action = event.getAction();
+                switch (action & MotionEvent.ACTION_MASK) {
+                    case MotionEvent.ACTION_DOWN:
+                        touchMode = TOUCH_MODE.SINGLE;
+
+                        donwSingleEvent(event);
+                        break;
+                    case MotionEvent.ACTION_POINTER_DOWN:
+                        if (event.getPointerCount() == 2) { // 두손가락 터치를 했을 때
+                            touchMode = TOUCH_MODE.MULTI;
+                            downMultiEvent(event);
+                        }
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        if (touchMode == TOUCH_MODE.SINGLE) {
+                            moveSingleEvent(v, event);
+                            if ( v.getX() > 0 && v.getY() > 0 && v.getX() < width && v.getY() < height ) {
+                                v.setX(0);
+                                v.setY(0);
+                            }
+                        } else if (touchMode == TOUCH_MODE.MULTI) {
+                            moveMultiEvent(event);
+                        }
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_POINTER_UP:
+                        touchMode = TOUCH_MODE.NONE;
+                        break;
+                }
+            }
+
+
+            return true;
+        }
+    };
+
+    private PointF getMidPoint(MotionEvent e) {
+
+        float x = (e.getX(0) + e.getX(1)) / 2;
+        float y = (e.getY(0) + e.getY(1)) / 2;
+
+        return new PointF(x, y);
+    }
+
+    private float getDistance(MotionEvent e) {
+        float x = e.getX(0) - e.getX(1);
+        float y = e.getY(0) - e.getY(1);
+        return (float) Math.sqrt(x * x + y * y);
+    }
+
+    private void donwSingleEvent(MotionEvent event) {
+        savedMatrix.set(matrix);
+        startPoint = new PointF(event.getX(), event.getY());
+    }
+
+    private void downMultiEvent(MotionEvent event) {
+        oldDistance = getDistance(event);
+        if (oldDistance > 5f) {
+            savedMatrix.set(matrix);
+            midPoint = getMidPoint(event);
+            double radian = Math.atan2(event.getY() - midPoint.y, event.getX() - midPoint.x);
+            oldDegree = (radian * 180) / Math.PI;
+        }
+    }
+    private void moveSingleEvent(View v, MotionEvent event) {
+
+        float x = event.getX() - startPoint.x;
+        float y = event.getY() - startPoint.y;
+        int width = ((ViewGroup) v.getParent()).getWidth() - v.getWidth();
+        int height = linear_main.getHeight() - v.getHeight();
+//        if (x > width && y > height) {
+//            x = width;
+//            y = height;
+//        } else if (x < 0 && y > height) {
+//            x = 0;
+//            y = height;
+//        } else if (x > width && y < 0) {
+//            x = width;
+//            y = 0;
+//        } else if (x < 0 && y < 0) {
+//            x = 0;
+//            y = 0;
+//        } else if (x < 0 || y > width) {
+//            if (x < 0) {
+//                x = 0;
+//                y = event.getRawY() - startPoint.y - v.getHeight();
+//            } else {
+//                x = width;
+//                y = event.getRawY() - startPoint.y - v.getHeight();
 //            }
-//
-//
-//            return true;
-//        }
-//    };
-//
-//    private PointF getMidPoint(MotionEvent e) {
-//
-//        float x = (e.getX(0) + e.getX(1)) / 2;
-//        float y = (e.getY(0) + e.getY(1)) / 2;
-//
-//        return new PointF(x, y);
-//    }
-//
-//    private float getDistance(MotionEvent e) {
-//        float x = e.getX(0) - e.getX(1);
-//        float y = e.getY(0) - e.getY(1);
-//        return (float) Math.sqrt(x * x + y * y);
-//    }
-//
-//    private void donwSingleEvent(MotionEvent event) {
-//        savedMatrix.set(matrix);
-//        startPoint = new PointF(event.getX(), event.getY());
-//    }
-//
-//    private void downMultiEvent(MotionEvent event) {
-//        oldDistance = getDistance(event);
-//        if (oldDistance > 5f) {
-//            savedMatrix.set(matrix);
-//            midPoint = getMidPoint(event);
-//            double radian = Math.atan2(event.getY() - midPoint.y, event.getX() - midPoint.x);
-//            oldDegree = (radian * 180) / Math.PI;
-//        }
-//    }
-//    private void moveSingleEvent(View v, MotionEvent event) {
-//
-//        float x = event.getX() - startPoint.x;
-//        float y = event.getY() - startPoint.y;
-//        int width = ((ViewGroup) v.getParent()).getWidth() - v.getWidth();
-//        int height = linear_main.getHeight() - v.getHeight();
-////        if (x > width && y > height) {
-////            x = width;
-////            y = height;
-////        } else if (x < 0 && y > height) {
-////            x = 0;
-////            y = height;
-////        } else if (x > width && y < 0) {
-////            x = width;
-////            y = 0;
-////        } else if (x < 0 && y < 0) {
-////            x = 0;
-////            y = 0;
-////        } else if (x < 0 || y > width) {
-////            if (x < 0) {
-////                x = 0;
-////                y = event.getRawY() - startPoint.y - v.getHeight();
-////            } else {
-////                x = width;
-////                y = event.getRawY() - startPoint.y - v.getHeight();
-////            }
-////        } else if (y < 0 || y > height) {
-////            if (y < 0) {
-////                y = 0;
-////            } else {
-////                y = height;
-////            }
-////        }
-//
-//        matrix.set(savedMatrix);
-////        if ( x > 0 && y > 0 && x < width && y < height ) {
-////            matrix.postTranslate(x, y);
-////        }
-////        if (x < 0){
-////            x = 0;
-////        }
-////        if (y < 0) {
-////            y = 0;
-////        }
-//        matrix.postTranslate(x, y);
-//        Log.v("matrix", iv_main.getMaxWidth() + " :::::::" + y);
-//        if (iv_main.getX() < 0){
-//            iv_main.setX(0);
-//        }
-//        iv_main.setImageMatrix(matrix);
-//    }
-//
-//    private void moveMultiEvent(MotionEvent event) {
-//        float newDistance = getDistance(event);
-//        if (newDistance > 5f) {
-//            matrix.set(savedMatrix);
-//            float scale = newDistance / oldDistance;
-//            if (scale < 0 ){
-//                scale = 1;
+//        } else if (y < 0 || y > height) {
+//            if (y < 0) {
+//                y = 0;
+//            } else {
+//                y = height;
 //            }
-//
-//            Log.v("scale", String.valueOf(scale));
-//            matrix.postScale(scale, scale, midPoint.x, midPoint.y);
-//
-//            double nowRadian = Math.atan2(event.getY() - midPoint.y, event.getX() - midPoint.x);
-//            matrix.postRotate(0, midPoint.x, midPoint.y);
-//
-//            iv_main.setImageMatrix(matrix);
-//
 //        }
-//    }
+
+        matrix.set(savedMatrix);
+//        if ( x > 0 && y > 0 && x < width && y < height ) {
+//            matrix.postTranslate(x, y);
+//        }
+//        if (x < 0){
+//            x = 0;
+//        }
+//        if (y < 0) {
+//            y = 0;
+//        }
+        matrix.postTranslate(x, y);
+        Log.v("matrix", zoom_main.getMaxWidth() + " :::::::" + y);
+        if (zoom_main.getX() < 0){
+            zoom_main.setX(0);
+        }
+        zoom_main.setImageMatrix(matrix);
+    }
+
+    private void moveMultiEvent(MotionEvent event) {
+        float newDistance = getDistance(event);
+        if (newDistance > 5f) {
+            matrix.set(savedMatrix);
+            float scale = newDistance / oldDistance;
+            if (scale < 0 ){
+                scale = 1;
+            }
+
+            Log.v("scale", String.valueOf(scale));
+            matrix.postScale(scale, scale, midPoint.x, midPoint.y);
+
+            double nowRadian = Math.atan2(event.getY() - midPoint.y, event.getX() - midPoint.x);
+            matrix.postRotate(0, midPoint.x, midPoint.y);
+
+            zoom_main.setImageMatrix(matrix);
+
+        }
+    }
 
 }
