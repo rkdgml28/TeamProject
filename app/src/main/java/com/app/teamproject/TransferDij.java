@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.util.*;
 
-public class TransferDij { //2021 ���� , �迭�� ������ �Ѿ�� ���� �߻� ArrayIndexOutOfBoundsException
+public class TransferDij {
 	static class Subway {
 		int line_num;
 		int station_num;
@@ -12,9 +12,9 @@ public class TransferDij { //2021 ���� , �迭�� ������
 
 		public Subway(int line_num, int station_num, int transformation_cnt) {
 			super();
-			this.line_num = line_num; //ȣ�� ����(1ȣ��, 2ȣ��...)
-			this.station_num = station_num; //�� ����
-			this.transformation_cnt = transformation_cnt; //ȯ�°��ɿ� ����
+			this.line_num = line_num;
+			this.station_num = station_num;
+			this.transformation_cnt = transformation_cnt;
 		}
 	}
 	
@@ -26,9 +26,9 @@ public class TransferDij { //2021 ���� , �迭�� ������
 	static boolean[] visitedLines;
 	static boolean[] visitedStations;
 
-	static List<Integer>[] stations;	// �� ���� ������ �뼱��
-	static List<Integer>[] lines; 		// �� �뼱�� ������ ����
-	static ArrayList<String> transferStation;// ȯ�¿�
+	static List<Integer>[] stations;
+	static List<Integer>[] lines;
+	static ArrayList<String> transferStation;
 	
 	private String vertex[] = {
 			"101","102","103","104","105","106","107","108","109","110",
@@ -59,7 +59,7 @@ public class TransferDij { //2021 ���� , �迭�� ������
 		"112", "901", "406", "605", "902", "118", "903", "702", "904", "621", "211", "-1"
 	};
 	
-	// ������
+
 	public TransferDij(int node, int line) {
 		N = node;
 		L = line;
@@ -69,15 +69,15 @@ public class TransferDij { //2021 ���� , �迭�� ������
 		stations = new ArrayList[N + 1];
 	}
 	
-	// vertex, vertex_lines ��
+
 	public int compareVertex_VertexLines(String vertex_lines) {
 		int index;
 		for(index = 0; index < N; index++) {
-			if(vertex_lines.equals(vertex[index])) { // �Ķ���ͷ� �ѱ� ���� �ִ� ���̸�
-				return index; // �� ���� �ε��� ��ȯ
+			if(vertex_lines.equals(vertex[index])) {
+				return index;
 			}
 		}
-		// �Ķ���ͷ� �ѱ� ���� ���� ���̸� -1��ȯ
+
 		return -1;
 	}
 	
@@ -86,15 +86,15 @@ public class TransferDij { //2021 ���� , �迭�� ������
 		return station;
 	}
 	
-	//vertex_line���� �ε����� �´� �� ��ȯ
+
 	public String getStation_inVL(int index) {
 		String station = test.vertex_lines[index];
 		return station;
 	}
 	
-	// �ε��� ���: vertex
+
 	public int getIndex(String arrival) {
-		int temp; //��� �迭 �߿��� ������ �������� �´� ����� ��� ���� �ε���
+		int temp;
 		
 		for(temp = 0; temp < N; temp++) {
 			if(vertex[temp].equals(arrival)) break;
@@ -102,14 +102,14 @@ public class TransferDij { //2021 ���� , �迭�� ������
 		return temp;
 	}	
 	
-	//ȯ�� ��� �ȳ�
+
 	public ArrayList<String> getTransStation(String departure, String arrival) {
 		ArrayList<String> transferRoute = new ArrayList<String>();
 
 		List<Integer> temp = new ArrayList<>();	
 		List<Integer> temp1 = new ArrayList<>();
 		
-		//������� ������ ��ġ ����
+
 		for(int i = 0; i < vertex_lines.length; i++) {
 			if(vertex_lines[i].equals(departure)) {
 				temp.add(i);
@@ -125,14 +125,14 @@ public class TransferDij { //2021 ���� , �迭�� ������
 		Log.v("temp1", temp1.toString());
 
 
-		//������ ��ġ �� ������� ������ ���� ���̰� ����� ��
+
 		int index = temp.get(0);
 		int index1 = temp1.get(0);
 		int degree = Math.abs(temp.get(0)- temp1.get(0));
 		
 		for(int n = 0; n < temp.size(); n++) {
 			for(int m = 0; m < temp1.size(); m++) {
-				//-1�� �ڲ� ���ԵǸ� ��˻� �ϵ��� ���� ��;
+
 				if(Math.abs(temp.get(n)- temp1.get(m)) < degree){
 					index = temp.get(n); index1 = temp1.get(m);
 					degree = Math.abs(temp.get(n)- temp1.get(m));
@@ -160,7 +160,7 @@ public class TransferDij { //2021 ���� , �迭�� ������
 	public void addLines(){
 		int i1 = 0;
 		for (int i = 0; i < L; i++) {
-			// �� �뼱�� ������ ���� ������� �־�����.
+
 			while (true) {
 				int temp = test.compareVertex_VertexLines(test.vertex_lines[i1]);
 				i1++;
@@ -175,7 +175,7 @@ public class TransferDij { //2021 ���� , �迭�� ������
 	public void addStatons(){
 		int i1 = 0;
 		for (int i = 0; i < L; i++) {
-			// �� �뼱�� ������ ���� ������� �־�����.
+
 			while (true) {
 				int temp = test.compareVertex_VertexLines(test.vertex_lines[i1]);
 				i1++;
@@ -205,7 +205,7 @@ public class TransferDij { //2021 ���� , �迭�� ������
 		String one_station = "";
 		
 		for (int line : stations[test.getIndex(from)]) {
-			queue.offer(new Subway(line, test.getIndex(from), 0)); // start ���� ������ �뼱���� ����
+			queue.offer(new Subway(line, test.getIndex(from), 0));
 			visitedLines[line] = true;
 		}
 
@@ -216,15 +216,14 @@ public class TransferDij { //2021 ���� , �迭�� ������
 				answer = Math.min(answer, subway.transformation_cnt);
 			}
 
-			for (int station : lines[subway.line_num]) { // �ش� ���� ������ ����
+			for (int station : lines[subway.line_num]) {
 				if (!visitedStations[station]) {
 					visitedStations[station] = true;
 					
 					queue.offer(new Subway(subway.line_num, station, subway.transformation_cnt));
-					for (int line : stations[station]) { // �ش� ���� ������ �뼱��
-						
+					for (int line : stations[station]) {
 						if (line != subway.line_num && !visitedLines[line]) {
-							// ȯ�� Ƚ���� 1�϶�
+
 							if(subway.transformation_cnt == 0 ) {
 								if(stations[station].contains(stations[test.getIndex(to)].get(0)) && stations[station].contains(stations[test.getIndex(from)].get(0))) {
 									transferStation.add(test.getStation(station));
@@ -232,7 +231,7 @@ public class TransferDij { //2021 ���� , �迭�� ������
 								}
 							}
 
-							// ȯ�� Ƚ���� 2�� ��
+
 							if (stations[station].contains(stations[test.getIndex(to)].get(0)) || stations[station].contains(stations[test.getIndex(from)].get(0))){
 								transferStation.add(test.getStation(station));
 							}													
@@ -253,8 +252,8 @@ public class TransferDij { //2021 ���� , �迭�� ������
 			index[1] = test.getIndex(one_station);
 			
 		} else if(answer > 1) {
-			int fromLine = stations[test.getIndex(from)].get(0); //��߿��� �����ϴ� ȣ��
-			int toLine = stations[test.getIndex(to)].get(0); //�������� �����ϴ� ȣ��
+			int fromLine = stations[test.getIndex(from)].get(0);
+			int toLine = stations[test.getIndex(to)].get(0);
 			
 			ArrayList<Integer> interSection = new ArrayList<Integer>();
 
@@ -278,7 +277,7 @@ public class TransferDij { //2021 ���� , �迭�� ������
 					last_j = j;
 				}
 				if(cnt == 2) {
-					//System.out.println("�ߺ� �߰�: " + interSection.get(i));
+
 					break;
 				} else {
 					cnt = 0;

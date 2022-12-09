@@ -1193,21 +1193,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(isImageZoom) {
                     // 스케일제스쳐 디텍터 인스턴스
                     iv_main.setVisibility(View.INVISIBLE);
-                    btn101.setVisibility(View.INVISIBLE);
-                    btn102.setVisibility(View.INVISIBLE);
-                    btn103.setVisibility(View.INVISIBLE);
-                    btn104.setVisibility(View.INVISIBLE);
-                    btn105.setVisibility(View.INVISIBLE);
-                    // 노가다 하셈 ,,,
-//                    btn106, btn107, btn108, btn109, btn110, btn111, btn112, btn113, btn114, btn115, btn116, btn117, btn118, btn119, btn120, btn121, btn122, btn123,
-//                            btn201, btn202, btn203, btn204, btn205, btn206, btn207, btn208, btn209, btn210, btn211, btn212, btn213, btn214, btn215, btn216, btn217,
-//                            btn301, btn302, btn303, btn304, btn305, btn306, btn307, btn308,
-//                            btn401, btn402, btn403, btn404, btn405, btn406, btn407, btn408, btn409, btn410, btn411, btn412, btn413, btn414, btn415, btn416, btn417,
-//                            btn501, btn502, btn503, btn504, btn505, btn506, btn507,
-//                            btn601, btn602, btn603, btn604, btn605, btn606, btn607, btn608, btn609, btn610, btn611, btn612, btn613, btn614, btn615, btn616, btn617, btn618, btn619, btn620, btn621, btn622,
-//                            btn701, btn702, btn703, btn704, btn705, btn706, btn707,
-//                            btn801, btn802, btn803, btn804, btn805, btn806,
-//                            btn901, btn902, btn903, btn904
+                    btn101.setVisibility(View.INVISIBLE);btn102.setVisibility(View.INVISIBLE);btn103.setVisibility(View.INVISIBLE);btn104.setVisibility(View.INVISIBLE);
+                    btn105.setVisibility(View.INVISIBLE);btn106.setVisibility(View.INVISIBLE);btn107.setVisibility(View.INVISIBLE);btn108.setVisibility(View.INVISIBLE);
+                    btn109.setVisibility(View.INVISIBLE);btn110.setVisibility(View.INVISIBLE);btn111.setVisibility(View.INVISIBLE);btn112.setVisibility(View.INVISIBLE);
+                    btn113.setVisibility(View.INVISIBLE);btn114.setVisibility(View.INVISIBLE);btn115.setVisibility(View.INVISIBLE);btn116.setVisibility(View.INVISIBLE);
+                    btn117.setVisibility(View.INVISIBLE);btn118.setVisibility(View.INVISIBLE);btn119.setVisibility(View.INVISIBLE);btn120.setVisibility(View.INVISIBLE);
+                    btn121.setVisibility(View.INVISIBLE);btn122.setVisibility(View.INVISIBLE);btn123.setVisibility(View.INVISIBLE);
+                    btn201.setVisibility(View.INVISIBLE);btn202.setVisibility(View.INVISIBLE);btn203.setVisibility(View.INVISIBLE);btn204.setVisibility(View.INVISIBLE);
+                    btn205.setVisibility(View.INVISIBLE);btn206.setVisibility(View.INVISIBLE);btn207.setVisibility(View.INVISIBLE);btn208.setVisibility(View.INVISIBLE);
+                    btn209.setVisibility(View.INVISIBLE);btn210.setVisibility(View.INVISIBLE);btn211.setVisibility(View.INVISIBLE);btn212.setVisibility(View.INVISIBLE);
+                    btn213.setVisibility(View.INVISIBLE);btn214.setVisibility(View.INVISIBLE);btn215.setVisibility(View.INVISIBLE);btn216.setVisibility(View.INVISIBLE);
+                    btn217.setVisibility(View.INVISIBLE);
+                    btn301.setVisibility(View.INVISIBLE);btn302.setVisibility(View.INVISIBLE);btn303.setVisibility(View.INVISIBLE);btn304.setVisibility(View.INVISIBLE);
+                    btn305.setVisibility(View.INVISIBLE);btn306.setVisibility(View.INVISIBLE);btn307.setVisibility(View.INVISIBLE);btn308.setVisibility(View.INVISIBLE);
+                    btn401.setVisibility(View.INVISIBLE);btn402.setVisibility(View.INVISIBLE);btn403.setVisibility(View.INVISIBLE);btn404.setVisibility(View.INVISIBLE);
+                    btn405.setVisibility(View.INVISIBLE);btn406.setVisibility(View.INVISIBLE);btn407.setVisibility(View.INVISIBLE);btn408.setVisibility(View.INVISIBLE);
+                    btn409.setVisibility(View.INVISIBLE);btn410.setVisibility(View.INVISIBLE);btn411.setVisibility(View.INVISIBLE);btn412.setVisibility(View.INVISIBLE);
+                    btn413.setVisibility(View.INVISIBLE);btn414.setVisibility(View.INVISIBLE);btn415.setVisibility(View.INVISIBLE);btn416.setVisibility(View.INVISIBLE);
+                    btn417.setVisibility(View.INVISIBLE);
+                    btn501.setVisibility(View.INVISIBLE);btn502.setVisibility(View.INVISIBLE);btn503.setVisibility(View.INVISIBLE);btn504.setVisibility(View.INVISIBLE);
+                    btn505.setVisibility(View.INVISIBLE);btn506.setVisibility(View.INVISIBLE);btn507.setVisibility(View.INVISIBLE);
+                    btn601.setVisibility(View.INVISIBLE); btn602.setVisibility(View.INVISIBLE); btn603.setVisibility(View.INVISIBLE); btn604.setVisibility(View.INVISIBLE);
+                    btn605.setVisibility(View.INVISIBLE); btn606.setVisibility(View.INVISIBLE); btn607.setVisibility(View.INVISIBLE); btn608.setVisibility(View.INVISIBLE);
+                    btn609.setVisibility(View.INVISIBLE); btn610.setVisibility(View.INVISIBLE); btn611.setVisibility(View.INVISIBLE); btn612.setVisibility(View.INVISIBLE);
+                    btn613.setVisibility(View.INVISIBLE); btn614.setVisibility(View.INVISIBLE); btn615.setVisibility(View.INVISIBLE); btn616.setVisibility(View.INVISIBLE);
+                    btn617.setVisibility(View.INVISIBLE); btn618.setVisibility(View.INVISIBLE); btn619.setVisibility(View.INVISIBLE); btn620.setVisibility(View.INVISIBLE);
+                    btn621.setVisibility(View.INVISIBLE); btn622.setVisibility(View.INVISIBLE);
+                    btn701.setVisibility(View.INVISIBLE);btn702.setVisibility(View.INVISIBLE);btn703.setVisibility(View.INVISIBLE);btn704.setVisibility(View.INVISIBLE);
+                    btn705.setVisibility(View.INVISIBLE);btn706.setVisibility(View.INVISIBLE);btn707.setVisibility(View.INVISIBLE);
+                    btn801.setVisibility(View.INVISIBLE);btn802.setVisibility(View.INVISIBLE);btn803.setVisibility(View.INVISIBLE);btn804.setVisibility(View.INVISIBLE);
+                    btn805.setVisibility(View.INVISIBLE);btn806.setVisibility(View.INVISIBLE);
+                    btn901.setVisibility(View.INVISIBLE);btn902.setVisibility(View.INVISIBLE);btn903.setVisibility(View.INVISIBLE);btn904.setVisibility(View.INVISIBLE);
+
+
                     zoom_main.setVisibility(View.VISIBLE);
                     zoom_main.setOnTouchListener(onTouch);
                     zoom_main.setScaleType(ImageView.ScaleType.MATRIX);
@@ -1217,21 +1235,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else{
                     iv_main.setVisibility(View.VISIBLE);
 
-                    btn101.setVisibility(View.VISIBLE);
-                    btn102.setVisibility(View.VISIBLE);
-                    btn103.setVisibility(View.VISIBLE);
-                    btn104.setVisibility(View.VISIBLE);
-                    btn105.setVisibility(View.VISIBLE);
-                    // 여기도 노가다........
-                    //                    btn106, btn107, btn108, btn109, btn110, btn111, btn112, btn113, btn114, btn115, btn116, btn117, btn118, btn119, btn120, btn121, btn122, btn123,
-//                            btn201, btn202, btn203, btn204, btn205, btn206, btn207, btn208, btn209, btn210, btn211, btn212, btn213, btn214, btn215, btn216, btn217,
-//                            btn301, btn302, btn303, btn304, btn305, btn306, btn307, btn308,
-//                            btn401, btn402, btn403, btn404, btn405, btn406, btn407, btn408, btn409, btn410, btn411, btn412, btn413, btn414, btn415, btn416, btn417,
-//                            btn501, btn502, btn503, btn504, btn505, btn506, btn507,
-//                            btn601, btn602, btn603, btn604, btn605, btn606, btn607, btn608, btn609, btn610, btn611, btn612, btn613, btn614, btn615, btn616, btn617, btn618, btn619, btn620, btn621, btn622,
-//                            btn701, btn702, btn703, btn704, btn705, btn706, btn707,
-//                            btn801, btn802, btn803, btn804, btn805, btn806,
-//                            btn901, btn902, btn903, btn904
+                    btn101.setVisibility(View.VISIBLE);btn102.setVisibility(View.VISIBLE);btn103.setVisibility(View.VISIBLE);btn104.setVisibility(View.VISIBLE);
+                    btn105.setVisibility(View.VISIBLE);btn106.setVisibility(View.VISIBLE);btn107.setVisibility(View.VISIBLE);btn108.setVisibility(View.VISIBLE);
+                    btn109.setVisibility(View.VISIBLE);btn110.setVisibility(View.VISIBLE);btn111.setVisibility(View.VISIBLE);btn112.setVisibility(View.VISIBLE);
+                    btn113.setVisibility(View.VISIBLE);btn114.setVisibility(View.VISIBLE);btn115.setVisibility(View.VISIBLE);btn116.setVisibility(View.VISIBLE);
+                    btn117.setVisibility(View.VISIBLE);btn118.setVisibility(View.VISIBLE);btn119.setVisibility(View.VISIBLE);btn120.setVisibility(View.VISIBLE);
+                    btn121.setVisibility(View.VISIBLE);btn122.setVisibility(View.VISIBLE);btn123.setVisibility(View.VISIBLE);
+                    btn201.setVisibility(View.VISIBLE);btn202.setVisibility(View.VISIBLE);btn203.setVisibility(View.VISIBLE);btn204.setVisibility(View.VISIBLE);
+                    btn205.setVisibility(View.VISIBLE);btn206.setVisibility(View.VISIBLE);btn207.setVisibility(View.VISIBLE);btn208.setVisibility(View.VISIBLE);
+                    btn209.setVisibility(View.VISIBLE);btn210.setVisibility(View.VISIBLE);btn211.setVisibility(View.VISIBLE);btn212.setVisibility(View.VISIBLE);
+                    btn213.setVisibility(View.VISIBLE);btn214.setVisibility(View.VISIBLE);btn215.setVisibility(View.VISIBLE);btn216.setVisibility(View.VISIBLE);
+                    btn217.setVisibility(View.VISIBLE);
+                    btn301.setVisibility(View.VISIBLE);btn302.setVisibility(View.VISIBLE);btn303.setVisibility(View.VISIBLE);btn304.setVisibility(View.VISIBLE);
+                    btn305.setVisibility(View.VISIBLE);btn306.setVisibility(View.VISIBLE);btn307.setVisibility(View.VISIBLE);btn308.setVisibility(View.VISIBLE);
+                    btn401.setVisibility(View.VISIBLE);btn402.setVisibility(View.VISIBLE);btn403.setVisibility(View.VISIBLE);btn404.setVisibility(View.VISIBLE);
+                    btn405.setVisibility(View.VISIBLE);btn406.setVisibility(View.VISIBLE);btn407.setVisibility(View.VISIBLE);btn408.setVisibility(View.VISIBLE);
+                    btn409.setVisibility(View.VISIBLE);btn410.setVisibility(View.VISIBLE);btn411.setVisibility(View.VISIBLE);btn412.setVisibility(View.VISIBLE);
+                    btn413.setVisibility(View.VISIBLE);btn414.setVisibility(View.VISIBLE);btn415.setVisibility(View.VISIBLE);btn416.setVisibility(View.VISIBLE);
+                    btn417.setVisibility(View.VISIBLE);
+                    btn501.setVisibility(View.VISIBLE);btn502.setVisibility(View.VISIBLE);btn503.setVisibility(View.VISIBLE);btn504.setVisibility(View.VISIBLE);
+                    btn505.setVisibility(View.VISIBLE);btn506.setVisibility(View.VISIBLE);btn507.setVisibility(View.VISIBLE);
+                    btn601.setVisibility(View.VISIBLE); btn602.setVisibility(View.VISIBLE); btn603.setVisibility(View.VISIBLE); btn604.setVisibility(View.VISIBLE);
+                    btn605.setVisibility(View.VISIBLE); btn606.setVisibility(View.VISIBLE); btn607.setVisibility(View.VISIBLE); btn608.setVisibility(View.VISIBLE);
+                    btn609.setVisibility(View.VISIBLE); btn610.setVisibility(View.VISIBLE); btn611.setVisibility(View.VISIBLE); btn612.setVisibility(View.VISIBLE);
+                    btn613.setVisibility(View.VISIBLE); btn614.setVisibility(View.VISIBLE); btn615.setVisibility(View.VISIBLE); btn616.setVisibility(View.VISIBLE);
+                    btn617.setVisibility(View.VISIBLE); btn618.setVisibility(View.VISIBLE); btn619.setVisibility(View.VISIBLE); btn620.setVisibility(View.VISIBLE);
+                    btn621.setVisibility(View.VISIBLE); btn622.setVisibility(View.VISIBLE);
+                    btn701.setVisibility(View.VISIBLE);btn702.setVisibility(View.VISIBLE);btn703.setVisibility(View.VISIBLE);btn704.setVisibility(View.VISIBLE);
+                    btn705.setVisibility(View.VISIBLE);btn706.setVisibility(View.VISIBLE);btn707.setVisibility(View.VISIBLE);
+                    btn801.setVisibility(View.VISIBLE);btn802.setVisibility(View.VISIBLE);btn803.setVisibility(View.VISIBLE);btn804.setVisibility(View.VISIBLE);
+                    btn805.setVisibility(View.VISIBLE);btn806.setVisibility(View.VISIBLE);
+                    btn901.setVisibility(View.VISIBLE);btn902.setVisibility(View.VISIBLE);btn903.setVisibility(View.VISIBLE);btn904.setVisibility(View.VISIBLE);
+
                     zoom_main.setVisibility(View.INVISIBLE);
                     isImageZoom = true;
                 }
@@ -1281,10 +1316,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.fab_road:
                 intent = new Intent(this, RoadActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.zoom:
-                intent = new Intent(this, Zoominout.class);
                 startActivity(intent);
                 break;
         }

@@ -19,8 +19,8 @@
 
 
 
-        <EditText
-            android:id="@+id/main_search_et"
+        <AutoCompleteTextView
+            android:id="@+id/road_search_et"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="8"
