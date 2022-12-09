@@ -8,6 +8,7 @@ import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -34,8 +35,7 @@ import java.util.Set;
 
 public class BookmarkActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String BOOKMARK = "bookmark";
-    private static final String BOOKMARK_JSON = "bookmark_json";
+    private InputMethodManager imm;
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
     Boolean isAllFabsVisible;
     ImageView bookmark_search;
@@ -44,7 +44,6 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
 
     SharedPreferences spref;
     SharedPreferences.Editor editor;
-    //JSONArray arr = new JSONArray();
 
     private List<String> stations = Arrays.asList("101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123",
             "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217",
@@ -148,6 +147,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         mRecyclerView.setAdapter(mRecyclerAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 
         bookmark_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,6 +160,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
                         BookmarkActivity.myStations.add(target);
                         mRecyclerAdapter.notifyDataSetChanged();
                         autoCompleteTextView.setText("");
+                        imm.hideSoftInputFromWindow(autoCompleteTextView.getWindowToken(), 0);
                     }
                     // 즐겨찾기 목록에 있으면
                     else {
