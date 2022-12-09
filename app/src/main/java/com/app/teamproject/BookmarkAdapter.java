@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,12 +25,11 @@ import java.util.List;
 
 public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHolder> {
 
-    private ArrayList<BookmarkStation> favstation;
-    private List<String> stations;
+    private ArrayList<String> myStations;
     private Context context;
 
-    public BookmarkAdapter(List<String> stations, Context context) {
-        this.stations = stations;
+    public BookmarkAdapter(ArrayList<String> stations, Context context) {
+        this.myStations = stations;
         this.context = context;
     }
 
@@ -43,30 +43,30 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.onBind(favstation.get(position));
-        holder.name.setText(favstation.get(position).getName());
+        //holder.onBind(favstation.get(position));
+        //holder.name.setText(favstation.get(position).getName());
+        holder.name.setText(myStations.get(position));
     }
 
-    public void setFavStationList(ArrayList<BookmarkStation> list){
-        this.favstation = list;
-        notifyDataSetChanged();
+    public ArrayList<String> getStationList(){
+        return myStations;
     }
+
     @Override
     public int getItemCount() {
-        return favstation.size();
+        return myStations.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
-        ImageView fav;
+        ImageView fav, temp;
         TextView name;
         ImageButton btn_remove;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            this.fav = (ImageView) itemView.findViewById(R.id.imageview);
+            //this.fav = (ImageView) itemView.findViewById(R.id.imageview);
             this.name = (TextView) itemView.findViewById(R.id.textview);
-
 
             itemView.setOnCreateContextMenuListener(this);
         }
@@ -76,8 +76,12 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
 
             MenuItem edit = menu.add(Menu.NONE, 1001, 1, "상세정보");
             MenuItem delete = menu.add(Menu.NONE, 1002, 2, "삭제");
+            MenuItem start = menu.add(Menu.NONE, 1003, 3, "출발지 설정");
+            MenuItem finish = menu.add(Menu.NONE, 1004, 4, "도착지 설정");
             edit.setOnMenuItemClickListener(onEditMenu);
             delete.setOnMenuItemClickListener(onEditMenu);
+            start.setOnMenuItemClickListener(onEditMenu);
+            finish.setOnMenuItemClickListener(onEditMenu);
         }
 
         public void onBind(BookmarkStation s) {
@@ -88,28 +92,42 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+
+                String s = "";
+                Intent intent;
                 switch (item.getItemId()) {
                     // 상세정보
                     case 1001:
-//                        Intent intent = new Intent(context, StationActivity.class);
-//                        intent.putExtra("station", String.valueOf(name));
-//                        Log.v("putextra", String.valueOf(name));
-//                        context.startActivity(intent);
-                        String s = name.getText().toString();
-                        Intent intent = new Intent(context, StationActivity.class);
+                        s = name.getText().toString();
+                        intent = new Intent(context, StationActivity.class);
                         intent.putExtra("station", s);
                         context.startActivity(intent);
                         break;
 
                     // 삭제
                     case 1002:
-                        favstation.remove(getAdapterPosition());
+                        myStations.remove(getAdapterPosition());
                         notifyItemRemoved(getAdapterPosition());
-                        notifyItemRangeChanged(getAdapterPosition(), favstation.size());
+                        notifyItemRangeChanged(getAdapterPosition(), myStations.size());
+                        break;
+
+                    case 1003:
+                        s = name.getText().toString();
+                        intent = new Intent(context, SearchActivity.class);
+                        intent.putExtra("start_station", s);
+                        context.startActivity(intent);
+                        break;
+
+                    case 1004:
+                        s = name.getText().toString();
+                        intent = new Intent(context, SearchActivity.class);
+                        intent.putExtra("finish_station", s);
+                        context.startActivity(intent);
                         break;
                 }
                 return true;
             }
         };
+
     }
 }

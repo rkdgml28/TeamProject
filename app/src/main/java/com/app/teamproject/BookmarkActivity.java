@@ -1,17 +1,17 @@
 package com.app.teamproject;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,24 +33,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-
 public class BookmarkActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String BOOKMARK = "bookmark";
-    private static final String BOOKMARK_JSON = "bookmark_json";
-
-
+    private InputMethodManager imm;
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
     Boolean isAllFabsVisible;
     ImageView bookmark_search;
     AutoCompleteTextView autoCompleteTextView;
     private static Context context;
 
-//    SharedPreferences spref;
-//    SharedPreferences.Editor editor;
-//    JSONArray arr = new JSONArray();
-
-
+    SharedPreferences spref;
+    SharedPreferences.Editor editor;
 
     private List<String> stations = Arrays.asList("101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123",
             "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217",
@@ -66,31 +59,10 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
     private RecyclerView.LayoutManager layoutManager;
     BookmarkAdapter mRecyclerAdapter;
     ArrayList<BookmarkStation> mfavStations = new ArrayList<>();
-    ArrayList<String> myStations = new ArrayList<>();
+    static ArrayList<String> myStations;
 
     String target = "";
 
-
-
-    SharedPreferences pref;
-    SharedPreferences.Editor editor;
-
-    String saveStr;
-
-
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState); // 반드시 호출해 주세요.
-//        String data = target;
-//        ArrayList<String> saveStations = myStations;
-//        // 추가로 자료를 저장하는 코드는 여기에 작성 하세요.
-//    }
-//    @Override
-//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-//        super.onRestoreInstanceState(savedInstanceState);
-//
-//        // 추가로 자료를 복원하는 코드는 여기에 작성하세요.
-//    }
 
 
     @Override
@@ -99,8 +71,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_bookmark);
         BookmarkActivity.context = getApplicationContext();
 
-
-
+        myStations = new ArrayList<>();
         bookmark_search = findViewById(R.id.bookmark_search);
         btnSubway = findViewById(R.id.fab_subway);
 
@@ -145,6 +116,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         btnRoad.setOnClickListener(this);
 
 
+
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
         autoCompleteTextView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, stations));
 
@@ -160,56 +132,44 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        /* initiate adapter */
+        spref = getSharedPreferences("bookmark", MODE_PRIVATE);
+        editor = spref.edit();
+        String str = spref.getString("stations", "");
+        String[] str_stations = str.split(" ");
+        for (String s : str_stations){
+            myStations.add(s);
+        }
+
+
         mRecyclerAdapter = new BookmarkAdapter(myStations, this);
 
         /* initiate recyclerview */
         mRecyclerView.setAdapter(mRecyclerAdapter);
-        mRecyclerAdapter.setFavStationList(mfavStations);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-        // 1. Shared Preference 초기화
-        pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
-        editor = pref.edit();
-
-        // 2. 저장해둔 값 불러오기 ("식별값", 초기값) -> 식별값과 초기값은 직접 원하는 이름과 값으로 작성.
-        saveStr = pref.getString("MyStr", "_");   // String 불러오기 (저장해둔 값 없으면 초기값인 _으로 불러옴)
+        imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 
         bookmark_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 target = autoCompleteTextView.getText().toString();
-
-                if (!myStations.contains(target)) {
-                    mfavStations.add(new BookmarkStation(R.drawable.favorite, target, R.drawable.minus));
-                    myStations.add(target);
-                    mRecyclerAdapter.notifyDataSetChanged();
-                    mfavStations.add(new BookmarkStation(R.drawable.favorite, saveStr, R.drawable.minus));
-
-
-                    if (myStations != null) {
-                        for (String value : myStations) {
-                            Log.v("Get json : ", value);
-
-                            editor.putString("MyStr", value);
-                            editor.apply(); // 저장
-                            System.out.println(saveStr);
-                        }
+                // 역 목록에 있으면
+                if (stations.contains(target)){
+                    // 즐겨찾기 목록에 없으면
+                    if (!myStations.contains(target)) {
+                        BookmarkActivity.myStations.add(target);
+                        mRecyclerAdapter.notifyDataSetChanged();
+                        autoCompleteTextView.setText("");
+                        imm.hideSoftInputFromWindow(autoCompleteTextView.getWindowToken(), 0);
                     }
-                } else {
-                    Toast.makeText(context, "이미 즐겨찾기에 추가되어 있습니다.", Toast.LENGTH_SHORT).show();
-//                ArrayList<String> list = getStringArrayPref(BOOKMARK_JSON);
-//                ArrayList<String> l = new ArrayList<>();
-//                if (list != null) {
-//                    for (String value : list) {
-//                        Log.v("Get json : ", value);
-//                        l.add(value);
-//                    }
-//                }
-//                l.add(target);
-//                Log.v("target", target);
-//                setStringArrayPref(context, BOOKMARK_JSON, l);
+                    // 즐겨찾기 목록에 있으면
+                    else {
+                        Toast.makeText(context, "이미 즐겨찾기에 추가되어 있습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                // 역 목록에 없으면
+                else{
+                    Toast.makeText(context, "없는 역입니다.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -243,37 +203,17 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
-    private void setStringArrayPref(Context context, String key, ArrayList<String> values) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = prefs.edit();
-        JSONArray a = new JSONArray();
-        for (int i = 0; i < values.size(); i++) {
-            a.put(values.get(i));
-        }
-        if (!values.isEmpty()) {
-            editor.putString(key, a.toString());
-        } else {
-            editor.putString(key, null);
-        }
-        editor.apply();
-    }
 
-    public ArrayList<String> getStringArrayPref(String key) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String json = prefs.getString(key, null);
-        ArrayList<String> urls = new ArrayList<String>();
-        if (json != null) {
-            try {
-                JSONArray a = new JSONArray(json);
-                for (int i = 0; i < a.length(); i++) {
-                    String url = a.optString(i);
-                    urls.add(url);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        myStations = mRecyclerAdapter.getStationList();
+        String stations = "";
+        for (String s: myStations){
+            stations += s + " ";
         }
-        return urls;
+        editor.putString("stations", stations);
+        editor.commit();
     }
 }
 

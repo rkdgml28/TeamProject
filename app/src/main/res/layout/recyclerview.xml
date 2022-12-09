@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
 
 
     <LinearLayout
@@ -16,7 +18,8 @@
             android:id="@+id/imageview"
             android:layout_width="50dp"
             android:layout_height="45dp"
-            android:src="@drawable/favorite"/>
+            android:src="@drawable/favorite"
+            app:tint="@color/sub_color1" />
 
         <TextView
             android:id="@+id/textview"
@@ -25,19 +28,19 @@
             android:text="즐겨찾기 역"
             android:padding="7dp"
             android:textSize="30dp"
-            android:fontFamily="@font/suncheon_r"/>
-
-
+            android:fontFamily="@font/suncheon_r"
+            android:textColor="@color/sub_color3"/>
 
     </LinearLayout>
 
-    <View
+    <ImageView
 
         android:layout_width="match_parent"
-        android:layout_height="3dp"
+        android:layout_height="2.5dp"
         android:layout_marginHorizontal="5dp"
         android:layout_marginTop="5dp"
-        android:background="@color/black"/>
+        android:layerType="software"
+        android:src="@drawable/dash_line"/>
 
 
 </LinearLayout>

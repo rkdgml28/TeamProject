@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
 
 
     <TextView
@@ -12,7 +13,8 @@
         android:text="EASY-WAY"
         android:textSize="40sp"
         android:textStyle="bold"
-
+        android:fontFamily="@font/suncheon_b"
+        android:textColor="@color/sub_color3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintLeft_toLeftOf="parent"

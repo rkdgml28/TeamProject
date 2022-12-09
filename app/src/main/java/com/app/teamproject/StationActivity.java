@@ -12,15 +12,42 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class StationActivity  extends AppCompatActivity implements View.OnClickListener{
 
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
     Boolean isAllFabsVisible;
-    TextView sta_search, sta_prev, sta_next, search_station, what_line, tv_inform, prestation, nextstation;
+    TextView sta_search, sta_prev, sta_next, search_station, what_line, tv_inform,
+            prestation, nextstation, preTime, nextTime;
     ImageView img_sta, img_prev, img_next;
     View block2, block3, block4, block5;
 
     int numint;
+    Driver driver = new Driver();
+    int[] time;
+
+    //도착시간 더하기 함수
+    private String getCTime() {
+        String today = null;
+
+        Date date = new Date();
+        // 포맷변경 ( 년월일 시분초)
+        SimpleDateFormat sdformat = new SimpleDateFormat("HH:mm:ss");
+
+        // Java 시간 더하기
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MINUTE, time[1]);
+        cal.add(Calendar.HOUR, time[0]);
+        cal.add(Calendar.SECOND, time[2]);
+
+        today = sdformat.format(cal.getTime());
+
+        return today;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +80,9 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
         img_next = findViewById(R.id.img_next);
         img_sta = findViewById(R.id.img_sta);
         img_prev = findViewById(R.id.img_prev);
+
+        preTime = findViewById(R.id.preTime);
+        nextTime = findViewById(R.id.nextTime);
 
         btnSetting.setVisibility(View.GONE);
         btnHome.setVisibility(View.GONE);
@@ -401,10 +431,20 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
         sta_prev.setText(numStrprev);
         prestation.setText(numStrprev + " 방면");
 
+        driver.setFromTo(numStrline, numStrprev);
+        driver.inputTimeInfor();
+        time = driver.d.convertTime(driver.d.getLowCost(numStrline, numStrprev));
+        preTime.setText(getCTime());
+
         if(next == 0){
             sta_next.setText("역없음");
             nextstation.setText("역없음");
+            nextTime.setText("");
         }else{
+            driver.setFromTo(numStrline, numStrnext);
+            driver.inputTimeInfor();
+            time = driver.d.convertTime(driver.d.getLowCost(numStrline, numStrnext));
+            nextTime.setText(getCTime());
             sta_next.setText(numStrnext);
             nextstation.setText(numStrnext + " 방면");
         }

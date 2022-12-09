@@ -28,8 +28,10 @@
             android:layout_weight="8"
             android:layout_marginLeft="40dp"
             android:padding="10dp"
+            android:inputType="number"
             android:background="@drawable/box_search"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:fontFamily="@font/suncheon_r"/>
 
         <ImageView
             android:id="@+id/main_search"
@@ -43,911 +45,1272 @@
 
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/zoom"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/white"
+        android:scaleType="fitCenter"
+        app:tint="@color/sub_color3"
+        android:src="@drawable/zoominout"
+        app:layout_constraintTop_toBottomOf="@id/linear_main"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_height="400dp"
+        app:layout_constraintTop_toBottomOf="@+id/linear_main"
+        android:layout_marginTop="80dp"
+        >
 
 
         <ImageView
             android:id="@+id/iv_main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:scaleType="fitStart"
+            android:scaleType="fitXY"
             android:src="@drawable/main"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="77dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/zoom_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/main"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/btn101"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:visibility="visible"
-            app:layout_editor_absoluteX="8dp"
-            app:layout_editor_absoluteY="136dp" />
+            android:background="#00ff0000"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="189dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"/>
 
         <Button
             android:id="@+id/btn102"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:visibility="visible"
-            tools:layout_editor_absoluteX="10dp"
-            tools:layout_editor_absoluteY="160dp" />
+            android:background="#00ff0000"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="153dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn103"
             android:layout_width="17dp"
             android:layout_height="17dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="10dp"
-            tools:layout_editor_absoluteY="188dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="118dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"/>
 
         <Button
             android:id="@+id/btn104"
             android:layout_width="15dp"
             android:layout_height="17dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="10dp"
-            tools:layout_editor_absoluteY="215dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="77dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn105"
             android:layout_width="17dp"
             android:layout_height="17dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="10dp"
-            tools:layout_editor_absoluteY="242dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn106"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="21dp"
-            tools:layout_editor_absoluteY="263dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn107"
             android:layout_width="15dp"
             android:layout_height="20dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="52dp"
-            tools:layout_editor_absoluteY="263dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="52dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn108"
             android:layout_width="15dp"
             android:layout_height="20dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="77dp"
-            tools:layout_editor_absoluteY="263dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="75dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"/>
 
         <Button
             android:id="@+id/btn109"
             android:layout_width="15dp"
             android:layout_height="20dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="263dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="98dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn110"
             android:layout_width="15dp"
             android:layout_height="20dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="128dp"
-            tools:layout_editor_absoluteY="263dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="128dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn111"
             android:layout_width="15dp"
             android:layout_height="20dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="158dp"
-            tools:layout_editor_absoluteY="263dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="158dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn112"
             android:layout_width="15dp"
             android:layout_height="20dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="188dp"
-            tools:layout_editor_absoluteY="263dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="187dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn113"
             android:layout_width="15dp"
             android:layout_height="20dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="224dp"
-            tools:layout_editor_absoluteY="263dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="222dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn114"
             android:layout_width="15dp"
             android:layout_height="20dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="239dp"
-            tools:layout_editor_absoluteY="240dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="237dp"
+            android:layout_marginBottom="38dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn115"
             android:layout_width="15dp"
             android:layout_height="20dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="239dp"
-            tools:layout_editor_absoluteY="215dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="237dp"
+            android:layout_marginBottom="70dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"/>
 
         <Button
             android:id="@+id/btn116"
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="237dp"
-            tools:layout_editor_absoluteY="180dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="237dp"
+            android:layout_marginBottom="130dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"/>
 
         <Button
             android:id="@+id/btn117"
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="239dp"
-            tools:layout_editor_absoluteY="161dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="237dp"
+            android:layout_marginBottom="158dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn118"
             android:layout_width="18dp"
             android:layout_height="17dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="232dp"
-            tools:layout_editor_absoluteY="129dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="232dp"
+            android:layout_marginBottom="200dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"/>
 
         <Button
             android:id="@+id/btn119"
             android:layout_width="18dp"
             android:layout_height="17dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="188dp"
-            tools:layout_editor_absoluteY="119dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="187dp"
+            android:layout_marginBottom="210dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn120"
             android:layout_width="18dp"
             android:layout_height="17dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="155dp"
-            tools:layout_editor_absoluteY="119dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="158dp"
+            android:layout_marginBottom="210dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn121"
             android:layout_width="18dp"
             android:layout_height="17dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="128dp"
-            tools:layout_editor_absoluteY="119dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="125dp"
+            android:layout_marginBottom="210dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn122"
             android:layout_width="16dp"
             android:layout_height="17dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="98dp"
-            tools:layout_editor_absoluteY="119dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="97dp"
+            android:layout_marginBottom="210dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"/>
 
         <Button
             android:id="@+id/btn123"
             android:layout_width="16dp"
             android:layout_height="17dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="52dp"
-            tools:layout_editor_absoluteY="119dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="53dp"
+            android:layout_marginBottom="210dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn201"
             android:layout_width="16dp"
             android:layout_height="17dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="10dp"
-            tools:layout_editor_absoluteY="97dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="243dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn202"
             android:layout_width="16dp"
             android:layout_height="17dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="10dp"
-            tools:layout_editor_absoluteY="74dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="274dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"/>
 
         <Button
             android:id="@+id/btn203"
             android:layout_width="16dp"
             android:layout_height="14dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="10dp"
-            tools:layout_editor_absoluteY="53dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="307dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn204"
             android:layout_width="16dp"
             android:layout_height="13dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="10dp"
-            tools:layout_editor_absoluteY="32dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="340dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn205"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="10dp"
-            tools:layout_editor_absoluteY="7dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="370dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn206"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="30dp"
-            tools:layout_editor_absoluteY="7dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="370dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn207"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="51dp"
-            tools:layout_editor_absoluteY="7dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="370dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"/>
 
         <Button
             android:id="@+id/btn208"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="74dp"
-            tools:layout_editor_absoluteY="7dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="75dp"
+            android:layout_marginBottom="370dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn209"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="98dp"
-            tools:layout_editor_absoluteY="7dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="96dp"
+            android:layout_marginBottom="370dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn210"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="127dp"
-            tools:layout_editor_absoluteY="7dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="127dp"
+            android:layout_marginBottom="370dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn211"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="187dp"
-            tools:layout_editor_absoluteY="7dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="188dp"
+            android:layout_marginBottom="370dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn212"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="216dp"
-            tools:layout_editor_absoluteY="7dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="216dp"
+            android:layout_marginBottom="370dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn213"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="250dp"
-            tools:layout_editor_absoluteY="7dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="250dp"
+            android:layout_marginBottom="370dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn214"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="278dp"
-            tools:layout_editor_absoluteY="7dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="280dp"
+            android:layout_marginBottom="370dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn215"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="305dp"
-            tools:layout_editor_absoluteY="7dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="306dp"
+            android:layout_marginBottom="370dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn216"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="332dp"
-            tools:layout_editor_absoluteY="7dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="330dp"
+            android:layout_marginBottom="370dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn217"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="377dp"
-            tools:layout_editor_absoluteY="7dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="376dp"
+            android:layout_marginBottom="370dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn301"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="52dp"
-            tools:layout_editor_absoluteY="32dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="340dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn302"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="52dp"
-            tools:layout_editor_absoluteY="53dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="305dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn303"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="51dp"
-            tools:layout_editor_absoluteY="76dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="275dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn304"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="51dp"
-            tools:layout_editor_absoluteY="99dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="240dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn305"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="52dp"
-            tools:layout_editor_absoluteY="161dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="52dp"
+            android:layout_marginBottom="155dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn306"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="51dp"
-            tools:layout_editor_absoluteY="190dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="115dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn307"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="54dp"
-            tools:layout_editor_absoluteY="217dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="53dp"
+            android:layout_marginBottom="78dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn308"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="52dp"
-            tools:layout_editor_absoluteY="244dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="53dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn401"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="32dp"
-            tools:layout_editor_absoluteY="217dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="77dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn402"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="76dp"
-            tools:layout_editor_absoluteY="217dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="77dp"
+            android:layout_marginBottom="77dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn403"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="98dp"
-            tools:layout_editor_absoluteY="217dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="98dp"
+            android:layout_marginBottom="77dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn404"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="129dp"
-            tools:layout_editor_absoluteY="217dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="128dp"
+            android:layout_marginBottom="77dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn405"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="158dp"
-            tools:layout_editor_absoluteY="217dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="159dp"
+            android:layout_marginBottom="77dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn406"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="189dp"
-            tools:layout_editor_absoluteY="215dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="189dp"
+            android:layout_marginBottom="77dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"/>
 
         <Button
             android:id="@+id/btn407"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="213dp"
-            tools:layout_editor_absoluteY="215dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="214dp"
+            android:layout_marginBottom="77dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn408"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="259dp"
-            tools:layout_editor_absoluteY="215dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="258dp"
+            android:layout_marginBottom="77dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn409"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="280dp"
-            tools:layout_editor_absoluteY="215dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="280dp"
+            android:layout_marginBottom="77dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn410"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="307dp"
-            tools:layout_editor_absoluteY="217dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="306dp"
+            android:layout_marginBottom="77dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn411"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="334dp"
-            tools:layout_editor_absoluteY="215dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="333dp"
+            android:layout_marginBottom="77dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn412"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="334dp"
-            tools:layout_editor_absoluteY="180dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="333dp"
+            android:layout_marginBottom="128dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn413"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="334dp"
-            tools:layout_editor_absoluteY="161dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="333dp"
+            android:layout_marginBottom="157dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn414"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="334dp"
-            tools:layout_editor_absoluteY="129dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="333dp"
+            android:layout_marginBottom="202dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn415"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="334dp"
-            tools:layout_editor_absoluteY="99dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="333dp"
+            android:layout_marginBottom="243dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn416"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="334dp"
-            tools:layout_editor_absoluteY="76dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="333dp"
+            android:layout_marginBottom="274dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn417"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="334dp"
-            tools:layout_editor_absoluteY="38dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="332dp"
+            android:layout_marginBottom="330dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn501"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="98dp"
-            tools:layout_editor_absoluteY="32dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="96dp"
+            android:layout_marginBottom="340dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn502"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="98dp"
-            tools:layout_editor_absoluteY="53dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="98dp"
+            android:layout_marginBottom="306dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"/>
 
         <Button
             android:id="@+id/btn503"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="76dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="98dp"
+            android:layout_marginBottom="277dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn504"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="98dp"
-            tools:layout_editor_absoluteY="97dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="98dp"
+            android:layout_marginBottom="244dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn505"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="98dp"
-            tools:layout_editor_absoluteY="161dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="98dp"
+            android:layout_marginBottom="155dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn506"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="98dp"
-            tools:layout_editor_absoluteY="188dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="98dp"
+            android:layout_marginBottom="117dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn507"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="244dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="98dp"
+            android:layout_marginBottom="38dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn601"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="129dp"
-            tools:layout_editor_absoluteY="76dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="129dp"
+            android:layout_marginBottom="274dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn602"
             android:layout_width="14dp"
             android:layout_height="15dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="129dp"
-            tools:layout_editor_absoluteY="97dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="129dp"
+            android:layout_marginBottom="244dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn603"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="129dp"
-            tools:layout_editor_absoluteY="161dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="129dp"
+            android:layout_marginBottom="156dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn604"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="158dp"
-            tools:layout_editor_absoluteY="179dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="159dp"
+            android:layout_marginBottom="127dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn605"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="188dp"
-            tools:layout_editor_absoluteY="180dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="187dp"
+            android:layout_marginBottom="127dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn606"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="213dp"
-            tools:layout_editor_absoluteY="180dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="213dp"
+            android:layout_marginBottom="127dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn607"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="257dp"
-            tools:layout_editor_absoluteY="180dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="257dp"
+            android:layout_marginBottom="127dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn608"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="280dp"
-            tools:layout_editor_absoluteY="180dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="280dp"
+            android:layout_marginBottom="127dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn609"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="307dp"
-            tools:layout_editor_absoluteY="180dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="307dp"
+            android:layout_marginBottom="127dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn610"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="363dp"
-            tools:layout_editor_absoluteY="180dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="362dp"
+            android:layout_marginBottom="127dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"/>
 
         <Button
             android:id="@+id/btn611"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="377dp"
-            tools:layout_editor_absoluteY="161dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="377dp"
+            android:layout_marginBottom="154dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn612"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="379dp"
-            tools:layout_editor_absoluteY="128dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="377dp"
+            android:layout_marginBottom="202dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn613"
-            android:layout_width="14dp"
+            android:layout_width="15dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="379dp"
-            tools:layout_editor_absoluteY="99dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="375dp"
+            android:layout_marginBottom="243dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn614"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="379dp"
-            tools:layout_editor_absoluteY="75dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="378dp"
+            android:layout_marginBottom="273dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn615"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="377dp"
-            tools:layout_editor_absoluteY="53dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="377dp"
+            android:layout_marginBottom="303dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn616"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="355dp"
-            tools:layout_editor_absoluteY="37dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="354dp"
+            android:layout_marginBottom="330dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn617"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="307dp"
-            tools:layout_editor_absoluteY="37dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="307dp"
+            android:layout_marginBottom="330dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn618"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="280dp"
-            tools:layout_editor_absoluteY="37dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="279dp"
+            android:layout_marginBottom="330dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn619"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="252dp"
-            tools:layout_editor_absoluteY="37dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="250dp"
+            android:layout_marginBottom="330dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn620"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="218dp"
-            tools:layout_editor_absoluteY="38dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="218dp"
+            android:layout_marginBottom="330dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn621"
             android:layout_width="14dp"
             android:layout_height="13dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="189dp"
-            tools:layout_editor_absoluteY="38dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="188dp"
+            android:layout_marginBottom="330dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn622"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="159dp"
-            tools:layout_editor_absoluteY="38dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="159dp"
+            android:layout_marginBottom="330dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn701"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="158dp"
-            tools:layout_editor_absoluteY="76dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="158dp"
+            android:layout_marginBottom="274dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn702"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="189dp"
-            tools:layout_editor_absoluteY="76dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="187dp"
+            android:layout_marginBottom="274dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn703"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="218dp"
-            tools:layout_editor_absoluteY="76dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="217dp"
+            android:layout_marginBottom="274dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn704"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="250dp"
-            tools:layout_editor_absoluteY="75dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="251dp"
+            android:layout_marginBottom="274dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"/>
 
         <Button
             android:id="@+id/btn705"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="280dp"
-            tools:layout_editor_absoluteY="75dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="280dp"
+            android:layout_marginBottom="274dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn706"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="307dp"
-            tools:layout_editor_absoluteY="75dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="307dp"
+            android:layout_marginBottom="274dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn707"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="355dp"
-            tools:layout_editor_absoluteY="75dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="355dp"
+            android:layout_marginBottom="274dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn801"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="254dp"
-            tools:layout_editor_absoluteY="263dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="254dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn802"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="278dp"
-            tools:layout_editor_absoluteY="263dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="278dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn803"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="280dp"
-            tools:layout_editor_absoluteY="242dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="280dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn804"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="280dp"
-            tools:layout_editor_absoluteY="160dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="280dp"
+            android:layout_marginBottom="157dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"  />
 
         <Button
             android:id="@+id/btn805"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="280dp"
-            tools:layout_editor_absoluteY="128dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="280dp"
+            android:layout_marginBottom="200dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn806"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="280dp"
-            tools:layout_editor_absoluteY="99dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="280dp"
+            android:layout_marginBottom="243dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn901"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="189dp"
-            tools:layout_editor_absoluteY="240dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="189dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn902"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="189dp"
-            tools:layout_editor_absoluteY="160dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="189dp"
+            android:layout_marginBottom="155dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main"/>
 
         <Button
             android:id="@+id/btn903"
             android:layout_width="14dp"
             android:layout_height="16dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="189dp"
-            tools:layout_editor_absoluteY="99dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="189dp"
+            android:layout_marginBottom="243dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
 
         <Button
             android:id="@+id/btn904"
             android:layout_width="14dp"
             android:layout_height="12dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="189dp"
-            tools:layout_editor_absoluteY="55dp" />
+            android:visibility="visible"
+            android:background="#00ff0000"
+            android:layout_marginStart="189dp"
+            android:layout_marginBottom="307dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_main"
+            app:layout_constraintStart_toStartOf="@+id/iv_main" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
