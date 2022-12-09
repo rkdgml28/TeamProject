@@ -28,8 +28,10 @@
             android:layout_weight="8"
             android:layout_marginLeft="40dp"
             android:padding="10dp"
+            android:inputType="number"
             android:background="@drawable/box_search"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:fontFamily="@font/suncheon_r"/>
 
         <ImageView
             android:id="@+id/main_search"
