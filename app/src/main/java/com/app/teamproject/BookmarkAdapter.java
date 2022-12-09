@@ -24,12 +24,11 @@ import java.util.List;
 
 public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHolder> {
 
-    private ArrayList<BookmarkStation> favstation;
-    private List<String> stations;
+    private ArrayList<String> myStations;
     private Context context;
 
-    public BookmarkAdapter(List<String> stations, Context context) {
-        this.stations = stations;
+    public BookmarkAdapter(ArrayList<String> stations, Context context) {
+        this.myStations = stations;
         this.context = context;
     }
 
@@ -43,30 +42,30 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.onBind(favstation.get(position));
-        holder.name.setText(favstation.get(position).getName());
+        //holder.onBind(favstation.get(position));
+        //holder.name.setText(favstation.get(position).getName());
+        holder.name.setText(myStations.get(position));
     }
 
-    public void setFavStationList(ArrayList<BookmarkStation> list){
-        this.favstation = list;
-        notifyDataSetChanged();
+    public ArrayList<String> getFavStationList(){
+        return myStations;
     }
+
     @Override
     public int getItemCount() {
-        return favstation.size();
+        return myStations.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
-        ImageView fav;
+        ImageView fav, temp;
         TextView name;
         ImageButton btn_remove;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            this.fav = (ImageView) itemView.findViewById(R.id.imageview);
+            //this.fav = (ImageView) itemView.findViewById(R.id.imageview);
             this.name = (TextView) itemView.findViewById(R.id.textview);
-
 
             itemView.setOnCreateContextMenuListener(this);
         }
@@ -104,13 +103,14 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
 
                     // 삭제
                     case 1002:
-                        favstation.remove(getAdapterPosition());
+                        myStations.remove(getAdapterPosition());
                         notifyItemRemoved(getAdapterPosition());
-                        notifyItemRangeChanged(getAdapterPosition(), favstation.size());
+                        notifyItemRangeChanged(getAdapterPosition(), myStations.size());
                         break;
                 }
                 return true;
             }
         };
+
     }
 }
