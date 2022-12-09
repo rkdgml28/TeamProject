@@ -208,7 +208,7 @@
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/main_color"
+        android:backgroundTint="@color/skyblue"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -221,7 +221,7 @@
         app:layout_constraintEnd_toEndOf="@+id/fab_subway"
         app:layout_constraintStart_toStartOf="@+id/fab_subway"
         app:srcCompat="@drawable/fab_setting"
-        android:backgroundTint="@color/main_color"/>
+        android:backgroundTint="@color/skyblue"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_home"
@@ -233,7 +233,7 @@
         app:layout_constraintEnd_toEndOf="@+id/fab_setting"
         app:layout_constraintStart_toStartOf="@+id/fab_setting"
         app:srcCompat="@drawable/fab_home"
-        android:backgroundTint="@color/main_color"/>
+        android:backgroundTint="@color/skyblue"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_star"
@@ -245,7 +245,7 @@
         app:layout_constraintEnd_toEndOf="@+id/fab_home"
         app:layout_constraintStart_toStartOf="@+id/fab_home"
         app:srcCompat="@drawable/fab_star"
-        android:backgroundTint="@color/main_color"/>
+        android:backgroundTint="@color/skyblue"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_road"
@@ -257,7 +257,7 @@
         app:layout_constraintEnd_toEndOf="@+id/fab_star"
         app:layout_constraintStart_toStartOf="@+id/fab_star"
         app:srcCompat="@drawable/fab_road"
-        android:backgroundTint="@color/main_color"/>
+        android:backgroundTint="@color/skyblue"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_search"
@@ -270,7 +270,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/fab_road"
         app:srcCompat="@drawable/fab_search"
-        android:backgroundTint="@color/main_color"/>
+        android:backgroundTint="@color/skyblue"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
