@@ -19,13 +19,15 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/img_prev"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="18dp"
                 android:src="@drawable/ic_prev"
                 android:tint="@color/main_color"/>
 
             <ImageView
+                android:id="@+id/img_sta"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
@@ -33,9 +35,10 @@
                 android:tint="@color/main_color"/>
 
             <ImageView
+                android:id="@+id/img_next"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginRight="18dp"
                 android:layout_gravity="right|center"
                 android:src="@drawable/ic_next"
                 android:tint="@color/main_color"/>
@@ -116,6 +119,7 @@
         android:layout_height="170dp"
         android:layout_marginTop="30dp"
         android:gravity="center"
+        android:textSize="30sp"
         app:layout_constraintTop_toBottomOf="@+id/what_line"
         android:text="역에 대한 정보 표시\n ex: 환승역"/>
 <!--    <Button-->
@@ -263,78 +267,78 @@
 
     <!--    </LinearLayout>-->
 
-    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fab_subway"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="end"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:layout_marginBottom="16dp"-->
-<!--        android:src="@drawable/fab_subway"-->
-<!--        app:fabSize="normal"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:backgroundTint="@color/main_color"-->
-<!--        />-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_subway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/fab_subway"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/main_color"
+        />
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fab_setting"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="4dp"-->
-<!--        app:fabSize="normal"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/fab_subway"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/fab_subway"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/fab_subway"-->
-<!--        app:srcCompat="@drawable/fab_setting"-->
-<!--        android:backgroundTint="@color/main_color"/>-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fab_subway"
+        app:layout_constraintEnd_toEndOf="@+id/fab_subway"
+        app:layout_constraintStart_toStartOf="@+id/fab_subway"
+        app:srcCompat="@drawable/fab_setting"
+        android:backgroundTint="@color/main_color"/>
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fab_home"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="4dp"-->
-<!--        app:fabSize="normal"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/fab_setting"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/fab_setting"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/fab_setting"-->
-<!--        app:srcCompat="@drawable/fab_home"-->
-<!--        android:backgroundTint="@color/main_color"/>-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fab_setting"
+        app:layout_constraintEnd_toEndOf="@+id/fab_setting"
+        app:layout_constraintStart_toStartOf="@+id/fab_setting"
+        app:srcCompat="@drawable/fab_home"
+        android:backgroundTint="@color/main_color"/>
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fab_star"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="4dp"-->
-<!--        app:fabSize="normal"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/fab_home"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/fab_home"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/fab_home"-->
-<!--        app:srcCompat="@drawable/fab_star"-->
-<!--        android:backgroundTint="@color/main_color"/>-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fab_home"
+        app:layout_constraintEnd_toEndOf="@+id/fab_home"
+        app:layout_constraintStart_toStartOf="@+id/fab_home"
+        app:srcCompat="@drawable/fab_star"
+        android:backgroundTint="@color/main_color"/>
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fab_road"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="4dp"-->
-<!--        app:fabSize="normal"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/fab_star"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/fab_star"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/fab_star"-->
-<!--        app:srcCompat="@drawable/fab_road"-->
-<!--        android:backgroundTint="@color/main_color"/>-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_road"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fab_star"
+        app:layout_constraintEnd_toEndOf="@+id/fab_star"
+        app:layout_constraintStart_toStartOf="@+id/fab_star"
+        app:srcCompat="@drawable/fab_road"
+        android:backgroundTint="@color/main_color"/>
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fab_search"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="4dp"-->
-<!--        app:fabSize="normal"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/fab_road"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/fab_road"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/fab_road"-->
-<!--        app:srcCompat="@drawable/fab_search"-->
-<!--        android:backgroundTint="@color/main_color"/>-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fab_road"
+        app:layout_constraintEnd_toEndOf="@+id/fab_road"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fab_road"
+        app:srcCompat="@drawable/fab_search"
+        android:backgroundTint="@color/main_color"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

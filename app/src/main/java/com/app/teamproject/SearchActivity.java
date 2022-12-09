@@ -84,6 +84,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         cal.setTime(date);
         cal.add(Calendar.MINUTE, time[1]);
         cal.add(Calendar.HOUR, time[0]);
+        cal.add(Calendar.SECOND, time[2]);
+
         today = sdformat.format(cal.getTime());
 
         return today;
