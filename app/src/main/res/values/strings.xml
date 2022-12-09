@@ -1,5 +1,46 @@
 <resources>
     <string name="app_name">Easy-Way</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_btn1">한글</string>
+    <string name="main_btn2">영어</string>
+    //호선
+    <string name="Line">1호선</string>
+    <string name="Line_2">2호선</string>
+    <string name="Line_3">3호선</string>
+    <string name="Line_4">4호선</string>
+    <string name="Line_5">5호선</string>
+    <string name="Line_6">6호선</string>
+    <string name="Line_7">7호선</string>
+    <string name="Line_8">8호선</string>
+    <string name="Line_9">9호선</string>
+    //설정사항
+    <string name="Language">언어</string>
+    <string name="Inquiry">문의하기</string>
+    <string name="set">설정</string>
+    <string name="tip">도움말</string>
+    <string name="bookmark">즐겨찾기 역</string>
+    <string name="Inquiry_mail">문의 메일 보내기</string>
+    // 역 검색
+    <string name="Enter_starting">출발지 입력</string>
+    <string name="Stopover">경유지</string>
+    <string name="Enter_destination">도착지 입력</string>
+    <string name="Minimum_time">최소시간</string>
+    <string name="Least_expense">최소비용</string>
+    <string name="Minimum_transfer">최소환승</string>
+    <string name="LT">소요시간 : </string>
+    <string name="Expense">비용 : </string>
+    <string name="Number_transfers">환승횟수 : </string>
+    <string name="ETA">예상 도착시간 조회</string>
+    <string name="Path">상세경로</string>
+    <string name="Results">경로결과 \n 101 - 303 - 304 - 305 (경로예시)</string>
+    <string name="Start">출발</string>
+    <string name="Arrival_">도착</string>
+    <string name="Information">도착정보</string>
+    <string name="Refresh">새로고침</string>
+    <string name="Arrival_point">도착지 : </string>
+    <string name="Departure_point">출발지 : </string>
+    <string name="Current_time">현재시각 : </string>
+    //문장
+    <string name="Sentence_station">역을 입력하세요.</string>
+    <string name="sample_text">샘플 문장</string>
+
 </resources>

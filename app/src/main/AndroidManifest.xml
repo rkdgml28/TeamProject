@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
-        <activity android:name=".InquiryActivity"
+        <activity android:name=".SetLanguageActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".InquiryActivity"
             android:exported="true"/>
         <activity
             android:name=".MainActivity"

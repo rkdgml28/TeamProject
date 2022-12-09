@@ -31,7 +31,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
+    FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch, btnLang;
     Button btn101, btn102, btn103, btn104, btn105, btn106, btn107, btn108, btn109, btn110, btn111, btn112, btn113, btn114, btn115, btn116, btn117, btn118, btn119, btn120, btn121, btn122, btn123,
     btn201, btn202, btn203, btn204, btn205, btn206, btn207, btn208, btn209, btn210, btn211, btn212, btn213, btn214, btn215, btn216, btn217,
     btn301, btn302, btn303, btn304, btn305, btn306, btn307, btn308,
@@ -1149,12 +1149,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnRoad = findViewById(R.id.fab_road);
         btnSearch = findViewById(R.id.fab_search);
         btnStar = findViewById(R.id.fab_star);
+        btnLang = findViewById(R.id.fab_lang);
 
         btnSetting.setVisibility(View.GONE);
         btnHome.setVisibility(View.GONE);
         btnStar.setVisibility(View.GONE);
         btnSearch.setVisibility(View.GONE);
         btnRoad.setVisibility(View.GONE);
+        btnLang.setVisibility(View.GONE);
 
         isAllFabsVisible = false;
         isImageZoom = true;
@@ -1168,6 +1170,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 btnStar.show();
                 btnSearch.show();
                 btnRoad.show();
+                btnLang.show();
                 isAllFabsVisible = true;
             } else {
                 btnSetting.hide();
@@ -1175,6 +1178,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 btnStar.hide();
                 btnSearch.hide();
                 btnRoad.hide();
+                btnLang.hide();
                 isAllFabsVisible = false;
             }
         });
@@ -1183,6 +1187,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSearch.setOnClickListener(this);
         btnStar.setOnClickListener(this);
         btnRoad.setOnClickListener(this);
+        btnLang.setOnClickListener(this);
+
 
         AutoCompleteTextView main_search = findViewById(R.id.main_search_et);
         main_search.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, stations));
@@ -1280,6 +1286,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.fab_road:
                 intent = new Intent(this, RoadActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.fab_lang:
+                intent = new Intent(this, SetLanguageActivity.class);
                 startActivity(intent);
                 break;
         }

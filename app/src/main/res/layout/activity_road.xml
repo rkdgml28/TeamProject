@@ -28,7 +28,7 @@
             android:layout_marginLeft="40dp"
             android:background="@drawable/box_search"
             android:padding="10dp"
-            android:hint = "역을 입력하세요"
+            android:hint = "@string/Sentence_station"
             android:textColor="@color/black" />
 
         <ImageView
@@ -63,7 +63,7 @@
             android:fontFamily="@font/suncheon_b"
             android:gravity="center"
             android:padding="9dp"
-            android:text="1호선"
+            android:text="@string/Line"
             android:textColor="@color/line1"
             android:textSize="25sp" />
 
@@ -79,7 +79,7 @@
             android:fontFamily="@font/suncheon_b"
             android:gravity="center"
             android:padding="9dp"
-            android:text="2호선"
+            android:text="@string/Line_2"
             android:textColor="@color/line2"
             android:textSize="25sp" />
 
@@ -94,7 +94,7 @@
             android:fontFamily="@font/suncheon_b"
             android:gravity="center"
             android:padding="9dp"
-            android:text="3호선"
+            android:text="@string/Line_3"
             android:textColor="@color/line3"
             android:textSize="25sp" />
     </LinearLayout>
@@ -120,7 +120,7 @@
             android:fontFamily="@font/suncheon_b"
             android:gravity="center"
             android:padding="9dp"
-            android:text="4호선"
+            android:text="@string/Line_4"
             android:textColor="@color/line4"
             android:textSize="25sp" />
 
@@ -135,7 +135,7 @@
             android:fontFamily="@font/suncheon_b"
             android:gravity="center"
             android:padding="9dp"
-            android:text="5호선"
+            android:text="@string/Line_5"
             android:textColor="@color/line5"
             android:textSize="25sp" />
 
@@ -150,7 +150,7 @@
             android:fontFamily="@font/suncheon_b"
             android:gravity="center"
             android:padding="9dp"
-            android:text="6호선"
+            android:text="@string/Line_6"
             android:textColor="@color/line6"
             android:textSize="25sp" />
 
@@ -177,7 +177,7 @@
             android:fontFamily="@font/suncheon_b"
             android:gravity="center"
             android:padding="9dp"
-            android:text="7호선"
+            android:text="@string/Line_7"
             android:textColor="@color/line7"
             android:textSize="25sp" />
 
@@ -192,7 +192,7 @@
             android:fontFamily="@font/suncheon_b"
             android:gravity="center"
             android:padding="9dp"
-            android:text="8호선"
+            android:text="@string/Line_8"
             android:textColor="@color/line8"
             android:textSize="25sp" />
 
@@ -207,7 +207,7 @@
             android:fontFamily="@font/suncheon_b"
             android:gravity="center"
             android:padding="9dp"
-            android:text="9호선"
+            android:text="@string/Line_9"
             android:textColor="@color/line9"
             android:textSize="25sp" />
 
@@ -302,6 +302,18 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/fab_road"
         app:srcCompat="@drawable/fab_search"
+        android:backgroundTint="@color/skyblue"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_lang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fab_search"
+        app:layout_constraintEnd_toEndOf="@+id/fab_search"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fab_search"
+        app:srcCompat="@drawable/ic_language"
         android:backgroundTint="@color/skyblue"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

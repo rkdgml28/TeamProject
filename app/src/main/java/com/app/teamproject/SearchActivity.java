@@ -28,13 +28,13 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
-    FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
+    FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch, btnLang;
     Boolean isAllFabsVisible, isStopOverVisible, isInputComplete;
     EditText edit_start, edit_stopover, edit_finish;
     ImageView btn_search, btn_change, img_search_start, img_search_finish;
     Button btnArrivetime, btnMintime, btnMincost, btnMintran;
     CheckBox cb_stopover;
-    TextView tv_stop, tv_route, auto_time, auto_cost, auto_tran, startText, stopoverText, arriveText;
+    TextView tv_stop, tv_route, tv_tran, auto_time, auto_cost, auto_tran, startText, stopoverText, arriveText;
     LinearLayout layout_img;
     String mode = "";
     public static Context mContext;
@@ -122,6 +122,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         tv_stop = findViewById(R.id.tv_stop);
         tv_route = findViewById(R.id.tv_test_route);
+        tv_tran = findViewById(R.id.tv_transfer);
 
         auto_cost = findViewById(R.id.auto_cost);
         auto_time = findViewById(R.id.auto_time);
@@ -158,12 +159,14 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         btnRoad = findViewById(R.id.fab_road);
         btnSearch = findViewById(R.id.fab_search);
         btnStar = findViewById(R.id.fab_star);
+        btnLang = findViewById(R.id.fab_lang);
 
         btnSetting.setVisibility(View.GONE);
         btnHome.setVisibility(View.GONE);
         btnStar.setVisibility(View.GONE);
         btnSearch.setVisibility(View.GONE);
         btnRoad.setVisibility(View.GONE);
+        btnLang.setVisibility(View.GONE);
 
         isAllFabsVisible = false;
 
@@ -171,6 +174,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         btnMintime.setVisibility(View.INVISIBLE);
         btnMincost.setVisibility(View.INVISIBLE);
         btnMintran.setVisibility(View.INVISIBLE);
+        auto_tran.setVisibility(View.INVISIBLE);
+        tv_tran.setVisibility(View.INVISIBLE);
+
         layout_img.setVisibility(View.INVISIBLE);
         layout_inform.setVisibility(View.INVISIBLE);
 
@@ -183,6 +189,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 btnStar.show();
                 btnSearch.show();
                 btnRoad.show();
+                btnLang.show();
                 isAllFabsVisible = true;
             } else {
                 btnSetting.hide();
@@ -190,6 +197,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 btnStar.hide();
                 btnSearch.hide();
                 btnRoad.hide();
+                btnLang.hide();
                 isAllFabsVisible = false;
             }
         });
@@ -199,6 +207,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         btnSearch.setOnClickListener(this);
         btnStar.setOnClickListener(this);
         btnRoad.setOnClickListener(this);
+        btnLang.setOnClickListener(this);
 
         btnMincost.setOnClickListener(this);
         btnMintime.setOnClickListener(this);
@@ -425,6 +434,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     String start = edit_start.getText().toString();
                     String stopover = edit_stopover.getText().toString();
                     String finish = edit_finish.getText().toString();
+
+                    tv_tran.setVisibility(View.INVISIBLE);
+                    auto_tran.setVisibility(View.INVISIBLE);
+
                     driver.inputTimeInfor();
                     // 경유지 없을 때
                     if (stopover.equals("")) {
@@ -472,6 +485,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     String start = edit_start.getText().toString();
                     String stopover = edit_stopover.getText().toString();
                     String finish = edit_finish.getText().toString();
+
+                    tv_tran.setVisibility(View.INVISIBLE);
+                    auto_tran.setVisibility(View.INVISIBLE);
 
                     mode = "MinCost";
                     btnMincost.setBackgroundTintList(mContext.getResources().getColorStateList(R.color.main_color));
@@ -526,6 +542,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     String start = edit_start.getText().toString();
                     String stopover = edit_stopover.getText().toString();
                     String finish = edit_finish.getText().toString();
+
+                    tv_tran.setVisibility(View.VISIBLE);
+                    auto_tran.setVisibility(View.VISIBLE);
 
                     mode = "MinTran";
                     btnMintran.setBackgroundTintList(mContext.getResources().getColorStateList(R.color.main_color));
@@ -769,6 +788,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.fab_road:
                 intent = new Intent(this, RoadActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.fab_lang:
+                intent = new Intent(this, SetLanguageActivity.class);
                 startActivity(intent);
                 finish();
                 break;

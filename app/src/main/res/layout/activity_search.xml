@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/suncheon_r"
-                android:text="출발지: "
+                android:text="@string/Departure_point"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/edit_start"
                 app:layout_constraintLeft_toRightOf="@id/search_change"
@@ -51,12 +51,13 @@
                 android:id="@+id/tv_stop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="경유지: "
+                android:text="@string/Stopover"
                 android:textStyle="bold"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@+id/edit_stopover"
                 app:layout_constraintLeft_toRightOf="@id/search_change"
                 app:layout_constraintRight_toLeftOf="@id/edit_stopover"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/edit_stopover" />
 
             <TextView
@@ -64,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/suncheon_r"
-                android:text="도착지: "
+                android:text="@string/Arrival_point"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/edit_finish"
                 app:layout_constraintRight_toLeftOf="@id/edit_finish"
@@ -91,6 +92,7 @@
                 android:padding="7dp"
                 android:visibility="invisible"
                 app:layout_constraintLeft_toRightOf="@+id/tv_stop"
+                app:layout_constraintStart_toEndOf="@+id/tv_start"
                 app:layout_constraintTop_toBottomOf="@id/edit_start" />
 
             <AutoCompleteTextView
@@ -125,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/suncheon_r"
-            android:text="경유지"
+            android:text="@string/Stopover"
             app:layout_constraintBottom_toTopOf="@+id/btn_search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/layout_search1"
@@ -153,7 +155,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="70dp"
             android:fontFamily="@font/suncheon_r"
-            android:text="소요시간: "
+            android:text="@string/LT"
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/layout_img"
@@ -165,7 +167,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/suncheon_r"
-            android:text="비용: "
+            android:text="@string/Expense"
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="@id/tv_time"
@@ -177,9 +179,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/suncheon_r"
-            android:text="환승횟수: "
+            android:text="@string/Number_transfers"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:visibility="invisible"
             app:layout_constraintLeft_toLeftOf="@+id/tv_cost"
             app:layout_constraintTop_toBottomOf="@+id/tv_cost" />
 
@@ -192,7 +195,7 @@
             android:background="@drawable/box_line"
             android:backgroundTint="@color/main_color"
             android:fontFamily="@font/suncheon_r"
-            android:text="예상 도착시간 조회"
+            android:text="@string/ETA"
             app:layout_constraintStart_toEndOf="@+id/layout_img"
             app:layout_constraintTop_toBottomOf="@id/tv_transfer" />
 
@@ -227,6 +230,7 @@
             android:fontFamily="@font/suncheon_r"
             android:text="환승횟수 입니다"
             android:textSize="20sp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/tv_transfer"
             app:layout_constraintLeft_toRightOf="@id/tv_transfer"
             app:layout_constraintTop_toTopOf="@id/tv_transfer" />
@@ -247,7 +251,7 @@
                 android:background="@drawable/box_line"
                 android:backgroundTint="@color/sub_color4"
                 android:fontFamily="@font/suncheon_r"
-                android:text="최소시간"
+                android:text="@string/Minimum_time"
                 android:textSize="15sp" />
 
             <Button
@@ -258,7 +262,7 @@
                 android:background="@drawable/box_line"
                 android:backgroundTint="@color/sub_color4"
                 android:fontFamily="@font/suncheon_r"
-                android:text="최소비용"
+                android:text="@string/Least_expense"
                 android:textSize="15sp" />
 
             <Button
@@ -268,7 +272,7 @@
                 android:background="@drawable/box_line"
                 android:backgroundTint="@color/sub_color4"
                 android:fontFamily="@font/suncheon_r"
-                android:text="최소환승"
+                android:text="@string/Minimum_transfer"
                 android:textSize="15sp" />
 
         </LinearLayout>
@@ -357,7 +361,7 @@
                         android:layout_marginTop="30dp"
                         android:fontFamily="@font/suncheon_r"
                         android:gravity="center"
-                        android:text="출발역"
+                        android:text="@string/Start"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         tools:ignore="MissingConstraints" />
@@ -373,7 +377,7 @@
                         android:fontFamily="@font/suncheon_r"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="경유역"
+                        android:text="@string/Stopover"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:visibility="invisible"
@@ -388,7 +392,7 @@
                         android:layout_marginTop="78dp"
                         android:fontFamily="@font/suncheon_r"
                         android:gravity="center"
-                        android:text="도착역"
+                        android:text="@string/Arrival_"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         tools:ignore="MissingConstraints" />
@@ -405,7 +409,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/suncheon_r"
-            android:text="상세경로"
+            android:text="@string/Path"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/tv_test_route"
@@ -419,7 +423,7 @@
             android:background="@color/white"
             android:fontFamily="@font/suncheon_r"
             android:gravity="center"
-            android:text="경로결과 \n 101 - 303 - 304 - 305 (경로예시)"
+            android:text="@string/Results"
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/auto_time"
@@ -507,6 +511,17 @@
         app:layout_constraintStart_toStartOf="@+id/fab_road"
         app:rippleColor="@color/sub_color2"
         app:srcCompat="@drawable/fab_search" />
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_lang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fab_search"
+        app:layout_constraintEnd_toEndOf="@+id/fab_search"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fab_search"
+        app:srcCompat="@drawable/ic_language"
+        android:backgroundTint="@color/skyblue"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

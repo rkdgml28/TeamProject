@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Arrival_point">Destination: </string>
+    <string name="Sentence_station">Enter your stop</string>
+    <string name="Inquiry_mail">E-mail of Inquiry</string>
+    <string name="app_name">Easy-Way</string>
+    <string name="main_btn1">Korean</string>
+    <string name="main_btn2">English</string>
+    <string name="Line">Line 1</string>
+    <string name="Line_2">Line 2</string>
+    <string name="Line_4">Line 4</string>
+    <string name="Line_3">Line 3</string>
+    <string name="Line_5">Line 5</string>
+    <string name="Line_6">Line 6</string>
+    <string name="Line_7">Line 7</string>
+    <string name="Line_8">Line 8</string>
+    <string name="Line_9">Line 9</string>
+    <string name="Language">Language</string>
+    <string name="Inquiry">Inquiry</string>
+    <string name="set">Set</string>
+    <string name="tip">Tip</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="Stopover">Stopover</string>
+    <string name="Enter_destination">Arrival stop</string>
+    <string name="Least_expense">Least expense</string>
+    <string name="Minimum_time">Minimum time</string>
+    <string name="Enter_starting">Starting stop</string>
+    <string name="Minimum_transfer">Minimum transfer</string>
+    <string name="LT">Lead time : </string>
+    <string name="Expense">Expense : </string>
+    <string name="Number_transfers">Number_transfers: </string>
+    <string name="Current_time">Current time: </string>
+    <string name="ETA">ETA</string>
+    <string name="Path">Detailed Path</string>
+    <string name="Results">Path Results</string>
+    <string name="Start">Start</string>
+    <string name="Arrival_">Arrival</string>
+    <string name="Information">information</string>
+    <string name="Refresh">Refresh</string>
+    <string name="sample_text">Sample Sentence</string>
+
+</resources>

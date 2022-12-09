@@ -31,7 +31,7 @@
             android:inputType="number"
             android:background="@drawable/box_search"
             android:textColor="@color/black"
-            android:hint = "역을 입력하세요"
+            android:hint = "@string/Sentence_station"
             android:fontFamily="@font/suncheon_r"/>
 
         <ImageView
@@ -1317,9 +1317,9 @@
 
 
 
-<!--    <com.github.chrisbanes.photoview.PhotoView>-->
+    <!--    <com.github.chrisbanes.photoview.PhotoView>-->
 
-<!--    </com.github.chrisbanes.photoview.PhotoView>-->
+    <!--    </com.github.chrisbanes.photoview.PhotoView>-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_subway"
@@ -1394,6 +1394,19 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/fab_road"
         app:srcCompat="@drawable/fab_search"
+        android:backgroundTint="@color/skyblue"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_lang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fab_search"
+        app:layout_constraintEnd_toEndOf="@+id/fab_search"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fab_search"
+        app:srcCompat="@drawable/ic_language"
         android:backgroundTint="@color/skyblue"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

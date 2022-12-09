@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class RoadActivity extends AppCompatActivity implements View.OnClickListener {
-    FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
+    FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch, btnLang;
     TextView btn_line1, btn_line2, btn_line3, btn_line4, btn_line5, btn_line6, btn_line7, btn_line8, btn_line9;
     ImageView iv_road , road_search;
     Boolean isAllFabsVisible;
@@ -53,6 +53,7 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
         btnRoad = findViewById(R.id.fab_road);
         btnSearch = findViewById(R.id.fab_search);
         btnStar = findViewById(R.id.fab_star);
+        btnLang = findViewById(R.id.fab_lang);
 
         road_search = findViewById(R.id.road_search);
         road_search_et = findViewById(R.id.road_search_et);
@@ -62,6 +63,7 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
         btnStar.setVisibility(View.GONE);
         btnSearch.setVisibility(View.GONE);
         btnRoad.setVisibility(View.GONE);
+        btnLang.setVisibility(View.GONE);
 
         isAllFabsVisible = false;
 
@@ -74,6 +76,7 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
                 btnStar.show();
                 btnSearch.show();
                 btnRoad.show();
+                btnLang.show();
                 isAllFabsVisible = true;
             } else {
                 btnSetting.hide();
@@ -81,6 +84,7 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
                 btnStar.hide();
                 btnSearch.hide();
                 btnRoad.hide();
+                btnLang.hide();
                 isAllFabsVisible = false;
             }
         });
@@ -90,6 +94,7 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
         btnSearch.setOnClickListener(this);
         btnStar.setOnClickListener(this);
         btnRoad.setOnClickListener(this);
+        btnLang.setOnClickListener(this);
 
         btn_line1.setOnClickListener(this);
         btn_line2.setOnClickListener(this);
@@ -177,6 +182,11 @@ public class RoadActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.fab_road:
                 intent = new Intent(this, RoadActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.fab_lang:
+                intent = new Intent(this, SetLanguageActivity.class);
                 startActivity(intent);
                 finish();
                 break;

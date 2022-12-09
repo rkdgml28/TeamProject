@@ -3,6 +3,7 @@ package com.app.teamproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,11 +19,12 @@ import java.util.Date;
 
 public class StationActivity  extends AppCompatActivity implements View.OnClickListener{
 
-    FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
+    FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch, btnLang;
     Boolean isAllFabsVisible;
     TextView sta_search, sta_prev, sta_next, search_station, what_line, tv_inform,
             prestation, nextstation, preTime, nextTime;
     ImageView img_sta, img_prev, img_next;
+    ImageButton refresh;
     View block2, block3, block4, block5;
 
     int numint;
@@ -35,7 +37,7 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
 
         Date date = new Date();
         // 포맷변경 ( 년월일 시분초)
-        SimpleDateFormat sdformat = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat sdformat = new SimpleDateFormat("HH:mm");
 
         // Java 시간 더하기
         Calendar cal = Calendar.getInstance();
@@ -61,6 +63,9 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
         btnRoad = findViewById(R.id.fab_road);
         btnSearch = findViewById(R.id.fab_search);
         btnStar = findViewById(R.id.fab_star);
+        btnLang = findViewById(R.id.fab_lang);
+
+        refresh = findViewById(R.id.refresh);
 
         sta_search = findViewById(R.id.sta_search);
         sta_prev = findViewById(R.id.sta_prev);
@@ -89,6 +94,7 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
         btnStar.setVisibility(View.GONE);
         btnSearch.setVisibility(View.GONE);
         btnRoad.setVisibility(View.GONE);
+        btnLang.setVisibility(View.GONE);
 
         isAllFabsVisible = false;
 
@@ -101,6 +107,7 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
                 btnStar.show();
                 btnSearch.show();
                 btnRoad.show();
+                btnLang.show();
                 isAllFabsVisible = true;
             } else {
                 btnSetting.hide();
@@ -108,6 +115,7 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
                 btnStar.hide();
                 btnSearch.hide();
                 btnRoad.hide();
+                btnLang.hide();
                 isAllFabsVisible = false;
             }
         });
@@ -117,6 +125,7 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
         btnSearch.setOnClickListener(this);
         btnStar.setOnClickListener(this);
         btnRoad.setOnClickListener(this);
+        btnLang.setOnClickListener(this);
 
         Intent intent = getIntent();
 
@@ -423,31 +432,52 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
             block5.setBackgroundColor(color9);
         }
 
-        String numStrline = String.valueOf(line);
-        String numStrprev = String.valueOf(prev);
-        String numStrnext = String.valueOf(next);
+        String numStrline = String.valueOf(line); //호선
+        String numStrprev = String.valueOf(prev); //이전역
+        String numStrnext = String.valueOf(next); //다음역
+        String numStrCurr = String.valueOf(numint); //현재역
 
         what_line.setText(numStrline + "호선");
         sta_prev.setText(numStrprev);
         prestation.setText(numStrprev + " 방면");
 
-        driver.setFromTo(numStrline, numStrprev);
+        driver.setFromTo(numStrCurr, numStrprev);
         driver.inputTimeInfor();
-        time = driver.d.convertTime(driver.d.getLowCost(numStrline, numStrprev));
-        preTime.setText(getCTime());
+        time = driver.d.convertTime(driver.d.getLowCost(numStrCurr, numStrprev));
+        preTime.setText(getCTime() + " 도착예정");
 
         if(next == 0){
             sta_next.setText("역없음");
             nextstation.setText("역없음");
             nextTime.setText("");
         }else{
-            driver.setFromTo(numStrline, numStrnext);
+            driver.setFromTo(numStrCurr, numStrnext);
             driver.inputTimeInfor();
-            time = driver.d.convertTime(driver.d.getLowCost(numStrline, numStrnext));
-            nextTime.setText(getCTime());
+            time = driver.d.convertTime(driver.d.getLowCost(numStrCurr, numStrnext));
+            nextTime.setText(getCTime() + " 도착예정");
             sta_next.setText(numStrnext);
             nextstation.setText(numStrnext + " 방면");
         }
+
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                driver.setFromTo(numStrCurr, numStrprev);
+                driver.inputTimeInfor();
+                time = driver.d.convertTime(driver.d.getLowCost(numStrCurr, numStrprev));
+                preTime.setText(getCTime() + " 도착예정");
+                System.out.println(time);
+                System.out.println(numStrCurr);
+                System.out.println(numStrprev);
+
+                driver.setFromTo(numStrCurr, numStrnext);
+                driver.inputTimeInfor();
+                time = driver.d.convertTime(driver.d.getLowCost(numStrCurr, numStrnext));
+                nextTime.setText(getCTime() + " 도착예정");
+                System.out.println(time);
+            }
+        });
     }
 
 
@@ -477,6 +507,11 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.fab_road:
                 intent = new Intent(this, RoadActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.fab_lang:
+                intent = new Intent(this, SetLanguageActivity.class);
                 startActivity(intent);
                 finish();
                 break;

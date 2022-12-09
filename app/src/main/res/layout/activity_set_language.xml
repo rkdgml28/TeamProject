@@ -5,62 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_constraintHorizontal_chainStyle="spread"
-    tools:context=".InquiryActivity"
+    tools:context=".SetLanguageActivity"
     tools:ignore="HardcodedText">
 
     <TextView
-        android:id="@+id/title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginRight="100dp"
-        android:text="@string/Inquiry_mail"
-        android:textSize="30dp"
+        android:id="@+id/textView6"
+        android:layout_width="82dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="95dp"
+        android:text="언어 설정"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/page1_btn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/input_email"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="30dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="rkdgml2728@gmail.com"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
-
-    <TextView
-        android:id="@+id/check_email_result"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center_vertical"
-        android:textSize="17dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/question_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question_button" />
 
     <Button
-        android:id="@+id/question_button"
-        android:layout_width="121dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
-        android:backgroundTint="@color/main_color"
-        android:text="@string/Inquiry"
+        android:id="@+id/page1_btn"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/main_color"
+        android:text="@string/main_btn1"
+        android:textSize="25dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/check_email_result"
-        app:layout_constraintTop_toBottomOf="@+id/input_email" />
+        app:layout_constraintBottom_toTopOf="@+id/page2_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:strokeColor="#BFD188" />
+
+    <Button
+        android:id="@+id/page2_btn"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="399dp"
+        android:background="@color/main_color"
+        android:text="@string/main_btn2"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/page1_btn"
+        app:strokeColor="#BFD188">
+
+
+    </Button>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_subway"
@@ -68,13 +63,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/skyblue"
         android:src="@drawable/fab_subway"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="16dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_setting"
@@ -135,19 +130,18 @@
         app:layout_constraintEnd_toEndOf="@+id/fab_road"
         app:layout_constraintStart_toStartOf="@+id/fab_road"
         app:srcCompat="@drawable/fab_search" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_lang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:backgroundTint="@color/skyblue"
         app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@+id/fab_search"
         app:layout_constraintEnd_toEndOf="@+id/fab_search"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/fab_search"
-        app:srcCompat="@drawable/ic_language" />
+        app:srcCompat="@drawable/ic_language"
+        android:backgroundTint="@color/skyblue"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

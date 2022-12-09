@@ -36,7 +36,7 @@ import java.util.Set;
 public class BookmarkActivity extends AppCompatActivity implements View.OnClickListener {
 
     private InputMethodManager imm;
-    FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
+    FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch, btnLang;
     Boolean isAllFabsVisible;
     ImageView bookmark_search;
     AutoCompleteTextView autoCompleteTextView;
@@ -81,12 +81,14 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         btnRoad = findViewById(R.id.fab_road);
         btnSearch = findViewById(R.id.fab_search);
         btnStar = findViewById(R.id.fab_star);
+        btnLang = findViewById(R.id.fab_lang);
 
         btnSetting.setVisibility(View.GONE);
         btnHome.setVisibility(View.GONE);
         btnStar.setVisibility(View.GONE);
         btnSearch.setVisibility(View.GONE);
         btnRoad.setVisibility(View.GONE);
+        btnLang.setVisibility(View.GONE);
 
         isAllFabsVisible = false;
 
@@ -99,6 +101,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
                 btnStar.show();
                 btnSearch.show();
                 btnRoad.show();
+                btnLang.show();
                 isAllFabsVisible = true;
             } else {
                 btnSetting.hide();
@@ -106,6 +109,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
                 btnStar.hide();
                 btnSearch.hide();
                 btnRoad.hide();
+                btnLang.show();
                 isAllFabsVisible = false;
             }
         });
@@ -115,6 +119,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
         btnSearch.setOnClickListener(this);
         btnStar.setOnClickListener(this);
         btnRoad.setOnClickListener(this);
+        btnLang.setOnClickListener(this);
 
 
 
@@ -199,6 +204,11 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.fab_road:
                 intent = new Intent(this, RoadActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.fab_lang:
+                intent = new Intent(this, SetLanguageActivity.class);
                 startActivity(intent);
                 finish();
                 break;
