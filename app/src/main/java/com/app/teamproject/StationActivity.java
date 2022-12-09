@@ -16,9 +16,11 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
 
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch;
     Boolean isAllFabsVisible;
-    TextView sta_search, sta_prev, sta_next, search_station, what_line, tv_inform;
+    TextView sta_search, sta_prev, sta_next, search_station, what_line, tv_inform, prestation, nextstation;
     ImageView img_sta, img_prev, img_next;
+    View block2, block3, block4, block5;
 
+    int numint;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +41,14 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
         search_station = findViewById(R.id.search_station);
         what_line = findViewById(R.id.what_line);
         tv_inform = findViewById(R.id.tv_inform);
+
+        block2 = findViewById(R.id.block2);
+        block3 = findViewById(R.id.block3);
+        block4 = findViewById(R.id.block4);
+        block5 = findViewById(R.id.block5);
+
+        prestation = findViewById(R.id.prestation);
+        nextstation = findViewById(R.id.nextstation);
 
         img_next = findViewById(R.id.img_next);
         img_sta = findViewById(R.id.img_sta);
@@ -85,7 +95,7 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
         search_station.setText(station);
 
         //검색역 정보띄우기
-        int numint = Integer.parseInt(station);
+        numint = Integer.parseInt(station);
         int prev, next, line;
 
         line = numint/100;
@@ -307,44 +317,80 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
             img_sta.setColorFilter(color1);
             img_prev.setColorFilter(color1);
             img_next.setColorFilter(color1);
+            block2.setBackgroundColor(color1);
+            block3.setBackgroundColor(color1);
+            block4.setBackgroundColor(color1);
+            block5.setBackgroundColor(color1);
         }
         if (line == 2){
             img_sta.setColorFilter(color2);
             img_prev.setColorFilter(color2);
             img_next.setColorFilter(color2);
+            block2.setBackgroundColor(color2);
+            block3.setBackgroundColor(color2);
+            block4.setBackgroundColor(color2);
+            block5.setBackgroundColor(color2);
         }
         if (line == 3){
             img_sta.setColorFilter(color3);
             img_prev.setColorFilter(color3);
             img_next.setColorFilter(color3);
+            block2.setBackgroundColor(color3);
+            block3.setBackgroundColor(color3);
+            block4.setBackgroundColor(color3);
+            block5.setBackgroundColor(color3);
         }
         if (line == 4){
             img_sta.setColorFilter(color4);
             img_prev.setColorFilter(color4);
             img_next.setColorFilter(color4);
+            block2.setBackgroundColor(color4);
+            block3.setBackgroundColor(color4);
+            block4.setBackgroundColor(color4);
+            block5.setBackgroundColor(color4);
         }
         if (line == 5){
             img_sta.setColorFilter(color5);
             img_prev.setColorFilter(color5);
             img_next.setColorFilter(color5);
+            block2.setBackgroundColor(color5);
+            block3.setBackgroundColor(color5);
+            block4.setBackgroundColor(color5);
+            block5.setBackgroundColor(color5);
         }
         if (line == 6){
             img_sta.setColorFilter(color6);
             img_prev.setColorFilter(color6);
             img_next.setColorFilter(color6);
+            block2.setBackgroundColor(color6);
+            block3.setBackgroundColor(color6);
+            block4.setBackgroundColor(color6);
+            block5.setBackgroundColor(color6);
         }
         if (line == 7){
             img_sta.setColorFilter(color7);
             img_prev.setColorFilter(color7);
             img_next.setColorFilter(color7);
+            block2.setBackgroundColor(color7);
+            block3.setBackgroundColor(color7);
+            block4.setBackgroundColor(color7);
+            block5.setBackgroundColor(color7);
         }if (line == 8){
             img_sta.setColorFilter(color8);
             img_prev.setColorFilter(color8);
             img_next.setColorFilter(color8);
+            block2.setBackgroundColor(color8);
+            block3.setBackgroundColor(color8);
+            block4.setBackgroundColor(color8);
+            block5.setBackgroundColor(color8);
         }if (line == 9){
             img_sta.setColorFilter(color9);
             img_prev.setColorFilter(color9);
             img_next.setColorFilter(color9);
+            block2.setBackgroundColor(color9);
+            block3.setBackgroundColor(color9);
+            block4.setBackgroundColor(color9);
+            block5.setBackgroundColor(color9);
         }
 
         String numStrline = String.valueOf(line);
@@ -353,10 +399,14 @@ public class StationActivity  extends AppCompatActivity implements View.OnClickL
 
         what_line.setText(numStrline + "호선");
         sta_prev.setText(numStrprev);
+        prestation.setText(numStrprev + " 방면");
+
         if(next == 0){
             sta_next.setText("역없음");
+            nextstation.setText("역없음");
         }else{
             sta_next.setText(numStrnext);
+            nextstation.setText(numStrnext + " 방면");
         }
     }
 

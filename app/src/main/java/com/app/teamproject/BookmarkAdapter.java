@@ -91,9 +91,14 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
                 switch (item.getItemId()) {
                     // 상세정보
                     case 1001:
-                        Intent intent = new Intent(context, StationActivity.class);
-//                        intent.putExtra("name", String.valueOf(name));
+//                        Intent intent = new Intent(context, StationActivity.class);
+//                        intent.putExtra("station", String.valueOf(name));
 //                        Log.v("putextra", String.valueOf(name));
+//                        context.startActivity(intent);
+
+                        String s = name.getText().toString();
+                        Intent intent = new Intent(context, StationActivity.class);
+                        intent.putExtra("station", s);
                         context.startActivity(intent);
                         break;
 

@@ -661,7 +661,6 @@ public class Driver {
 			// 환승지2 ~ 도착지까지의 비용 출력
 			driver.inputPriceInfor();
 			System.out.println("경로 비용: " + driver.d.getCost_minTimeRoute(route) + "원");
-
 		}
 	}
 }	
