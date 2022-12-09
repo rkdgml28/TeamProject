@@ -55,6 +55,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     Driver driver = new Driver();
     int[] index;
 
+//    String start;
+//    String arrive;
+//    String layover;
+
     String[] reverse;
     int[] time;
 
