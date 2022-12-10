@@ -2,7 +2,6 @@ package com.app.teamproject;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
     FloatingActionButton btnSubway, btnSetting, btnHome, btnRoad, btnStar, btnSearch, btnLang;
@@ -50,7 +50,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             "701", "702", "703", "704", "705", "706", "707",
             "801", "802", "803", "804", "805", "806",
             "901", "902", "903", "904"};
-
+    List<String> list = Arrays.asList(stations);
 
     Driver driver = new Driver();
     int[] index;
@@ -271,7 +271,14 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                         if (isStopOverVisible && stopover.length() == 0) {
                             Toast.makeText(getApplicationContext(), "경유지를 입력하세요.", Toast.LENGTH_SHORT).show();
                             isInputComplete = false;
-                        } else {
+                        }
+                        else if (!list.contains(start)) {
+                            Toast.makeText(getApplicationContext(), "없는 역입니다. (출발지)", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (!list.contains(finish)){
+                            Toast.makeText(getApplicationContext(), "없는 역입니다. (도착지)", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
                             isInputComplete = true;
                         }
                     }
@@ -346,7 +353,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     startText.setText(start);
                     arriveText.setText(finish);
 
-                    // 여기다가 요소들 다 visible 해주면 됨
                     btnMintime.setVisibility(View.VISIBLE);
                     btnMincost.setVisibility(View.VISIBLE);
                     btnMintran.setVisibility(View.VISIBLE);
@@ -373,28 +379,33 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     }
                     // 경유지 있을 때
                     else {
-                        stopoverText.setVisibility(View.VISIBLE);
-                        driver.inputTimeInfor();
-                        int time_temp = driver.d.getLowCost(start, stopover) + driver.d.getLowCost(stopover, finish);
-                        time = driver.d.convertTime(time_temp);
-                        auto_time.setText(time[0] + "시간 " + time[1] + "분 " + time[2] + "초 ");
-                        reverse = driver.d.getLowCostRoute(start, stopover);
-                        String route_temp = Arrays.toString(reverse) + "\n";
-                        driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
-                        Log.v("reverse", Arrays.toString(reverse));
-                        int cost = driver.d.getCost_minTimeRoute(reverse);
+                        if (!list.contains(stopover)){
+                            Toast.makeText(getApplicationContext(), "없는 역입니다. (경유지)", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            stopoverText.setVisibility(View.VISIBLE);
+                            driver.inputTimeInfor();
+                            int time_temp = driver.d.getLowCost(start, stopover) + driver.d.getLowCost(stopover, finish);
+                            time = driver.d.convertTime(time_temp);
+                            auto_time.setText(time[0] + "시간 " + time[1] + "분 " + time[2] + "초 ");
+                            reverse = driver.d.getLowCostRoute(start, stopover);
+                            String route_temp = Arrays.toString(reverse) + "\n";
+                            driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
+                            Log.v("reverse", Arrays.toString(reverse));
+                            int cost = driver.d.getCost_minTimeRoute(reverse);
 
-                        driver.inputTimeInfor();
-                        reverse = driver.d.getLowCostRoute(stopover, finish);
-                        route_temp += Arrays.toString(reverse);
-                        driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
-                        cost += driver.d.getCost_minTimeRoute(reverse);
-                        auto_cost.setText(Integer.toString(cost));
+                            driver.inputTimeInfor();
+                            reverse = driver.d.getLowCostRoute(stopover, finish);
+                            route_temp += Arrays.toString(reverse);
+                            driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
+                            cost += driver.d.getCost_minTimeRoute(reverse);
+                            auto_cost.setText(Integer.toString(cost));
 
-                        // 비용 부분
-                        tv_route.setText(route_temp);
-                        stopoverText.setText(stopover);
-                        stopoverText.setVisibility(View.VISIBLE);
+                            // 비용 부분
+                            tv_route.setText(route_temp);
+                            stopoverText.setText(stopover);
+                            stopoverText.setVisibility(View.VISIBLE);
+                        }
                     }
                 }
             }
@@ -456,25 +467,31 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     }
                     // 경유지 있을 때
                     else {
-                        int time_temp = driver.d.getLowCost(start, stopover) + driver.d.getLowCost(stopover, finish);
-                        time = driver.d.convertTime(time_temp);
-                        auto_time.setText(time[0] + "시간 " + time[1] + "분 " + time[2] + "초 ");
-                        reverse = driver.d.getLowCostRoute(start, stopover);
-                        String route_temp = Arrays.toString(reverse) + "\n";
-                        driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
-                        int cost = driver.d.getCost_minTimeRoute(reverse);
+                        if (!list.contains(stopover)){
+                            Toast.makeText(getApplicationContext(), "없는 역입니다. (경유지)", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            //int time_temp = driver.d.getLowCost(start, stopover) + driver.d.getLowCost(stopover, finish);
+                            time = driver.d.convertTime(driver.d.getLowCost(start, stopover) + driver.d.getLowCost(stopover, finish));
+                            Log.v("mintime time", Arrays.toString(time));
+                            auto_time.setText(time[0] + "시간 " + time[1] + "분 " + time[2] + "초 ");
+                            reverse = driver.d.getLowCostRoute(start, stopover);
+                            String route_temp = Arrays.toString(reverse) + "\n";
+                            driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
+                            int cost = driver.d.getCost_minTimeRoute(reverse);
 
-                        driver.inputTimeInfor();
-                        reverse = driver.d.getLowCostRoute(stopover, finish);
-                        route_temp += Arrays.toString(Arrays.copyOfRange(reverse, 1, reverse.length));
+                            driver.inputTimeInfor();
+                            reverse = driver.d.getLowCostRoute(stopover, finish);
+                            route_temp += Arrays.toString(Arrays.copyOfRange(reverse, 1, reverse.length));
 
-                        driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
-                        cost += driver.d.getCost_minTimeRoute(reverse);
-                        auto_cost.setText(Integer.toString(cost));
-                        // 비용 부분
-                        tv_route.setText(route_temp);
-                        stopoverText.setText(stopover);
-                        stopoverText.setVisibility(View.VISIBLE);
+                            driver.inputPriceInfor(); // 최소시간 경로의 비용을 구해야 하므로 가중치로 비용을 입력한다.
+                            cost += driver.d.getCost_minTimeRoute(reverse);
+                            auto_cost.setText(Integer.toString(cost));
+                            // 비용 부분
+                            tv_route.setText(route_temp);
+                            stopoverText.setText(stopover);
+                            stopoverText.setVisibility(View.VISIBLE);
+                        }
                     }
                 }
             }
@@ -513,25 +530,33 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     }
                     // 경유지 있을 때
                     else {
-                        reverse = driver.d.getLowCostRoute(start, finish);
+                        if (!list.contains(stopover)){
+                            Toast.makeText(getApplicationContext(), "없는 역입니다. (경유지)", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
 
-                        int t = driver.d.getLowCost(start, stopover) + driver.d.getLowCost(stopover, finish);
-                        String temp1 = Integer.toString(t);
-                        auto_cost.setText(temp1);
+                            int t = driver.d.getLowCost(start, stopover) + driver.d.getLowCost(stopover, finish);
+                            String temp1 = Integer.toString(t);
+                            auto_cost.setText(temp1);
 
-                        reverse = driver.d.getLowCostRoute(start, stopover);
-                        String route_temp = Arrays.toString(reverse) + "\n";
-                        reverse = driver.d.getLowCostRoute(stopover, finish);
-                        route_temp += Arrays.toString(reverse);
-                        tv_route.setText(route_temp);
+                            reverse = driver.d.getLowCostRoute(start, stopover);
+                            String route_temp = Arrays.toString(reverse) + "\n";
+                            reverse = driver.d.getLowCostRoute(stopover, finish);
+                            route_temp += Arrays.toString(reverse);
+                            tv_route.setText(route_temp);
 
-                        driver.inputTimeInfor(); // 최소비용 경로의 시간을 구해야 하므로 가중치로 시간을 입력한다.
-                        reverse = driver.d.getLowCostRoute(start, stopover);
-                        time = driver.d.convertTime(driver.d.getTime_minPriceRoute(reverse) + driver.d.getTime_minPriceRoute(driver.d.getLowCostRoute(stopover, finish)));
-                        auto_time.setText(time[0] + "시간 " + time[1] + "분 " + time[2] + "초 ");
+                            String[] r1 = driver.d.getLowCostRoute(start, stopover);
+                            String[] r2 = driver.d.getLowCostRoute(stopover, finish);
 
-                        stopoverText.setText(stopover);
-                        stopoverText.setVisibility(View.VISIBLE);
+                            driver.inputTimeInfor(); // 최소비용 경로의 시간을 구해야 하므로 가중치로 시간을 입력한다.
+
+                            time = driver.d.convertTime(driver.d.getTime_minPriceRoute(r1) + driver.d.getTime_minPriceRoute(r2));
+                            Log.v("mincost time", String.valueOf(driver.d.getTime_minPriceRoute(reverse)));
+                            auto_time.setText(time[0] + "시간 " + time[1] + "분 " + time[2] + "초 ");
+
+                            stopoverText.setText(stopover);
+                            stopoverText.setVisibility(View.VISIBLE);
+                        }
                     }
                 }
             }
@@ -686,67 +711,72 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     }
                     // 경유지 있을 때
                     else {
-                        // 출발역 -> 경유역  최소환승
-                        driver.setFromTo(start, stopover);
-
-                        TransferDij.test.createList();
-                        TransferDij.test.addLines();
-                        TransferDij.test.addStatons();
-                        int[] index1 = TransferDij.bfs();
-
-                        if (TransferDij.answer == 0) { //환승하지 않을 때
-                            routeSum += TransferDij.test.getTransStation(start, stopover) + "\n";
-                        } else if (TransferDij.answer == 1) { //환승 1번 할 때
-                            String temp1 = Arrays.asList(TransferDij.test.getTransStation(start, TransferDij.test.getStation(index1[0]))).toString();
-                            String temp2 = Arrays.asList(TransferDij.test.getTransStation(TransferDij.test.getStation(index1[0]), finish)).toString();
-                            routeSum += temp1 + "\n" + temp2;
-                            transSum++;
-                        } else if (TransferDij.answer == 2) { //환승 2번 할 때
-                            String temp1 = Arrays.asList(TransferDij.test.getTransStation(start, TransferDij.transferStation.get(index1[0]))).toString();
-                            String temp2 = Arrays.asList(TransferDij.test.getTransStation(TransferDij.transferStation.get(index1[0]), TransferDij.transferStation.get(index1[1]))).toString();
-                            String temp3 = Arrays.asList(TransferDij.test.getTransStation(TransferDij.transferStation.get(index1[1]), finish)).toString();
-                            routeSum += temp1 + "\n" + temp2 + "\n" + temp3;
-                            transSum += 2;
-
+                        if (!list.contains(stopover)){
+                            Toast.makeText(getApplicationContext(), "없는 역입니다. (경유지)", Toast.LENGTH_SHORT).show();
                         }
+                        else {
+                            // 출발역 -> 경유역  최소환승
+                            driver.setFromTo(start, stopover);
+
+                            TransferDij.test.createList();
+                            TransferDij.test.addLines();
+                            TransferDij.test.addStatons();
+                            int[] index1 = TransferDij.bfs();
+
+                            if (TransferDij.answer == 0) { //환승하지 않을 때
+                                routeSum += TransferDij.test.getTransStation(start, stopover) + "\n";
+                            } else if (TransferDij.answer == 1) { //환승 1번 할 때
+                                String temp1 = Arrays.asList(TransferDij.test.getTransStation(start, TransferDij.test.getStation(index1[0]))).toString();
+                                String temp2 = Arrays.asList(TransferDij.test.getTransStation(TransferDij.test.getStation(index1[0]), finish)).toString();
+                                routeSum += temp1 + "\n" + temp2;
+                                transSum++;
+                            } else if (TransferDij.answer == 2) { //환승 2번 할 때
+                                String temp1 = Arrays.asList(TransferDij.test.getTransStation(start, TransferDij.transferStation.get(index1[0]))).toString();
+                                String temp2 = Arrays.asList(TransferDij.test.getTransStation(TransferDij.transferStation.get(index1[0]), TransferDij.transferStation.get(index1[1]))).toString();
+                                String temp3 = Arrays.asList(TransferDij.test.getTransStation(TransferDij.transferStation.get(index1[1]), finish)).toString();
+                                routeSum += temp1 + "\n" + temp2 + "\n" + temp3;
+                                transSum += 2;
+
+                            }
 
 
-                        // 경유 -> 도착역
-                        driver.setFromTo(stopover, finish);
-                        driver.inputTimeInfor();
-                        TransferDij.test.createList();
-                        TransferDij.test.addLines();
-                        TransferDij.test.addStatons();
-                        int[] index2 = TransferDij.bfs();
+                            // 경유 -> 도착역
+                            driver.setFromTo(stopover, finish);
+                            driver.inputTimeInfor();
+                            TransferDij.test.createList();
+                            TransferDij.test.addLines();
+                            TransferDij.test.addStatons();
+                            int[] index2 = TransferDij.bfs();
 
-                        // 환승 횟수
-                        auto_cost.setText(Integer.toString(TransferDij.answer));
+                            // 환승 횟수
+                            auto_cost.setText(Integer.toString(TransferDij.answer));
 
-                        if (TransferDij.answer == 0) { //환승하지 않을 때
-                            //detail_route.setText(Arrays.asList(TransferDij.test.getTransStation(start,arrive)).toArray().toString());
-                            //routeSum+= Arrays.asList(TransferDij.test.getTransStation(start,arrive)).toArray().toString()+"\n";
-                            routeSum += TransferDij.test.getTransStation(stopover, finish);
+                            if (TransferDij.answer == 0) { //환승하지 않을 때
+                                //detail_route.setText(Arrays.asList(TransferDij.test.getTransStation(start,arrive)).toArray().toString());
+                                //routeSum+= Arrays.asList(TransferDij.test.getTransStation(start,arrive)).toArray().toString()+"\n";
+                                routeSum += TransferDij.test.getTransStation(stopover, finish);
 
-                        } else if (TransferDij.answer == 1) { //환승 1번 할 때
-                            String temp1 = Arrays.asList(TransferDij.test.getTransStation(start, TransferDij.test.getStation(index2[0]))).toString();
-                            String temp2 = Arrays.asList(TransferDij.test.getTransStation(TransferDij.test.getStation(index2[0]), finish)).toString();
+                            } else if (TransferDij.answer == 1) { //환승 1번 할 때
+                                String temp1 = Arrays.asList(TransferDij.test.getTransStation(start, TransferDij.test.getStation(index2[0]))).toString();
+                                String temp2 = Arrays.asList(TransferDij.test.getTransStation(TransferDij.test.getStation(index2[0]), finish)).toString();
 
-                            routeSum += temp1 + "\n" + temp2 + "\n";
-                            transSum++;
+                                routeSum += temp1 + "\n" + temp2 + "\n";
+                                transSum++;
 
-                        } else if (TransferDij.answer == 2) { //환승 2번 할 때
-                            String temp1 = Arrays.asList(TransferDij.test.getTransStation(start, TransferDij.transferStation.get(index2[0]))).toString();
-                            String temp2 = Arrays.asList(TransferDij.test.getTransStation(TransferDij.transferStation.get(index2[0]), TransferDij.transferStation.get(index2[1]))).toString();
-                            String temp3 = Arrays.asList(TransferDij.test.getTransStation(TransferDij.transferStation.get(index2[1]), finish)).toString();
-                            //detail_route.setText(temp1 + "\n"+ temp2 + "\n" + temp3);
-                            Log.v("route temp", temp1);
-                            routeSum += temp1 + "\n" + temp2 + "\n" + temp3 + "\n";
-                            transSum += 2;
+                            } else if (TransferDij.answer == 2) { //환승 2번 할 때
+                                String temp1 = Arrays.asList(TransferDij.test.getTransStation(start, TransferDij.transferStation.get(index2[0]))).toString();
+                                String temp2 = Arrays.asList(TransferDij.test.getTransStation(TransferDij.transferStation.get(index2[0]), TransferDij.transferStation.get(index2[1]))).toString();
+                                String temp3 = Arrays.asList(TransferDij.test.getTransStation(TransferDij.transferStation.get(index2[1]), finish)).toString();
+                                //detail_route.setText(temp1 + "\n"+ temp2 + "\n" + temp3);
+                                Log.v("route temp", temp1);
+                                routeSum += temp1 + "\n" + temp2 + "\n" + temp3 + "\n";
+                                transSum += 2;
 
 
+                            }
+                            auto_tran.setText(Integer.toString(transSum));
+                            tv_route.setText(routeSum);
                         }
-                        auto_tran.setText(Integer.toString(transSum));
-                        tv_route.setText(routeSum);
                     }
                 }
             }
